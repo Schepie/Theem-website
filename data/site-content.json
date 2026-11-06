@@ -9,7 +9,7 @@
       "updatedAt": "2026-11-06T09:56:55.486Z"
     }
   },
-  "topbarHidden": false,
+  "topbarHidden": true,
   "introAnimationEnabled": true,
   "desktop": {
     "texts": {
@@ -68,9 +68,11 @@
         "hidden": false
       }
     },
-    "containers": {},
+    "containers": {
+      "#heemTopbar": "\n    <div class=\"container\">\n      <div class=\"topbar-badge\" spellcheck=\"false\">\n        <span spellcheck=\"false\">📍 Dijkbeemdenweg 8, 3520 Zonhoven</span>\n        <span spellcheck=\"false\">•</span>\n        <span spellcheck=\"false\">Zustervereniging KSA Zonhoven</span>\n      </div>\n      <div class=\"topbar-contact\">\n        <a href=\"tel:0471258778\" class=\"ksa-editable-btn\" title=\"🔗 Klik om knoptekst, link of zichtbaarheid aan te passen\"><span>📞</span> 0471/25 87 78</a>\n        <a href=\"mailto:ksazonhoven.vzw@gmail.com\" class=\"ksa-editable-btn\" title=\"🔗 Klik om knoptekst, link of zichtbaarheid aan te passen\"><span>✉️</span> ksazonhoven.vzw@gmail.com</a>\n        <a href=\"mobile.html?view=mobile\" style=\"color:var(--heem-gold); font-weight:700;\" class=\"ksa-editable-btn\" title=\"🔗 Klik om knoptekst, link of zichtbaarheid aan te passen\"><span>📱</span> Mobiele Weergave</a>\n      </div>\n    </div>\n  "
+    },
     "shortcutsHidden": false,
-    "topbarHidden": false
+    "topbarHidden": true
   },
   "mobile": {
     "texts": {},
@@ -78,7 +80,7 @@
     "links": {},
     "containers": {}
   },
-  "updatedAt": "2026-11-06T10:21:04.888Z",
+  "updatedAt": "2026-11-06T10:36:42.587Z",
   "shortcutsHidden": false,
   "banner": {
     "hidden": false,
