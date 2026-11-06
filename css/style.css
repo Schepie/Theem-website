@@ -177,34 +177,17 @@ a {
 .brand-logo {
   display: flex;
   align-items: center;
-  gap: 14px;
 }
 
 .brand-logo img {
-  height: 52px;
+  height: 64px;
   width: auto;
   border-radius: var(--radius-sm);
+  transition: transform var(--transition-fast);
 }
 
-.brand-title {
-  display: flex;
-  flex-direction: column;
-}
-
-.brand-name {
-  font-family: var(--font-heading);
-  font-size: 2.1rem;
-  letter-spacing: 0.05em;
-  color: var(--heem-primary);
-  line-height: 1;
-}
-
-.brand-tag {
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--heem-accent);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+.brand-logo:hover img {
+  transform: scale(1.03);
 }
 
 .nav-menu {

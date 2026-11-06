@@ -63,28 +63,12 @@ body {
 .mobile-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
 }
 
 .mobile-brand img {
-  height: 40px;
+  height: 48px;
   width: auto;
   border-radius: var(--radius-sm);
-}
-
-.mobile-brand-title {
-  font-family: var(--font-heading);
-  font-size: 1.6rem;
-  color: var(--heem-primary);
-  line-height: 1;
-  letter-spacing: 0.03em;
-}
-
-.mobile-brand-sub {
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: var(--heem-accent);
-  text-transform: uppercase;
 }
 
 .mobile-header-actions {
