@@ -60,7 +60,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 125px;
+  scroll-padding-top: 92px;
   font-size: 16px;
 }
 
@@ -96,13 +96,13 @@ a {
 }
 
 .section {
-  padding: 80px 0;
+  padding: 38px 0 60px 0;
   position: relative;
-  scroll-margin-top: 125px;
+  scroll-margin-top: 92px;
 }
 
 section[id], .calculator-box[id], [id] {
-  scroll-margin-top: 125px;
+  scroll-margin-top: 92px;
 }
 
 .section-alt {
@@ -466,7 +466,7 @@ section[id], .calculator-box[id], [id] {
 .section-header {
   text-align: center;
   max-width: 720px;
-  margin: 0 auto 54px auto;
+  margin: 0 auto 36px auto;
 }
 
 .section-tag {
@@ -1174,8 +1174,10 @@ section[id], .calculator-box[id], [id] {
 }
 
 @media (max-width: 768px) {
-  html { scroll-padding-top: 90px; }
-  .section, section[id], .calculator-box[id], [id] { scroll-margin-top: 90px; }
+  html { scroll-padding-top: 75px; }
+  .section, section[id], .calculator-box[id], [id] { scroll-margin-top: 75px; }
+  .section { padding: 28px 0 44px 0; }
+  .section-header { margin-bottom: 24px; }
   .container { padding-left: 16px; padding-right: 16px; }
   .heem-topbar .container { justify-content: center; text-align: center; }
   .navbar { flex-wrap: wrap; }
