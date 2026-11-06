@@ -10,7 +10,7 @@
     }
   },
   "topbarHidden": true,
-  "introAnimationEnabled": false,
+  "introAnimationEnabled": true,
   "desktop": {
     "texts": {
       "#home > div:nth-of-type(1) > div:nth-of-type(1) > h1:nth-of-type(1)": "\n          DE IDEALE LOCATIE VOOR JE <span>FEEST OF ACTIVITEIT</span>\n        ",
@@ -24,8 +24,6 @@
     },
     "images": {
       "#heemHeader > div:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(1) > img:nth-of-type(1)": "assets/icons/theem-logo.png",
-      "#over-ons > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > img:nth-of-type(1)": "assets/images/heem_over_ons.jpg",
-      "#over-ons > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > img:nth-of-type(1)": "assets/images/theem_logo_full.jpg",
       "#zalen > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > img:nth-of-type(1)": "assets/images/gallery/gallerij_grote_zaal_31.jpg",
       "#zalen > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > img:nth-of-type(1)": "assets/images/gallery/gallerij_kleine_zaal_35.jpg",
       "#zalen > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(1) > img:nth-of-type(1)": "assets/images/gallery/gallerij_keuken_37.jpg",

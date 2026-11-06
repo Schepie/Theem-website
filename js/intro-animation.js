@@ -10,6 +10,15 @@
 
   async function checkIntroState() {
     try {
+      const res = await fetch('data/site-content.json?v=' + Date.now());
+      if (res.ok) {
+        const data = await res.json();
+        if (typeof data.introAnimationEnabled === 'boolean') {
+          localStorage.setItem('theem_intro_enabled', data.introAnimationEnabled ? '1' : '0');
+          return data.introAnimationEnabled;
+        }
+      }
+
       const local = localStorage.getItem('theem_intro_enabled');
       if (local === '0' || local === 'false') return false;
       if (local === '1' || local === 'true') return true;
@@ -19,15 +28,6 @@
         const parsed = JSON.parse(stored);
         if (typeof parsed.introAnimationEnabled === 'boolean') {
           return parsed.introAnimationEnabled;
-        }
-      }
-
-      const res = await fetch('data/site-content.json?v=' + Date.now());
-      if (res.ok) {
-        const data = await res.json();
-        if (typeof data.introAnimationEnabled === 'boolean') {
-          localStorage.setItem('theem_intro_enabled', data.introAnimationEnabled ? '1' : '0');
-          return data.introAnimationEnabled;
         }
       }
     } catch(e) {}
