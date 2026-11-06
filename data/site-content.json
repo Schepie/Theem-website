@@ -13,7 +13,7 @@
   "desktop": {
     "texts": {
       "#home > div:nth-of-type(1) > div:nth-of-type(1) > h1:nth-of-type(1)": "\n          DE IDEALE LOCATIE VOOR JE <span>FEEST OF ACTIVITEIT</span>\n        ",
-      "#over-ons > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > h2:nth-of-type(1)": "MEER DAN 40 JAAR THUIS VOOR ONZE GEMEENSCHAP",
+      "#over-ons > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > h2:nth-of-type(1)": "AL JAREN de vertouwd plaats voor uw event",
       "#zalen > div:nth-of-type(1) > div:nth-of-type(1) > h2:nth-of-type(1)": "ZALEN &amp; FACILITEITEN",
       "#reglement > div:nth-of-type(1) > div:nth-of-type(1) > h2:nth-of-type(1)": "HUURVOORWAARDEN &amp; HUISREGLEMENT",
       "#tarieven > div:nth-of-type(1) > div:nth-of-type(1) > h2:nth-of-type(1)": "TARIEVEN PER DAG",
@@ -77,7 +77,7 @@
     "links": {},
     "containers": {}
   },
-  "updatedAt": "2026-11-06T09:57:09.899Z",
+  "updatedAt": "2026-11-06T10:00:27.174Z",
   "shortcutsHidden": false,
   "banner": {
     "hidden": false,
