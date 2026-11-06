@@ -1440,6 +1440,15 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
       };
     }
 
+    document.querySelectorAll('.footer-admin-btn, .ksa-edit-trigger-btn').forEach(btn => {
+      btn.onclick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (isEditMode) disableEditMode();
+        else promptAndEnableEditMode();
+      };
+    });
+
     const fileInput = document.createElement('input');
     fileInput.type = 'file';
     fileInput.accept = 'image/*';
@@ -1678,6 +1687,9 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
     input.onkeydown = (e) => { if (e.key === 'Enter') submit(); };
     setTimeout(() => input.focus(), 50);
   }
+
+  window.ksaPromptAndEnableEdit = promptAndEnableEditMode;
+  window.promptAndEnableEditMode = promptAndEnableEditMode;
 
   // --------------------------------------------------------------------------
   // 6. ACTIVEER EDIT MODE OP ALLE ONDERDELEN VAN DE WEBSITE
@@ -1938,6 +1950,9 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
       deskHeaderBtn.innerHTML = '✏️';
     }
   }
+
+  window.enableEditMode = enableEditMode;
+  window.disableEditMode = disableEditMode;
 
   // --------------------------------------------------------------------------
   // 7. FOTO'S DIRECT VERVANGEN OP DE PAGINA (+ AUTOMATISCHE PASPOORT SYNC)
@@ -3971,13 +3986,13 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
     const prevTitle = document.getElementById('ksaPushPreviewTitle');
     const prevText = document.getElementById('ksaPushPreviewText');
 
-    titleInput.oninput = () => { prevTitle.textContent = titleInput.value.trim() || ''t Heem Zonhoven'; };
+    titleInput.oninput = () => { prevTitle.textContent = titleInput.value.trim() || "'t Heem Zonhoven"; };
     msgInput.oninput = () => { prevText.textContent = msgInput.value.trim() || 'Typ hierboven een bericht...'; };
 
     document.getElementById('ksaPushCancelBtn').onclick = () => { backdrop.style.display = 'none'; };
 
     document.getElementById('ksaPushSendSubmitBtn').onclick = async () => {
-      const title = titleInput.value.trim() || ''t Heem Zonhoven';
+      const title = titleInput.value.trim() || "'t Heem Zonhoven";
       const message = msgInput.value.trim();
       const targetUrl = document.getElementById('ksaPushUrlInput').value.trim();
       const apiKey = document.getElementById('ksaPushApiKeyInput').value.trim();
