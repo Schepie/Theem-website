@@ -10,6 +10,7 @@
     }
   },
   "topbarHidden": false,
+  "introAnimationEnabled": true,
   "desktop": {
     "texts": {
       "#home > div:nth-of-type(1) > div:nth-of-type(1) > h1:nth-of-type(1)": "\n          DE IDEALE LOCATIE VOOR JE <span>FEEST OF ACTIVITEIT</span>\n        ",

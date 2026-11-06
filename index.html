@@ -26,6 +26,18 @@
 </head>
 <body>
 
+  <!-- Initial Logo Animation Splash Screen -->
+  <div class="theem-intro-overlay" id="theemIntroOverlay">
+    <div class="theem-intro-card">
+      <video id="theemIntroVideo" playsinline muted preload="auto" class="theem-intro-video">
+        <source src="assets/videos/logo_intro.mp4" type="video/mp4">
+      </video>
+      <button type="button" class="theem-intro-skip-btn" id="theemIntroSkipBtn">
+        Website Openen &rarr;
+      </button>
+    </div>
+  </div>
+
   <!-- Topbar -->
   <div class="heem-topbar" id="heemTopbar">
     <div class="container">
@@ -827,6 +839,7 @@
   </div>
 
   <!-- Scripts -->
+  <script src="js/intro-animation.js?v=theem1"></script>
   <script src="js/html2canvas.min.js"></script>
   <script src="js/main.js?v=theem1"></script>
   <script src="js/visual-editor.js?v=theem1"></script>

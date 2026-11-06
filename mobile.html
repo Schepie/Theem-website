@@ -25,6 +25,18 @@
 </head>
 <body>
 
+  <!-- Initial Logo Animation Splash Screen -->
+  <div class="theem-intro-overlay" id="theemIntroOverlay">
+    <div class="theem-intro-card">
+      <video id="theemIntroVideo" playsinline muted preload="auto" class="theem-intro-video">
+        <source src="assets/videos/logo_intro.mp4" type="video/mp4">
+      </video>
+      <button type="button" class="theem-intro-skip-btn" id="theemIntroSkipBtn">
+        Open App &rarr;
+      </button>
+    </div>
+  </div>
+
   <!-- App Header -->
   <header class="mobile-app-header">
     <div class="mobile-brand">
@@ -505,6 +517,7 @@
   </nav>
 
   <!-- Scripts -->
+  <script src="js/intro-animation.js?v=theem1"></script>
   <script src="js/html2canvas.min.js"></script>
   <script src="js/mobile.js?v=theem1"></script>
   <script src="js/visual-editor.js?v=theem1"></script>
