@@ -985,10 +985,9 @@ section[id], .calculator-box[id], [id] {
 
 /* Booking & Reservation Section */
 .reservation-methods-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 32px;
-  margin-top: 40px;
+  display: block;
+  max-width: 680px;
+  margin: 40px auto 0 auto;
 }
 
 .reservation-card {
