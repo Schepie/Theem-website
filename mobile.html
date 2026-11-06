@@ -184,9 +184,14 @@
             <li>Aansluitend terras en sanitaire voorzieningen</li>
             <li>Combineerbaar met keuken en/of kleine zaal</li>
           </ul>
-          <a href="https://theem.youcanbook.me/" target="_blank" rel="noopener" class="btn-icon" style="width:100%; padding:10px; border-radius:var(--radius-sm); background:var(--heem-primary); color:#fff; font-weight:700; font-size:0.9rem;">
-            📅 Reserveer Grote Zaal
-          </a>
+          <div style="display:flex; gap:8px; margin-top:12px;">
+            <a href="https://theem.youcanbook.me/" target="_blank" rel="noopener" class="btn-icon" style="flex:1; width:auto; padding:10px; border-radius:var(--radius-sm); background:var(--heem-primary); color:#fff; font-weight:700; font-size:0.85rem;">
+              📅 Reserveer Grote Zaal
+            </a>
+            <button type="button" class="btn-icon" style="flex:1; width:auto; padding:10px; border-radius:var(--radius-sm); background:var(--heem-light-blue); color:var(--heem-primary); font-weight:700; font-size:0.85rem;" onclick="if(window.switchMobileTabWithFilter){window.switchMobileTabWithFilter('tab-gallerij','grote-zaal');}">
+              📷 Foto's
+            </button>
+          </div>
         </div>
       </div>
 
@@ -205,9 +210,14 @@
             <li>Verhuur ook mogelijk per uur voor vergaderingen</li>
             <li>Tafels en stoelen inbegrepen</li>
           </ul>
-          <a href="https://theem.youcanbook.me/" target="_blank" rel="noopener" class="btn-icon" style="width:100%; padding:10px; border-radius:var(--radius-sm); background:var(--heem-primary); color:#fff; font-weight:700; font-size:0.9rem;">
-            📅 Reserveer Kleine Zaal
-          </a>
+          <div style="display:flex; gap:8px;">
+            <a href="https://theem.youcanbook.me/" target="_blank" rel="noopener" class="btn-icon" style="flex:1; width:auto; padding:10px; border-radius:var(--radius-sm); background:var(--heem-primary); color:#fff; font-weight:700; font-size:0.85rem;">
+              📅 Reserveer Kleine Zaal
+            </a>
+            <button type="button" class="btn-icon" style="flex:1; width:auto; padding:10px; border-radius:var(--radius-sm); background:var(--heem-light-blue); color:var(--heem-primary); font-weight:700; font-size:0.85rem;" onclick="if(window.switchMobileTabWithFilter){window.switchMobileTabWithFilter('tab-gallerij','kleine-zaal');}">
+              📷 Foto's
+            </button>
+          </div>
         </div>
       </div>
 
@@ -221,6 +231,9 @@
           <p class="mobile-card-desc">
             Volledig uitgerust met serviesgoed, bestek, glazen, kookplaat, microgolfoven, koffiezetapparaat en koelkast.
           </p>
+          <button type="button" class="btn-icon" style="width:100%; padding:10px; border-radius:var(--radius-sm); background:var(--heem-light-blue); color:var(--heem-primary); font-weight:700; font-size:0.85rem; margin-top:8px;" onclick="if(window.switchMobileTabWithFilter){window.switchMobileTabWithFilter('tab-gallerij','keuken');}">
+            📷 Bekijk Keuken Foto's
+          </button>
         </div>
       </div>
 
@@ -234,6 +247,14 @@
           <p class="mobile-card-desc">
             Grote buitenspeelruimte voor kinderen met speeltuigen. Aan de achterzijde ligt een plein met ruime afdaken, ideaal voor een barbecue!
           </p>
+          <div style="display:flex; gap:8px; margin-top:8px;">
+            <button type="button" class="btn-icon" style="flex:1; width:auto; padding:10px; border-radius:var(--radius-sm); background:var(--heem-light-blue); color:var(--heem-primary); font-weight:700; font-size:0.85rem;" onclick="if(window.switchMobileTabWithFilter){window.switchMobileTabWithFilter('tab-gallerij','speeltuin');}">
+              🌳 Speeltuin Foto's
+            </button>
+            <button type="button" class="btn-icon" style="flex:1; width:auto; padding:10px; border-radius:var(--radius-sm); background:var(--heem-light-blue); color:var(--heem-primary); font-weight:700; font-size:0.85rem;" onclick="if(window.switchMobileTabWithFilter){window.switchMobileTabWithFilter('tab-gallerij','buiten');}">
+              🅿️ Plein Foto's
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -315,21 +336,30 @@
   <div class="mobile-tab-section" id="tab-gallerij" style="display: none;">
     <div class="mobile-container" style="padding-top: 16px;">
       <div class="mobile-section-title">📸 Fotogallerij</div>
-      <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:14px;">Tik op een foto om te vergroten:</p>
+      <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">Tik op een foto om te vergroten:</p>
+
+      <div class="mobile-filters" style="display: flex; gap: 6px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 14px; -webkit-overflow-scrolling: touch;">
+        <button type="button" class="m-filter-btn active" data-filter="all" style="flex-shrink:0; padding:6px 12px; border-radius:var(--radius-full); border:1px solid var(--border-light); background:var(--heem-primary); color:#fff; font-size:0.8rem; font-weight:700;">Alle</button>
+        <button type="button" class="m-filter-btn" data-filter="grote-zaal" style="flex-shrink:0; padding:6px 12px; border-radius:var(--radius-full); border:1px solid var(--border-light); background:#fff; color:var(--heem-primary); font-size:0.8rem; font-weight:700;">Grote Zaal</button>
+        <button type="button" class="m-filter-btn" data-filter="kleine-zaal" style="flex-shrink:0; padding:6px 12px; border-radius:var(--radius-full); border:1px solid var(--border-light); background:#fff; color:var(--heem-primary); font-size:0.8rem; font-weight:700;">Kleine Zaal</button>
+        <button type="button" class="m-filter-btn" data-filter="keuken" style="flex-shrink:0; padding:6px 12px; border-radius:var(--radius-full); border:1px solid var(--border-light); background:#fff; color:var(--heem-primary); font-size:0.8rem; font-weight:700;">Keuken</button>
+        <button type="button" class="m-filter-btn" data-filter="speeltuin" style="flex-shrink:0; padding:6px 12px; border-radius:var(--radius-full); border:1px solid var(--border-light); background:#fff; color:var(--heem-primary); font-size:0.8rem; font-weight:700;">Speeltuin</button>
+        <button type="button" class="m-filter-btn" data-filter="buiten" style="flex-shrink:0; padding:6px 12px; border-radius:var(--radius-full); border:1px solid var(--border-light); background:#fff; color:var(--heem-primary); font-size:0.8rem; font-weight:700;">Overkapping</button>
+      </div>
 
       <div class="mobile-gallery-grid">
-        <div class="mobile-gallery-thumb"><img src="assets/images/gallery/gallerij_grote_zaal_31.jpg" alt="Foto"></div>
-        <div class="mobile-gallery-thumb"><img src="assets/images/gallery/gallerij_grote_zaal_32.jpg" alt="Foto"></div>
-        <div class="mobile-gallery-thumb"><img src="assets/images/gallery/gallerij_kleine_zaal_35.jpg" alt="Foto"></div>
-        <div class="mobile-gallery-thumb"><img src="assets/images/gallery/gallerij_kleine_zaal_36.jpg" alt="Foto"></div>
-        <div class="mobile-gallery-thumb"><img src="assets/images/gallery/gallerij_keuken_37.jpg" alt="Foto"></div>
-        <div class="mobile-gallery-thumb"><img src="assets/images/gallery/gallerij_keuken_38.jpg" alt="Foto"></div>
-        <div class="mobile-gallery-thumb"><img src="assets/images/gallery/gallerij_speeltuin_41.jpg" alt="Foto"></div>
-        <div class="mobile-gallery-thumb"><img src="assets/images/gallery/gallerij_speeltuin_42.jpg" alt="Foto"></div>
-        <div class="mobile-gallery-thumb"><img src="assets/images/gallery/overkapping_plein.jpg" alt="Overdekt Plein"></div>
-        <div class="mobile-gallery-thumb"><img src="assets/images/gallery/gallerij_andere_46.jpg" alt="Foto"></div>
-        <div class="mobile-gallery-thumb"><img src="assets/images/gallery/gallerij_andere_47.jpg" alt="Foto"></div>
-        <div class="mobile-gallery-thumb"><img src="assets/images/gallery/gallerij_andere_49.jpg" alt="Foto"></div>
+        <div class="mobile-gallery-thumb" data-category="grote-zaal"><img src="assets/images/gallery/gallerij_grote_zaal_31.jpg" alt="Grote Zaal"></div>
+        <div class="mobile-gallery-thumb" data-category="grote-zaal"><img src="assets/images/gallery/gallerij_grote_zaal_32.jpg" alt="Grote Zaal"></div>
+        <div class="mobile-gallery-thumb" data-category="kleine-zaal"><img src="assets/images/gallery/gallerij_kleine_zaal_35.jpg" alt="Kleine Zaal"></div>
+        <div class="mobile-gallery-thumb" data-category="kleine-zaal"><img src="assets/images/gallery/gallerij_kleine_zaal_36.jpg" alt="Kleine Zaal"></div>
+        <div class="mobile-gallery-thumb" data-category="keuken"><img src="assets/images/gallery/gallerij_keuken_37.jpg" alt="Keuken"></div>
+        <div class="mobile-gallery-thumb" data-category="keuken"><img src="assets/images/gallery/gallerij_keuken_38.jpg" alt="Keuken"></div>
+        <div class="mobile-gallery-thumb" data-category="speeltuin"><img src="assets/images/gallery/gallerij_speeltuin_41.jpg" alt="Speeltuin"></div>
+        <div class="mobile-gallery-thumb" data-category="speeltuin"><img src="assets/images/gallery/gallerij_speeltuin_42.jpg" alt="Speeltuin"></div>
+        <div class="mobile-gallery-thumb" data-category="buiten"><img src="assets/images/gallery/overkapping_plein.jpg" alt="Overdekt Plein"></div>
+        <div class="mobile-gallery-thumb" data-category="buiten"><img src="assets/images/gallery/gallerij_andere_46.jpg" alt="Buiten"></div>
+        <div class="mobile-gallery-thumb" data-category="buiten"><img src="assets/images/gallery/gallerij_andere_47.jpg" alt="Buiten"></div>
+        <div class="mobile-gallery-thumb" data-category="buiten"><img src="assets/images/gallery/gallerij_andere_49.jpg" alt="Buiten"></div>
       </div>
     </div>
   </div>

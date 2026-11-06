@@ -63,12 +63,68 @@ function initMobileCalculator() {
   calculate();
 }
 
-// 3. Mobile Lightbox
+// 3. Mobile Lightbox & Gallery Filtering
 function initMobileLightbox() {
   const thumbs = document.querySelectorAll('.mobile-gallery-thumb');
+  const filterBtns = document.querySelectorAll('.m-filter-btn');
   const lightbox = document.getElementById('mobileLightbox');
   const lightboxImg = document.getElementById('mobileLightboxImg');
   const closeBtn = document.getElementById('mobileLightboxClose');
+
+  function applyMobileFilter(filter) {
+    filterBtns.forEach(btn => {
+      if (btn.getAttribute('data-filter') === filter) {
+        btn.classList.add('active');
+        btn.style.background = 'var(--heem-primary)';
+        btn.style.color = '#fff';
+      } else {
+        btn.classList.remove('active');
+        btn.style.background = '#fff';
+        btn.style.color = 'var(--heem-primary)';
+      }
+    });
+
+    thumbs.forEach(thumb => {
+      const cat = thumb.getAttribute('data-category') || '';
+      if (filter === 'all' || cat.includes(filter)) {
+        thumb.style.display = 'block';
+      } else {
+        thumb.style.display = 'none';
+      }
+    });
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const filter = this.getAttribute('data-filter') || 'all';
+      applyMobileFilter(filter);
+    });
+  });
+
+  // Switch tab and immediately apply filter
+  window.switchMobileTabWithFilter = function(tabId, filterCategory) {
+    const navItems = document.querySelectorAll('.nav-bottom-item');
+    const sections = document.querySelectorAll('.mobile-tab-section');
+
+    navItems.forEach(n => {
+      if (n.getAttribute('data-target') === tabId) {
+        n.classList.add('active');
+      } else {
+        n.classList.remove('active');
+      }
+    });
+
+    sections.forEach(sec => {
+      if (sec.id === tabId) {
+        sec.style.display = 'block';
+      } else {
+        sec.style.display = 'none';
+      }
+    });
+
+    applyMobileFilter(filterCategory);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   if (!lightbox || !lightboxImg) return;
 

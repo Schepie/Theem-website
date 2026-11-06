@@ -89,24 +89,67 @@ function initGallery() {
   let currentGalleryUrls = [];
   let currentIndex = 0;
 
-  // Filter items
+  // Apply filter to gallery items and update active button
+  function applyFilter(filter) {
+    filterBtns.forEach(btn => {
+      if (btn.getAttribute('data-filter') === filter) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    galleryItems.forEach(item => {
+      const cat = item.getAttribute('data-category') || '';
+      if (filter === 'all' || cat.includes(filter)) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+
+    updateCurrentGalleryList();
+  }
+
+  // Filter items button clicks
   filterBtns.forEach(btn => {
     btn.addEventListener('click', function() {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      this.classList.add('active');
-
-      const filter = this.getAttribute('data-filter');
-      galleryItems.forEach(item => {
-        const cat = item.getAttribute('data-category') || '';
-        if (filter === 'all' || cat.includes(filter)) {
-          item.style.display = 'block';
-        } else {
-          item.style.display = 'none';
-        }
-      });
-      updateCurrentGalleryList();
+      const filter = this.getAttribute('data-filter') || 'all';
+      applyFilter(filter);
     });
   });
+
+  // Global helper to filter and scroll to gallery
+  window.setGalleryFilter = function(filterCategory) {
+    applyFilter(filterCategory);
+    const gallerySection = document.getElementById('gallerij');
+    if (gallerySection) {
+      gallerySection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // Links with data-gallery-filter attribute (e.g. from zaal cards)
+  document.querySelectorAll('[data-gallery-filter]').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const filter = this.getAttribute('data-gallery-filter');
+      window.setGalleryFilter(filter);
+    });
+  });
+
+  // Check URL hash on page load
+  const currentHash = window.location.hash.toLowerCase();
+  if (currentHash.includes('kleine-zaal')) {
+    applyFilter('kleine-zaal');
+  } else if (currentHash.includes('grote-zaal')) {
+    applyFilter('grote-zaal');
+  } else if (currentHash.includes('keuken')) {
+    applyFilter('keuken');
+  } else if (currentHash.includes('speeltuin')) {
+    applyFilter('speeltuin');
+  } else if (currentHash.includes('buiten')) {
+    applyFilter('buiten');
+  }
 
   function updateCurrentGalleryList() {
     currentGalleryUrls = [];
