@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initGallery();
   initContactForm();
   initPrivacyModal();
+  initSmoothScrolling();
 });
 
 // 1. Sticky Header Effect
@@ -68,7 +69,7 @@ function initCalculator() {
       }
       const target = document.getElementById('reserveren');
       if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
+        scrollToTarget(target, '#reserveren');
       }
     });
   }
@@ -125,7 +126,7 @@ function initGallery() {
     applyFilter(filterCategory);
     const gallerySection = document.getElementById('gallerij');
     if (gallerySection) {
-      gallerySection.scrollIntoView({ behavior: 'smooth' });
+      scrollToTarget(gallerySection, '#gallerij');
     }
   };
 
@@ -285,5 +286,51 @@ function initPrivacyModal() {
   });
 
   window.openPrivacyModal = openModal;
+}
+
+// 6. Smooth Scrolling with dynamic sticky header offset
+function scrollToTarget(targetEl, targetHash) {
+  if (!targetEl) return;
+  const header = document.getElementById('heemHeader') || document.querySelector('.heem-header');
+  const offset = header ? header.offsetHeight + 24 : 120;
+  const targetTop = targetEl.getBoundingClientRect().top + window.pageYOffset - offset;
+
+  window.scrollTo({
+    top: Math.max(0, targetTop),
+    behavior: 'smooth'
+  });
+
+  if (targetHash) {
+    if (history.pushState) {
+      history.pushState(null, null, targetHash);
+    } else {
+      window.location.hash = targetHash;
+    }
+  }
+}
+
+function initSmoothScrolling() {
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+      const targetHash = this.getAttribute('href');
+      if (!targetHash || targetHash === '#' || targetHash.startsWith('#tab-')) return;
+      const targetEl = document.querySelector(targetHash);
+      if (targetEl) {
+        e.preventDefault();
+        scrollToTarget(targetEl, targetHash);
+      }
+    });
+  });
+
+  // Handle URL hash on initial page load with a slight delay
+  if (window.location.hash && window.location.hash.length > 1) {
+    const initialHash = window.location.hash;
+    setTimeout(() => {
+      const targetEl = document.querySelector(initialHash);
+      if (targetEl) {
+        scrollToTarget(targetEl, initialHash);
+      }
+    }, 200);
+  }
 }
 
