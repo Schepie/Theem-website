@@ -37,11 +37,19 @@
     const pathname = window.location.pathname.toLowerCase();
     const isMobilePage = pathname.endsWith('mobile.html') || pathname.includes('/mobile');
 
+    function getTargetUrl(targetFile) {
+      const hrefWithoutQuery = window.location.href.split('#')[0].split('?')[0];
+      const lastSlash = hrefWithoutQuery.lastIndexOf('/');
+      let base = hrefWithoutQuery.substring(0, lastSlash + 1);
+      if (!base.endsWith('/')) base += '/';
+      return base + targetFile;
+    }
+
     // Route: If on desktop page and is mobile screen
     if (!isMobilePage) {
       if (preferredView !== 'desktop' && (isSmallScreen || isMobileUA || isStandalone)) {
         const targetHash = window.location.hash || '';
-        window.location.replace('mobile.html' + targetHash);
+        window.location.replace(getTargetUrl('mobile.html') + targetHash);
       }
     } 
     // Route: If on mobile page, only send to desktop if explicitly requested or on large non-touch screen without mobile preference
@@ -49,7 +57,7 @@
       if (!isStandalone) {
         if (preferredView === 'desktop' || (preferredView !== 'mobile' && !isTouchDevice && !isMobileUA && window.innerWidth > 1024)) {
           const targetHash = window.location.hash || '';
-          window.location.replace('index.html' + targetHash);
+          window.location.replace(getTargetUrl('index.html') + targetHash);
         }
       }
     }
@@ -75,9 +83,9 @@
     } catch (e) {}
     
     if (targetView === 'desktop') {
-      window.location.href = 'index.html?view=desktop' + (window.location.hash || '');
+      window.location.href = getTargetUrl('index.html') + '?view=desktop' + (window.location.hash || '');
     } else {
-      window.location.href = 'mobile.html?view=mobile' + (window.location.hash || '');
+      window.location.href = getTargetUrl('mobile.html') + '?view=mobile' + (window.location.hash || '');
     }
   };
 })();

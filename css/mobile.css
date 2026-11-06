@@ -657,23 +657,23 @@ body {
   transform: translateY(-2px);
 }
 
-/* Tablet & Desktop Framing: centers clean app view without stretching */
-@media (min-width: 768px) {
+/* Tablet & Desktop Framing: centers clean app view on large screens */
+@media (min-width: 1024px) {
   body {
-    max-width: 580px;
+    max-width: 520px;
     margin: 0 auto;
     box-shadow: 0 0 40px rgba(13, 59, 102, 0.12);
     min-height: 100vh;
     background-color: #ffffff;
   }
   .mobile-app-header {
-    max-width: 580px;
+    max-width: 520px;
     margin: 0 auto;
     left: 0;
     right: 0;
   }
   .mobile-bottom-nav {
-    max-width: 580px;
+    max-width: 520px;
     margin: 0 auto;
     left: 0;
     right: 0;
