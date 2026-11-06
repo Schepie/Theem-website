@@ -45,6 +45,29 @@
       return base + targetFile;
     }
 
+    // Frame-breakout on mobile / touch devices:
+    // Combell's "Geframed doorsturen" wraps the site in a legacy HTML4 <frameset> without a viewport tag,
+    // which causes mobile browsers to zoom out to 30%. Breaking out restores the native viewport immediately.
+    let isFramed = false;
+    try {
+      isFramed = window.self !== window.top;
+    } catch (e) {
+      isFramed = true;
+    }
+
+    if (isFramed && (isSmallScreen || isMobileUA || isTouchDevice)) {
+      const targetDest = isMobilePage ? window.location.href : (getTargetUrl('mobile.html') + (window.location.hash || ''));
+      try {
+        window.top.location.href = targetDest;
+        return;
+      } catch (e) {
+        try {
+          window.open(targetDest, '_top');
+          return;
+        } catch (err) {}
+      }
+    }
+
     // Route: If on desktop page and is mobile screen
     if (!isMobilePage) {
       if (preferredView !== 'desktop' && (isSmallScreen || isMobileUA || isStandalone)) {
