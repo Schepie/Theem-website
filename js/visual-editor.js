@@ -489,7 +489,7 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
     return el;
   }
 
-  const EDITABLE_LINK_SELECTOR = '.hero-cta-group a, .ksa-event-banner a.btn, .news-actions a, .btn-ravot, .btn-ticket, #groupResultBtn, .leiding-card a.btn, #verhuring a.btn, #contact a.btn, .topbar-link, .ksa-topbar a';
+  const EDITABLE_LINK_SELECTOR = '.hero-cta-group a, .ksa-event-banner a.btn, .news-actions a, .btn-ravot, .btn-ticket, #groupResultBtn, .leiding-card a.btn, #verhuring a.btn, #contact a.btn, .topbar-link, .topbar-contact a, .heem-topbar a, .ksa-topbar a';
 
   function isGroupManagedSelector(selector) {
     return typeof selector === 'string' && (selector.startsWith('#groupResult') || selector.startsWith('#mGroup'));
@@ -830,7 +830,7 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
         const a = querySmartSelector(selector);
         if (!a || !info) return;
         // Als dit element in een container zit die al geladen is (.hero-cta-group, #ksaTopbar, .news-grid), sla over
-        if (a.closest('#ksaTopbar, .hero-cta-group, .cal-grid, .news-grid, .paspoort-grid, .cal-list')) return;
+        if (a.closest('#heemTopbar, #ksaTopbar, .heem-topbar, .hero-cta-group, .cal-grid, .news-grid, .paspoort-grid, .cal-list')) return;
         if (info.href !== undefined) a.setAttribute('href', info.href);
         if (info.text !== undefined) {
           const span = a.querySelector('span') || a;
@@ -950,7 +950,8 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
         outline: 2px solid #e3001b;
         background-color: rgba(254, 243, 199, 0.4);
       }
-      body.ksa-edit-mode-active .ksa-topbar [contenteditable="true"] {
+      body.ksa-edit-mode-active .ksa-topbar [contenteditable="true"],
+      body.ksa-edit-mode-active .heem-topbar [contenteditable="true"] {
         outline: 1.5px dashed #fdb900;
         outline-offset: 3px;
         border-radius: 4px;
@@ -959,11 +960,14 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
         transition: all 0.2s;
       }
       body.ksa-edit-mode-active .ksa-topbar [contenteditable="true"]:hover,
-      body.ksa-edit-mode-active .ksa-topbar [contenteditable="true"]:focus {
+      body.ksa-edit-mode-active .ksa-topbar [contenteditable="true"]:focus,
+      body.ksa-edit-mode-active .heem-topbar [contenteditable="true"]:hover,
+      body.ksa-edit-mode-active .heem-topbar [contenteditable="true"]:focus {
         outline: 2px solid #ffffff;
         background-color: rgba(253, 185, 0, 0.25);
       }
-      body.ksa-edit-mode-active .ksa-topbar a.topbar-link {
+      body.ksa-edit-mode-active .ksa-topbar a.topbar-link,
+      body.ksa-edit-mode-active .heem-topbar a {
         outline: 1.5px dashed #22c55e;
         outline-offset: 3px;
         border-radius: 4px;
@@ -971,7 +975,8 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
         cursor: pointer !important;
         transition: all 0.2s;
       }
-      body.ksa-edit-mode-active .ksa-topbar a.topbar-link:hover {
+      body.ksa-edit-mode-active .ksa-topbar a.topbar-link:hover,
+      body.ksa-edit-mode-active .heem-topbar a:hover {
         outline: 2px solid #ffffff;
         background-color: rgba(34, 197, 94, 0.25);
       }
@@ -1021,10 +1026,12 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
       body:not(.ksa-edit-mode-active) .topbar-hidden-badge {
         display: none !important;
       }
-      body:not(.ksa-edit-mode-active) .ksa-topbar.ksa-section-hidden {
+      body:not(.ksa-edit-mode-active) .ksa-topbar.ksa-section-hidden,
+      body:not(.ksa-edit-mode-active) .heem-topbar.ksa-section-hidden {
         display: none !important;
       }
-      body.ksa-edit-mode-active .ksa-topbar.ksa-section-hidden {
+      body.ksa-edit-mode-active .ksa-topbar.ksa-section-hidden,
+      body.ksa-edit-mode-active .heem-topbar.ksa-section-hidden {
         opacity: 0.55;
         filter: grayscale(0.5);
         border-bottom: 2px dashed #f59e0b;
@@ -1479,7 +1486,7 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
       <div class="ksa-dock-actions">
         <!-- Pushbericht tijdelijk verborgen -->
         <button type="button" class="ksa-dock-btn ksa-dock-btn-push" id="ksaBtnSendPush" title="Stuur direct een pushbericht naar alle smartphones via OneSignal" style="display:none;">📢 Pushbericht</button>
-        <button type="button" class="ksa-dock-btn ksa-dock-btn-sec" id="ksaBtnEditTopbar" title="Pas de bovenste blauwe KSA-balk aan">📢 Topbalk</button>
+        <button type="button" class="ksa-dock-btn ksa-dock-btn-sec" id="ksaBtnEditTopbar" title="Pas de bovenste adres- en contactbalk aan ('t Heem)">📢 Topbalk</button>
         <button type="button" class="ksa-dock-btn ksa-dock-btn-sec" id="ksaBtnToggleBanner" title="Toon of verberg de Event Aftelbanner">🎯 Banner Aan/Uit</button>
         <button type="button" class="ksa-dock-btn ksa-dock-btn-sec" id="ksaBtnToggleIntro" title="Schakel de logo animatie bij het opstarten aan of uit">🎬 Animatie: AAN</button>
         <button type="button" class="ksa-dock-btn ksa-dock-btn-sec" id="ksaBtnChangePin" title="Wijzig het bewerkwachtwoord voor de hele leidingsploeg">🔑 Wachtwoord</button>
@@ -1717,6 +1724,8 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
     checkAndSyncGithubConnectionStatus();
 
     const textSelectors = [
+      '.topbar-badge span',
+      '.topbar-badge',
       '#topbarBadge',
       '#topbarDesc',
       '#topbarPromo',
@@ -2064,7 +2073,7 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
     const currentHref = currentLinkTarget.getAttribute('href') || '';
     const isHidden = currentLinkTarget.classList.contains('ksa-link-hidden') || currentLinkTarget.style.display === 'none';
 
-    const isTopbarLink = !!currentLinkTarget.closest('#ksaTopbar');
+    const isTopbarLink = !!currentLinkTarget.closest('#heemTopbar, #ksaTopbar, .heem-topbar');
     const isBtn = currentLinkTarget.classList.contains('btn') || currentLinkTarget.classList.contains('read-more-link');
 
     let curStyle = 'btn-primary';
@@ -2222,10 +2231,18 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
   }
 
   // --------------------------------------------------------------------------
-  // 8A. BOVENSTE KSA-BALK BEHEREN (TOPBAR)
   // --------------------------------------------------------------------------
+  // 8A. BOVENSTE INFORMATIEBALK BEHEREN ('T HEEM TOPBAR)
+  // --------------------------------------------------------------------------
+  function getTopbarElement() {
+    return document.getElementById('heemTopbar') ||
+           document.querySelector('.heem-topbar') ||
+           document.getElementById('ksaTopbar') ||
+           document.querySelector('.ksa-topbar');
+  }
+
   function updateTopbarToggleBtnText() {
-    const topbar = document.getElementById('ksaTopbar') || document.querySelector('.ksa-topbar');
+    const topbar = getTopbarElement();
     const isHidden = topbar ? topbar.classList.contains('ksa-section-hidden') : false;
 
     const toggleBtn = document.getElementById('ksaTopbarToggleHideBtn');
@@ -2242,19 +2259,19 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
   }
 
   function updateTopbarButtonState() {
-    const topbar = document.getElementById('ksaTopbar') || document.querySelector('.ksa-topbar');
+    const topbar = getTopbarElement();
     const isHidden = topbar ? topbar.classList.contains('ksa-section-hidden') : false;
     const btn = document.getElementById('ksaBtnEditTopbar');
     if (btn) {
       if (isHidden) {
         btn.innerHTML = '📢 Topbalk: UIT (Verborgen)';
-        btn.title = 'De bovenste blauwe KSA-balk staat momenteel UIT. Klik om aan te passen of AAN te zetten.';
+        btn.title = 'De bovenste informatiebalk staat momenteel UIT. Klik om aan te passen of AAN te zetten.';
         btn.style.background = '#fee2e2';
         btn.style.color = '#991b1b';
         btn.style.borderColor = '#fca5a5';
       } else {
         btn.innerHTML = '📢 Topbalk: AAN (Zichtbaar)';
-        btn.title = 'De bovenste blauwe KSA-balk staat momenteel AAN. Klik om aan te passen of UIT te zetten.';
+        btn.title = 'De bovenste informatiebalk staat momenteel AAN. Klik om aan te passen of UIT te zetten.';
         btn.style.background = '#dcfce7';
         btn.style.color = '#166534';
         btn.style.borderColor = '#86efac';
@@ -2263,7 +2280,7 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
   }
 
   function setTopbarSectionHidden(hidden) {
-    const topbar = document.getElementById('ksaTopbar') || document.querySelector('.ksa-topbar');
+    const topbar = getTopbarElement();
     if (topbar) {
       topbar.classList.toggle('ksa-section-hidden', !!hidden);
       if (!isEditMode && hidden) {
@@ -2277,13 +2294,13 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
   }
 
   function toggleTopbarVisibility() {
-    const topbar = document.getElementById('ksaTopbar') || document.querySelector('.ksa-topbar');
+    const topbar = getTopbarElement();
     const isHidden = topbar ? topbar.classList.contains('ksa-section-hidden') : false;
     setTopbarSectionHidden(!isHidden);
   }
 
   function injectTopbarEditTools() {
-    const topbar = document.getElementById('ksaTopbar') || document.querySelector('.ksa-topbar');
+    const topbar = getTopbarElement();
     if (!topbar) return;
     const container = topbar.querySelector('.container') || topbar;
 
@@ -2293,7 +2310,7 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
       btn.id = 'ksaTopbarEditBtn';
       btn.className = 'ksa-topbar-edit-pill';
       btn.innerHTML = '✏️ Topbalk';
-      btn.title = 'Pas badge, tekst of links in de bovenste KSA-balk aan';
+      btn.title = 'Pas adres, contactgegevens of links in de bovenste balk aan';
       btn.onclick = (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -2329,32 +2346,50 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
   }
 
   function openTopbarModal() {
-    const topbar = document.getElementById('ksaTopbar') || document.querySelector('.ksa-topbar');
+    const topbar = getTopbarElement();
     const isTopbarHidden = topbar ? topbar.classList.contains('ksa-section-hidden') : false;
 
-    const badgeEl = document.getElementById('topbarBadge') || document.querySelector('.ksa-topbar-badge');
-    const descEl = document.getElementById('topbarDesc') || document.querySelector('.ksa-topbar-desc');
-    const linkLeftEl = document.getElementById('topbarLinkLeft') || document.querySelector('.ksa-topbar-left a, .ksa-topbar a');
-    const promoEl = document.getElementById('topbarPromo') || document.querySelector('.ksa-topbar-promo');
-    const linkRightEl = document.getElementById('topbarLinkRight') || document.querySelector('.ksa-topbar-right a');
+    // Badge / Locatie links
+    const badgeEl = topbar ? (topbar.querySelector('.topbar-badge') || topbar.querySelector('#topbarBadge') || topbar.querySelector('.ksa-topbar-badge')) : null;
+    const spans = badgeEl ? badgeEl.querySelectorAll('span') : [];
+    let curAddress = '📍 Dijkbeemdenweg 8, 3520 Zonhoven';
+    let curSubtext = 'Zustervereniging KSA Zonhoven';
 
-    const curBadge = badgeEl ? badgeEl.innerText.trim() : 'KSA LIMBURG';
-    const curDesc = descEl ? descEl.innerHTML.trim() : 'Aangesloten bij <strong>KSA Nationaal</strong> &bull;';
-    const curLeftText = linkLeftEl ? linkLeftEl.innerText.trim() : 'www.ksa.be';
-    const curLeftHref = linkLeftEl ? (linkLeftEl.getAttribute('href') || 'https://www.ksa.be') : 'https://www.ksa.be';
+    if (spans.length >= 3) {
+      curAddress = spans[0].textContent.trim();
+      curSubtext = spans[2].textContent.trim();
+    } else if (spans.length === 2) {
+      curAddress = spans[0].textContent.trim();
+      curSubtext = spans[1].textContent.trim();
+    } else if (spans.length === 1) {
+      curAddress = spans[0].textContent.trim();
+    } else if (badgeEl) {
+      curAddress = badgeEl.innerText.trim();
+    }
 
-    const curPromo = promoEl ? promoEl.innerHTML.trim() : '🎃 <strong>HalloKien 2026:</strong>';
-    const curRightText = linkRightEl ? linkRightEl.innerText.trim() : 'Bestel tickets via Ravotshop →';
-    const curRightHref = linkRightEl ? (linkRightEl.getAttribute('href') || 'https://ravotshop.ksa.be/hallokien') : 'https://ravotshop.ksa.be/hallokien';
-    const isPromoHidden = linkRightEl ? (linkRightEl.classList.contains('ksa-link-hidden') || linkRightEl.style.display === 'none') : false;
+    // Contact rechts
+    const contactEl = topbar ? (topbar.querySelector('.topbar-contact') || topbar.querySelector('.ksa-topbar-right')) : null;
+    const phoneLink = contactEl ? (contactEl.querySelector('a[href^="tel:"]') || contactEl.querySelectorAll('a')[0]) : null;
+    const emailLink = contactEl ? (contactEl.querySelector('a[href^="mailto:"]') || contactEl.querySelectorAll('a')[1]) : null;
+    const mobileLink = contactEl ? (contactEl.querySelector('a[href*="mobile"]') || contactEl.querySelectorAll('a')[2]) : null;
+
+    let curPhoneText = phoneLink ? phoneLink.textContent.trim().replace(/^📞\s*/, '') : '0471/25 87 78';
+    let curPhoneHref = phoneLink ? (phoneLink.getAttribute('href') || 'tel:0471258778') : 'tel:0471258778';
+
+    let curEmailText = emailLink ? emailLink.textContent.trim().replace(/^✉️\s*/, '') : 'ksazonhoven.vzw@gmail.com';
+    let curEmailHref = emailLink ? (emailLink.getAttribute('href') || 'mailto:ksazonhoven.vzw@gmail.com') : 'mailto:ksazonhoven.vzw@gmail.com';
+
+    let curMobileText = mobileLink ? mobileLink.textContent.trim().replace(/^📱\s*/, '') : 'Mobiele Weergave';
+    let curMobileHref = mobileLink ? (mobileLink.getAttribute('href') || 'mobile.html?view=mobile') : 'mobile.html?view=mobile';
+    let isMobileHidden = mobileLink ? (mobileLink.classList.contains('ksa-link-hidden') || mobileLink.style.display === 'none') : false;
 
     const modal = document.getElementById('ksaEditorModalContent');
     const backdrop = document.getElementById('ksaEditorModalBackdrop');
 
     modal.innerHTML = `
-      <h3>📢 Bovenste KSA-Balk Aanpassen</h3>
+      <h3>📢 Bovenste Informatiebalk Aanpassen ('t Heem)</h3>
       <p style="font-size:13px; color:#64748b; margin-top:-6px; margin-bottom:14px;">
-        Pas hier de teksten en links aan van de donkerblauwe balk helemaal bovenaan de website. Je kunt ook direct op de teksten in de balk klikken om ze live te bewerken!
+        Pas hier de adresgegevens, contactinfo en links aan van de donkerblauwe balk helemaal bovenaan de website. Je kunt ook direct op de teksten in de balk klikken om ze live aan te passen!
       </p>
 
       <div style="background:#eff6ff; border:1px solid #bfdbfe; padding:12px 14px; border-radius:8px; margin-bottom:14px;">
@@ -2368,40 +2403,48 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
       </div>
 
       <div style="background:#f8fafc; padding:12px; border-radius:8px; border:1px solid #e2e8f0; margin-bottom:12px;">
-        <h4 style="margin:0 0 8px 0; font-size:14px; color:#0055a5;">Linkerkant (KSA Nationaal)</h4>
-        <label>Badge tekst (rood label):</label>
-        <input type="text" id="tbBadgeInput" value="${curBadge.replace(/"/g, '&quot;')}">
-        <label style="margin-top:8px;">Ondertitel / beschrijving:</label>
-        <input type="text" id="tbDescInput" value="${curDesc.replace(/"/g, '&quot;')}">
-        <div style="display:flex; gap:10px; margin-top:8px;">
-          <div style="flex:1;">
-            <label>Link tekst:</label>
-            <input type="text" id="tbLeftTextInput" value="${curLeftText.replace(/"/g, '&quot;')}">
-          </div>
-          <div style="flex:1;">
-            <label>Link adres (URL):</label>
-            <input type="text" id="tbLeftHrefInput" value="${curLeftHref.replace(/"/g, '&quot;')}">
-          </div>
-        </div>
+        <h4 style="margin:0 0 8px 0; font-size:14px; color:#0d3b66;">📍 Linkerkant (Locatie &amp; Organisatie)</h4>
+        <label>Adres / Locatie tekst:</label>
+        <input type="text" id="tbAddressInput" value="${curAddress.replace(/"/g, '&quot;')}">
+        <label style="margin-top:8px;">Subtekst / Organisatie:</label>
+        <input type="text" id="tbSubtextInput" value="${curSubtext.replace(/"/g, '&quot;')}">
       </div>
 
       <div style="background:#f8fafc; padding:12px; border-radius:8px; border:1px solid #e2e8f0; margin-bottom:14px;">
-        <h4 style="margin:0 0 8px 0; font-size:14px; color:#e3001b;">Rechterkant (Promo / Evenement)</h4>
-        <label>Promo tekst:</label>
-        <input type="text" id="tbPromoInput" value="${curPromo.replace(/"/g, '&quot;')}">
-        <div style="display:flex; gap:10px; margin-top:8px;">
+        <h4 style="margin:0 0 8px 0; font-size:14px; color:#e76f51;">📞 Rechterkant (Contact &amp; Weergave)</h4>
+        <div style="display:flex; gap:10px; margin-bottom:8px;">
           <div style="flex:1;">
-            <label>Actieknop tekst:</label>
-            <input type="text" id="tbRightTextInput" value="${curRightText.replace(/"/g, '&quot;')}">
+            <label>Telefoonnummer tekst:</label>
+            <input type="text" id="tbPhoneTextInput" value="${curPhoneText.replace(/"/g, '&quot;')}">
           </div>
           <div style="flex:1;">
-            <label>Actieknop adres (URL):</label>
-            <input type="text" id="tbRightHrefInput" value="${curRightHref.replace(/"/g, '&quot;')}">
+            <label>Telefoon link (tel:...):</label>
+            <input type="text" id="tbPhoneHrefInput" value="${curPhoneHref.replace(/"/g, '&quot;')}">
+          </div>
+        </div>
+        <div style="display:flex; gap:10px; margin-bottom:8px;">
+          <div style="flex:1;">
+            <label>E-mailadres tekst:</label>
+            <input type="text" id="tbEmailTextInput" value="${curEmailText.replace(/"/g, '&quot;')}">
+          </div>
+          <div style="flex:1;">
+            <label>E-mail link (mailto:...):</label>
+            <input type="text" id="tbEmailHrefInput" value="${curEmailHref.replace(/"/g, '&quot;')}">
+          </div>
+        </div>
+        <div style="display:flex; gap:10px; margin-bottom:8px;">
+          <div style="flex:1;">
+            <label>Mobiele weergave knoptekst:</label>
+            <input type="text" id="tbMobileTextInput" value="${curMobileText.replace(/"/g, '&quot;')}">
+          </div>
+          <div style="flex:1;">
+            <label>Mobiele weergave link (URL):</label>
+            <input type="text" id="tbMobileHrefInput" value="${curMobileHref.replace(/"/g, '&quot;')}">
           </div>
         </div>
         <label style="display:flex; align-items:center; gap:8px; margin-top:10px; cursor:pointer; font-size:13px;">
-          <input type="checkbox" id="tbHidePromoInput" ${isPromoHidden ? 'checked' : ''}>
-          <span>🙈 Verberg de rechter promo / actielink</span>
+          <input type="checkbox" id="tbHideMobileLinkInput" ${isMobileHidden ? 'checked' : ''}>
+          <span>🙈 Verberg de knop 'Mobiele Weergave'</span>
         </label>
       </div>
 
@@ -2417,33 +2460,41 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
       const hideEntireTopbar = document.getElementById('tbHideEntireTopbarInput').checked;
       setTopbarSectionHidden(hideEntireTopbar);
 
-      const newBadge = document.getElementById('tbBadgeInput').value.trim();
-      const newDesc = document.getElementById('tbDescInput').value.trim();
-      const newLeftText = document.getElementById('tbLeftTextInput').value.trim();
-      const newLeftHref = document.getElementById('tbLeftHrefInput').value.trim();
+      const newAddress = document.getElementById('tbAddressInput').value.trim();
+      const newSubtext = document.getElementById('tbSubtextInput').value.trim();
+      const newPhoneText = document.getElementById('tbPhoneTextInput').value.trim();
+      const newPhoneHref = document.getElementById('tbPhoneHrefInput').value.trim();
+      const newEmailText = document.getElementById('tbEmailTextInput').value.trim();
+      const newEmailHref = document.getElementById('tbEmailHrefInput').value.trim();
+      const newMobileText = document.getElementById('tbMobileTextInput').value.trim();
+      const newMobileHref = document.getElementById('tbMobileHrefInput').value.trim();
+      const hideMobileLink = document.getElementById('tbHideMobileLinkInput').checked;
 
-      const newPromo = document.getElementById('tbPromoInput').value.trim();
-      const newRightText = document.getElementById('tbRightTextInput').value.trim();
-      const newRightHref = document.getElementById('tbRightHrefInput').value.trim();
-      const hidePromo = document.getElementById('tbHidePromoInput').checked;
-
-      if (badgeEl && newBadge) badgeEl.innerText = newBadge;
-      if (descEl && newDesc) descEl.innerHTML = newDesc;
-      if (linkLeftEl) {
-        if (newLeftText) linkLeftEl.innerText = newLeftText;
-        if (newLeftHref) linkLeftEl.setAttribute('href', newLeftHref);
+      if (badgeEl) {
+        let spans = badgeEl.querySelectorAll('span');
+        if (spans.length >= 3) {
+          if (newAddress) spans[0].textContent = newAddress.startsWith('📍') ? newAddress : `📍 ${newAddress}`;
+          if (newSubtext) spans[2].textContent = newSubtext;
+        } else {
+          badgeEl.innerHTML = `<span>${newAddress.startsWith('📍') ? newAddress : '📍 ' + newAddress}</span> <span>•</span> <span>${newSubtext}</span>`;
+        }
       }
 
-      if (promoEl && newPromo) promoEl.innerHTML = newPromo;
-      if (linkRightEl) {
-        if (newRightText) linkRightEl.innerText = newRightText;
-        if (newRightHref) linkRightEl.setAttribute('href', newRightHref);
-        linkRightEl.classList.toggle('ksa-link-hidden', hidePromo);
-        linkRightEl.style.display = (!isEditMode && hidePromo) ? 'none' : '';
+      if (phoneLink) {
+        if (newPhoneText) phoneLink.innerHTML = `<span>📞</span> ${newPhoneText.replace(/^📞\s*/, '')}`;
+        if (newPhoneHref) phoneLink.setAttribute('href', newPhoneHref.startsWith('tel:') ? newPhoneHref : `tel:${newPhoneHref.replace(/[^0-9+]/g, '')}`);
       }
-      if (promoEl) {
-        promoEl.classList.toggle('ksa-link-hidden', hidePromo);
-        promoEl.style.display = (!isEditMode && hidePromo) ? 'none' : '';
+
+      if (emailLink) {
+        if (newEmailText) emailLink.innerHTML = `<span>✉️</span> ${newEmailText.replace(/^✉️\s*/, '')}`;
+        if (newEmailHref) emailLink.setAttribute('href', newEmailHref.startsWith('mailto:') ? newEmailHref : `mailto:${newEmailHref}`);
+      }
+
+      if (mobileLink) {
+        if (newMobileText) mobileLink.innerHTML = `<span>📱</span> ${newMobileText.replace(/^📱\s*/, '')}`;
+        if (newMobileHref) mobileLink.setAttribute('href', newMobileHref);
+        mobileLink.classList.toggle('ksa-link-hidden', hideMobileLink);
+        mobileLink.style.display = (!isEditMode && hideMobileLink) ? 'none' : '';
       }
 
       backdrop.style.display = 'none';
@@ -3532,28 +3583,28 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
     };
 
     // Maak een schone kopie van de containers zonder contenteditable attributen (hoofdcontainers worden op desktop beheerd en live gesynchroniseerd naar mobiel)
-    const containerSelectors = isMobilePage ? ['.shortcuts-grid'] : ['#ksaTopbar', '.hero-cta-group', '.cal-grid', '.news-grid', '.paspoort-grid'];
+    const containerSelectors = isMobilePage ? ['.shortcuts-grid'] : ['#heemTopbar', '#ksaTopbar', '.hero-cta-group', '.cal-grid', '.news-grid', '.paspoort-grid'];
     containerSelectors.forEach(sel => {
       const c = document.querySelector(sel);
       if (c) {
         const clone = c.cloneNode(true);
         clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
         clone.querySelectorAll('.ksa-editable-img').forEach(el => el.classList.remove('ksa-editable-img'));
-        clone.querySelectorAll('.ksa-card-edit-tools, .ksa-topbar-edit-pill, #ksaTopbarEditBtn, .ksa-btn-add-pill, .ksa-shortcut-tools, .shortcut-tile-add').forEach(el => el.remove());
+        clone.querySelectorAll('.ksa-card-edit-tools, .ksa-topbar-edit-pill, #ksaTopbarEditBtn, #ksaTopbarToggleHideBtn, #ksaTopbarHiddenBadge, .ksa-btn-add-pill, .ksa-shortcut-tools, .shortcut-tile-add').forEach(el => el.remove());
         pageData.containers[sel] = clone.innerHTML;
       }
     });
 
     document.querySelectorAll('[contenteditable="true"]').forEach(el => {
       // Sla geen teksten op die al in containers (.cal-grid, .paspoort-grid, .shortcuts-grid, ...) zitten
-      if (el.closest('#ksaTopbar, .hero-cta-group, .cal-grid, .news-grid, .paspoort-grid, .cal-list, .shortcuts-grid')) return;
+      if (el.closest('#heemTopbar, #ksaTopbar, .heem-topbar, .hero-cta-group, .cal-grid, .news-grid, .paspoort-grid, .cal-list, .shortcuts-grid')) return;
       const sel = getUniqueSelector(el);
       if (sel && !isGroupManagedSelector(sel)) pageData.texts[sel] = el.innerHTML;
     });
 
     document.querySelectorAll('img.ksa-editable-img').forEach(img => {
       // Sla geen foto's op die al in containers (.paspoort-grid, .cal-grid, ...) zitten om index-conflicten bij toevoegen te vermijden
-      if (img.closest('#ksaTopbar, .hero-cta-group, .cal-grid, .news-grid, .paspoort-grid, .cal-list')) return;
+      if (img.closest('#heemTopbar, #ksaTopbar, .heem-topbar, .hero-cta-group, .cal-grid, .news-grid, .paspoort-grid, .cal-list')) return;
       const sel = getUniqueSelector(img);
       if (isGroupManagedSelector(sel)) return;
       const srcVal = img.getAttribute('src') || '';
@@ -3563,7 +3614,7 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
     });
 
     document.querySelectorAll(EDITABLE_LINK_SELECTOR).forEach(a => {
-      if (a.closest('#ksaTopbar, .hero-cta-group, .cal-grid, .news-grid, .paspoort-grid, .cal-list')) return;
+      if (a.closest('#heemTopbar, #ksaTopbar, .heem-topbar, .hero-cta-group, .cal-grid, .news-grid, .paspoort-grid, .cal-list')) return;
       const sel = getUniqueSelector(a);
       if (sel) {
         const span = a.querySelector('span') || a;
@@ -3606,7 +3657,7 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
     fullState.shortcutsHidden = !!shortcutsAreHidden;
     if (pageData) pageData.shortcutsHidden = !!shortcutsAreHidden;
 
-    const topbarEl = document.getElementById('ksaTopbar') || document.querySelector('.ksa-topbar');
+    const topbarEl = document.getElementById('heemTopbar') || document.querySelector('.heem-topbar') || document.getElementById('ksaTopbar') || document.querySelector('.ksa-topbar');
     const isTopbarHidden = topbarEl ? topbarEl.classList.contains('ksa-section-hidden') : false;
     fullState.topbarHidden = isTopbarHidden;
     if (pageData) pageData.topbarHidden = isTopbarHidden;
