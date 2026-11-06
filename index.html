@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>VZW 't Heem Zonhoven | Zaalverhuur, Feestlocatie & Vergaderingen</title>
+  <meta name="description" content="VZW 't Heem Zonhoven - De ideale zaal voor familiefeesten, babyborrels, communies, vergaderingen en verenigingen. Gelegen aan Dijkbeemdenweg 8, 3520 Zonhoven. Zustervereniging van KSA Zonhoven.">
+  <meta property="og:title" content="VZW 't Heem Zonhoven | Zaalverhuur & Feestlocatie">
+  <meta property="og:description" content="2 multifunctionele zalen, uitgeruste keuken, ruime speelweide met speeltuigen en overkapt plein. Reserveer direct online!">
+  <meta property="og:image" content="assets/images/hero_heem.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon & PWA -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0d3b66">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css?v=theem1">
+
+  <!-- Automatic Device & Screen Detection -->
+  <script src="js/device-detect.js?v=theem1"></script>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="heem-topbar" id="heemTopbar">
+    <div class="container">
+      <div class="topbar-badge">
+        <span>📍 Dijkbeemdenweg 8, 3520 Zonhoven</span>
+        <span>•</span>
+        <span>Zustervereniging KSA Zonhoven</span>
+      </div>
+      <div class="topbar-contact">
+        <a href="tel:0471258778">
+          <span>📞</span> 0471/25 87 78
+        </a>
+        <a href="mailto:ksazonhoven.vzw@gmail.com">
+          <span>✉️</span> ksazonhoven.vzw@gmail.com
+        </a>
+        <a href="mobile.html?view=mobile" style="color:var(--heem-gold); font-weight:700;">
+          <span>📱</span> Mobiele Weergave
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="heem-header" id="heemHeader">
+    <div class="container">
+      <nav class="navbar">
+        <a href="#home" class="brand-logo">
+          <img src="assets/icons/theem-logo.png" alt="Logo VZW 't Heem" width="52" height="65">
+          <div class="brand-title">
+            <span class="brand-name">'t Heem</span>
+            <span class="brand-tag">VZW Zonhoven</span>
+          </div>
+        </a>
+
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#over-ons" class="nav-link">Over Ons</a></li>
+          <li><a href="#zalen" class="nav-link">Zalen</a></li>
+          <li><a href="#reglement" class="nav-link">Huisregels</a></li>
+          <li><a href="#tarieven" class="nav-link">Tarieven</a></li>
+          <li><a href="#calculator" class="nav-link">Prijscalculator</a></li>
+          <li><a href="#gallerij" class="nav-link">Gallerij</a></li>
+          <li><a href="#reserveren" class="nav-link">Reserveren</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a href="#reserveren" class="btn btn-accent btn-sm">
+            <span>📅 Direct Reserveren</span>
+          </a>
+          <button type="button" class="btn btn-outline btn-sm" id="btnEditModeTrigger" onclick="if(window.ksaPromptAndEnableEdit) window.ksaPromptAndEnableEdit();" title="Bewerk deze website rechtstreeks in de browser">
+            <span>✏️ Bewerk</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-subtitle-badge">
+          <span>🎉 Feesten, Bijeenkomsten &amp; Vergaderingen</span>
+        </div>
+        <h1 class="hero-title">
+          DE IDEALE LOCATIE VOOR JE <span>FEEST OF ACTIVITEIT</span>
+        </h1>
+        <p class="hero-description">
+          Vzw 't Heem is de zustervereniging van KSA Zonhoven. Gelegen in een rustige, groene omgeving met 2 zalen, uitgeruste keuken, een grote speelweide met speeltuigen en een overdekt plein.
+        </p>
+        <div class="hero-buttons">
+          <a href="#zalen" class="btn btn-primary btn-lg">
+            <span>Ontdek Onze Zalen &rarr;</span>
+          </a>
+          <a href="#calculator" class="btn btn-gold btn-lg">
+            <span>Bereken Je Prijs 💶</span>
+          </a>
+          <a href="#reserveren" class="btn btn-outline-white btn-lg">
+            <span>Reserveren &amp; Contact</span>
+          </a>
+        </div>
+        <div class="hero-features">
+          <div class="hero-feature-item">
+            <div class="hero-feature-icon">🏛️</div>
+            <div class="hero-feature-text">
+              Grote Zaal
+              <span>tot ong. 80 pers.</span>
+            </div>
+          </div>
+          <div class="hero-feature-item">
+            <div class="hero-feature-icon">🎈</div>
+            <div class="hero-feature-text">
+              Kleine Zaal
+              <span>tot ong. 40 pers.</span>
+            </div>
+          </div>
+          <div class="hero-feature-item">
+            <div class="hero-feature-icon">🍳</div>
+            <div class="hero-feature-text">
+              Uitgeruste Keuken
+              <span>servies, oven, koelkast</span>
+            </div>
+          </div>
+          <div class="hero-feature-item">
+            <div class="hero-feature-icon">🌳</div>
+            <div class="hero-feature-text">
+              Speelweide &amp; Plein
+              <span>speeltuin &amp; BBQ-overkapping</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Over Ons Section -->
+  <section class="section" id="over-ons">
+    <div class="container">
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
+        <div>
+          <span class="section-tag">Welkom bij VZW 't Heem</span>
+          <h2 class="section-title">MEER DAN 40 JAAR THUIS VOOR ONZE GEMEENSCHAP</h2>
+          <p style="font-size: 1.1rem; line-height: 1.7; color: var(--text-main); margin-bottom: 20px;">
+            <strong>Vzw 't Heem</strong> is de zustervereniging van <strong>KSA Zonhoven</strong>. Dit gebouw is de ideale plaats voor het organiseren van een familiefeest, een babyborrel, een communiefeest, buurtfeest, vergadering of een gezellig samenzijn met vrienden.
+          </p>
+          <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 24px;">
+            Maar ook verenigingen kunnen bij ons terecht voor zalen tegen betaalbare prijzen! Met onze ligging aan de Dijkbeemdenweg genieten onze huurders van een veilige, verkeersluwe omgeving met een grote buitenruimte voor kinderen.
+          </p>
+          <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+            <a href="https://schepie.github.io/KSA-website/" target="_blank" rel="noopener" class="btn btn-outline">
+              <span>💙 Naar KSA Zonhoven &rarr;</span>
+            </a>
+            <a href="#zalen" class="btn btn-primary">
+              <span>Bekijk Faciliteiten &rarr;</span>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div style="border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); border: 2px solid var(--border-light);">
+            <img src="assets/images/heem_over_ons.jpg" alt="VZW 't Heem Zonhoven Gebouw" style="width: 100%; height: auto;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Zalen & Faciliteiten -->
+  <section class="section section-alt" id="zalen">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Onze Ruimtes</span>
+        <h2 class="section-title">ZALEN &amp; FACILITEITEN</h2>
+        <p class="section-desc">
+          We verhuren 2 multifunctionele zalen, een compleet uitgeruste keuken en een ruim buitenterrein.
+        </p>
+      </div>
+
+      <div class="halls-grid">
+        <!-- Grote Zaal -->
+        <div class="hall-card">
+          <div class="hall-image-wrapper">
+            <img src="assets/images/gallery/gallerij_grote_zaal_31.jpg" alt="Grote Zaal 't Heem">
+            <span class="hall-badge">Tot 80 personen</span>
+          </div>
+          <div class="hall-content">
+            <div class="hall-header">
+              <h3 class="hall-title">Grote Zaal</h3>
+              <div class="hall-price">€ 115 <span>/ dag</span></div>
+            </div>
+            <p class="hall-desc">
+              Ruime, lichte zaal ideaal voor communies, verjaardagen, babyborrels, familiefeesten en ledenfeesten van verenigingen.
+            </p>
+            <ul class="hall-features-list">
+              <li>Capaciteit: tot ong. 80 personen</li>
+              <li>Tafels en comfortabele stoelen aanwezig</li>
+              <li>Aangename verlichting en verwarming</li>
+              <li>Directe toegang tot sanitair en terras</li>
+              <li>Combinatie mogelijk met de keuken</li>
+            </ul>
+            <div class="hall-actions">
+              <a href="#calculator" class="btn btn-primary btn-sm" style="flex:1;">Bereken Prijs</a>
+              <a href="#gallerij" class="btn btn-outline btn-sm">Bekijk Foto's</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kleine Zaal -->
+        <div class="hall-card">
+          <div class="hall-image-wrapper">
+            <img src="assets/images/gallery/gallerij_kleine_zaal_35.jpg" alt="Kleine Zaal 't Heem">
+            <span class="hall-badge accent">Tot 40 personen</span>
+          </div>
+          <div class="hall-content">
+            <div class="hall-header">
+              <h3 class="hall-title">Kleine Zaal</h3>
+              <div class="hall-price">€ 70 <span>/ dag</span></div>
+            </div>
+            <p class="hall-desc">
+              Gezellige zaal voor kleinere gezelschappen, intieme etentjes, verjaardagen, cursussen of vergaderingen.
+            </p>
+            <ul class="hall-features-list">
+              <li>Capaciteit: tot ong. 40 personen</li>
+              <li>Tafels en stoelen inbegrepen</li>
+              <li>Ideaal voor vergaderingen of workshops</li>
+              <li>Betaalbare dagprijs</li>
+              <li>Combinatie mogelijk met keuken of grote zaal</li>
+            </ul>
+            <div class="hall-actions">
+              <a href="#calculator" class="btn btn-primary btn-sm" style="flex:1;">Bereken Prijs</a>
+              <a href="#gallerij" class="btn btn-outline btn-sm">Bekijk Foto's</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Keuken -->
+        <div class="hall-card">
+          <div class="hall-image-wrapper">
+            <img src="assets/images/gallery/gallerij_keuken_37.jpg" alt="Keuken 't Heem">
+            <span class="hall-badge green">Volledig Uitgerust</span>
+          </div>
+          <div class="hall-content">
+            <div class="hall-header">
+              <h3 class="hall-title">Keuken</h3>
+              <div class="hall-price">€ 65 <span>/ dag</span></div>
+            </div>
+            <p class="hall-desc">
+              Professioneel ingerichte keuken met alle nodige toestellen voor het bereiden en serveren van maaltijden.
+            </p>
+            <ul class="hall-features-list">
+              <li>Ruim servies, bestek en glazen voorradig</li>
+              <li>Grote koelkast en diepvriesmogelijkheid</li>
+              <li>Kookplaat, oven en microgolfoven</li>
+              <li>Koffiezetapparaat &amp; waterkoker</li>
+              <li>Grote afwasbakken en werkvlakken</li>
+            </ul>
+            <div class="hall-actions">
+              <a href="#calculator" class="btn btn-primary btn-sm" style="flex:1;">Bereken Prijs</a>
+              <a href="#gallerij" class="btn btn-outline btn-sm">Bekijk Foto's</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Buitenterrein highlight -->
+      <div style="margin-top: 40px; background: #ffffff; border-radius: var(--radius-lg); padding: 32px; border: 1px solid var(--border-light); display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center;">
+        <div>
+          <span style="font-weight: 800; font-size: 0.85rem; color: var(--heem-green); text-transform: uppercase;">🌳 Buitenruimte &amp; Terras</span>
+          <h3 style="font-family: var(--font-sub); font-size: 1.8rem; font-weight: 800; color: var(--heem-primary); margin: 8px 0 14px 0;">Speelweide, Speeltuin &amp; Overdekt Plein</h3>
+          <p style="color: var(--text-muted); font-size: 0.98rem; line-height: 1.6; margin-bottom: 16px;">
+            Kinderen kunnen naar hartenlust veilig ravotten op onze speelweide voorzien van speeltoestellen. Aan de achterzijde bevindt zich een verhard plein met ruime afdaken — dé perfecte setting voor een zomerse BBQ of receptie in openlucht!
+          </p>
+          <div style="font-size: 0.9rem; color: var(--heem-primary); font-weight: 600;">
+            ℹ️ Wij bieden huurders het achterplein aan; het voorterrein wordt op zondagen vrijgehouden voor de KSA-jeugdbeweging.
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <img src="assets/images/gallery/gallerij_speeltuin_41.jpg" alt="Speeltuin 't Heem" style="border-radius: var(--radius-md); height: 160px; width: 100%; object-fit: cover;">
+          <img src="assets/images/gallery/gallerij_andere_45.jpg" alt="Overkapping 't Heem" style="border-radius: var(--radius-md); height: 160px; width: 100%; object-fit: cover;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Huisregels & Belangrijke Info -->
+  <section class="section" id="reglement">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Duidelijke Afspraken</span>
+        <h2 class="section-title">HUURVOORWAARDEN &amp; HUISREGLEMENT</h2>
+        <p class="section-desc">Om de rust in de buurt en de kwaliteit van onze lokalen te garanderen hanteren we enkele duidelijke regels.</p>
+      </div>
+
+      <div class="rules-alert">
+        <h4>⚠️ Belangrijk: Geen Overnachtingen &amp; Nachtrust vanaf 22u00</h4>
+        <p>
+          't Heem mag <strong>niet verhuurd worden voor overnachtingen</strong> of voor <strong>feesten/fuiven met luide muziek na 22u00</strong>. Hiervoor zijn wij niet bevoegd en zullen wij dus geen verhuringen aanvaarden. Overtredingen kunnen een boete van <strong>€ 500,00</strong> opleveren! Het absolute einduur van de activiteit is vastgelegd om <strong>02:00h</strong>.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 32px;">
+        <div style="background:var(--bg-card); padding:24px; border-radius:var(--radius-md); border:1px solid var(--border-light); box-shadow:var(--shadow-sm);">
+          <div style="font-size: 2rem; margin-bottom: 8px;">⛪</div>
+          <h4 style="font-family:var(--font-sub); font-size:1.15rem; font-weight:800; color:var(--heem-primary); margin-bottom:8px;">Zondagactiviteiten KSA</h4>
+          <p style="font-size:0.92rem; color:var(--text-muted); line-height:1.6;">
+            Op zondagnamiddag (13u30 - 17u00) is er KSA-activiteit. Onze leden spelen dan overal buiten. Tijdens de jeugdactiviteiten geldt er een algemeen parkeerverbod op de pleinen; langs de straat is er ruime parkeergelegenheid.
+          </p>
+        </div>
+
+        <div style="background:var(--bg-card); padding:24px; border-radius:var(--radius-md); border:1px solid var(--border-light); box-shadow:var(--shadow-sm);">
+          <div style="font-size: 2rem; margin-bottom: 8px;">🧹</div>
+          <h4 style="font-family:var(--font-sub); font-size:1.15rem; font-weight:800; color:var(--heem-primary); margin-bottom:8px;">Poetsen &amp; Schoonmaak</h4>
+          <p style="font-size:0.92rem; color:var(--text-muted); line-height:1.6;">
+            U kunt ervoor kiezen om zelf te poetsen (kostprijs <strong>€ 0</strong>) of de poetsdienst door VZW 't Heem te laten verzorgen voor een supplement van <strong>€ 60</strong>. Lokalen dienen steeds netjes en borstelschoon achtergelaten te worden.
+          </p>
+        </div>
+
+        <div style="background:var(--bg-card); padding:24px; border-radius:var(--radius-md); border:1px solid var(--border-light); box-shadow:var(--shadow-sm);">
+          <div style="font-size: 2rem; margin-bottom: 8px;">💶</div>
+          <h4 style="font-family:var(--font-sub); font-size:1.15rem; font-weight:800; color:var(--heem-primary); margin-bottom:8px;">Waarborg &amp; Contract</h4>
+          <p style="font-size:0.92rem; color:var(--text-muted); line-height:1.6;">
+            Voor elke verhuring geldt een vaste waarborg van <strong>€ 150,00</strong>. Een reservatie is pas definitief na ondertekening van het huurcontract én ontvangst van de waarborg. Na controle wordt de waarborg teruggestort.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tarieven Section -->
+  <section class="section section-alt" id="tarieven">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Overzichtelijke Prijzen</span>
+        <h2 class="section-title">TARIEVEN PER DAG</h2>
+        <p class="section-desc">Eerlijke en transparante prijzen voor particulieren en verenigingen.</p>
+      </div>
+
+      <div class="pricing-overview-grid">
+        <div class="price-card">
+          <div class="price-card-icon">🎈</div>
+          <h3 class="price-card-title">Kleine Zaal</h3>
+          <div class="price-card-cost">€ 70</div>
+          <div class="price-card-sub">Per dag • Tot 40 personen<br>Exclusief keuken</div>
+        </div>
+
+        <div class="price-card" style="border: 2px solid var(--heem-primary);">
+          <div class="price-card-icon">🏛️</div>
+          <h3 class="price-card-title">Grote Zaal</h3>
+          <div class="price-card-cost">€ 115</div>
+          <div class="price-card-sub">Per dag • Tot 80 personen<br>Exclusief keuken</div>
+        </div>
+
+        <div class="price-card">
+          <div class="price-card-icon">🍳</div>
+          <h3 class="price-card-title">Keuken</h3>
+          <div class="price-card-cost">€ 65</div>
+          <div class="price-card-sub">Per dag • Volledig uitgerust<br>Met servies &amp; toestellen</div>
+        </div>
+
+        <div class="price-card">
+          <div class="price-card-icon">🧹</div>
+          <h3 class="price-card-title">Schoonmaak</h3>
+          <div class="price-card-cost">€ 0 / € 60</div>
+          <div class="price-card-sub">Zelf poetsen: € 0<br>Door VZW 't Heem: € 60</div>
+        </div>
+      </div>
+
+      <!-- Vergaderingen per uur notitie -->
+      <div style="text-align: center; margin-bottom: 50px; font-size: 1.05rem; color: var(--text-main);">
+        💼 <strong>Vergaderingen per uur:</strong> Verhuur van 't Heem is ook mogelijk per uur voor vergaderingen of korte samenkomsten. <a href="#contact" style="color:var(--heem-accent); font-weight:700; text-decoration:underline;">Neem contact op voor een voorstel op maat &rarr;</a>
+      </div>
+
+      <!-- Interactive Calculator -->
+      <div class="calculator-box" id="calculator">
+        <h3 class="calc-title">💶 INTERACTIEVE PRIJSCALCULATOR</h3>
+        <p class="calc-subtitle">Selecteer de gewenste zalen en opties om direct je totaalprijs te berekenen:</p>
+
+        <div class="calc-grid">
+          <div class="calc-form-group">
+            <label for="calcHall">Kies Zaal:</label>
+            <select id="calcHall" class="calc-select">
+              <option value="115">Grote Zaal (€ 115 / dag)</option>
+              <option value="70">Kleine Zaal (€ 70 / dag)</option>
+              <option value="185">Beide Zalen (€ 185 / dag)</option>
+              <option value="0">Geen zaal (enkel terrein/overkapping)</option>
+            </select>
+          </div>
+
+          <div class="calc-form-group">
+            <label for="calcCleaning">Schoonmaak / Poetsen:</label>
+            <select id="calcCleaning" class="calc-select">
+              <option value="0">Zelf grondig poetsen (€ 0)</option>
+              <option value="60">Laten poetsen door VZW 't Heem (€ 60)</option>
+            </select>
+          </div>
+
+          <div class="calc-form-group">
+            <label for="calcDays">Aantal Dagen:</label>
+            <input type="number" id="calcDays" class="calc-input" min="1" max="14" value="1">
+          </div>
+
+          <div class="calc-form-group" style="justify-content: flex-end;">
+            <label class="calc-checkbox-label" style="background:var(--bg-primary); padding:12px 16px; border-radius:var(--radius-sm); border:1px solid var(--border-light);">
+              <input type="checkbox" id="calcKitchen" checked>
+              <span>Inclusief Keuken (+ € 65 / dag)</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="calc-result-box">
+          <div>
+            <div class="calc-total-label">Berekende Totaalprijs (incl. € 150 waarborg):</div>
+            <div class="calc-total-amount" id="calcTotalDisplay">€ 330</div>
+            <div class="calc-deposit-note" id="calcSubtotalDisplay">Huur: € 180 + Waarborg: € 150</div>
+          </div>
+          <div>
+            <a href="#reserveren" id="bookCalculatedBtn" class="btn btn-gold btn-lg">
+              <span>Aanvraag Verzenden &rarr;</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallerij Section -->
+  <section class="section" id="gallerij">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Foto-overzicht</span>
+        <h2 class="section-title">BEKIJK ONZE LOKALEN &amp; TERREINEN</h2>
+        <p class="section-desc">Klik op een foto om deze op groot scherm te bekijken of kies een categorie:</p>
+      </div>
+
+      <div class="gallery-filters">
+        <button type="button" class="filter-btn active" data-filter="all">🌟 Alle Foto's</button>
+        <button type="button" class="filter-btn" data-filter="grote-zaal">🏛️ Grote Zaal</button>
+        <button type="button" class="filter-btn" data-filter="kleine-zaal">🎈 Kleine Zaal</button>
+        <button type="button" class="filter-btn" data-filter="keuken">🍳 Keuken</button>
+        <button type="button" class="filter-btn" data-filter="speeltuin">🌳 Speeltuin &amp; Weide</button>
+        <button type="button" class="filter-btn" data-filter="buiten">🅿️ Overkapping &amp; Parking</button>
+      </div>
+
+      <div class="gallery-grid" id="galleryGrid">
+        <!-- Grote Zaal -->
+        <div class="gallery-item" data-category="grote-zaal">
+          <img src="assets/images/gallery/gallerij_grote_zaal_31.jpg" alt="Grote Zaal Feestopstelling" loading="lazy">
+          <div class="gallery-overlay">🔍</div>
+        </div>
+        <div class="gallery-item" data-category="grote-zaal">
+          <img src="assets/images/gallery/gallerij_grote_zaal_32.jpg" alt="Grote Zaal Ruimte en Verlichting" loading="lazy">
+          <div class="gallery-overlay">🔍</div>
+        </div>
+        <div class="gallery-item" data-category="grote-zaal">
+          <img src="assets/images/gallery/gallerij_grote_zaal_33.jpg" alt="Grote Zaal Tafels & Stoelen" loading="lazy">
+          <div class="gallery-overlay">🔍</div>
+        </div>
+        <div class="gallery-item" data-category="grote-zaal">
+          <img src="assets/images/gallery/gallerij_grote_zaal_34.jpg" alt="Grote Zaal Ingang" loading="lazy">
+          <div class="gallery-overlay">🔍</div>
+        </div>
+
+        <!-- Kleine Zaal -->
+        <div class="gallery-item" data-category="kleine-zaal">
+          <img src="assets/images/gallery/gallerij_kleine_zaal_35.jpg" alt="Kleine Zaal Overzicht" loading="lazy">
+          <div class="gallery-overlay">🔍</div>
+        </div>
+        <div class="gallery-item" data-category="kleine-zaal">
+          <img src="assets/images/gallery/gallerij_kleine_zaal_36.jpg" alt="Kleine Zaal Vergadering" loading="lazy">
+          <div class="gallery-overlay">🔍</div>
+        </div>
+        <div class="gallery-item" data-category="kleine-zaal">
+          <img src="assets/images/gallery/tarieven_3.jpg" alt="Kleine Zaal Hoekopstelling" loading="lazy">
+          <div class="gallery-overlay">🔍</div>
+        </div>
+
+        <!-- Keuken -->
+        <div class="gallery-item" data-category="keuken">
+          <img src="assets/images/gallery/gallerij_keuken_37.jpg" alt="Keuken Kookplaat en Aanrecht" loading="lazy">
+          <div class="gallery-overlay">🔍</div>
+        </div>
+        <div class="gallery-item" data-category="keuken">
+          <img src="assets/images/gallery/gallerij_keuken_38.jpg" alt="Keuken Koelkast & Kasten" loading="lazy">
+          <div class="gallery-overlay">🔍</div>
+        </div>
+        <div class="gallery-item" data-category="keuken">
+          <img src="assets/images/gallery/gallerij_keuken_39.jpg" alt="Keuken Servies & Glazen" loading="lazy">
+          <div class="gallery-overlay">🔍</div>
+        </div>
+        <div class="gallery-item" data-category="keuken">
+          <img src="assets/images/gallery/gallerij_keuken_40.jpg" alt="Keuken Afwasfaciliteit" loading="lazy">
+          <div class="gallery-overlay">🔍</div>
+        </div>
+
+        <!-- Speeltuin & Weide -->
+        <div class="gallery-item" data-category="speeltuin">
+          <img src="assets/images/gallery/gallerij_speeltuin_41.jpg" alt="Speeltuin Schommels en Klimrek" loading="lazy">
+          <div class="gallery-overlay">🔍</div>
+        </div>
+        <div class="gallery-item" data-category="speeltuin">
+          <img src="assets/images/gallery/gallerij_speeltuin_42.jpg" alt="Speelweide Groen" loading="lazy">
+          <div class="gallery-overlay">🔍</div>
+        </div>
+        <div class="gallery-item" data-category="speeltuin">
+          <img src="assets/images/gallery/gallerij_speeltuin_43.jpg" alt="Speeltuigen 't Heem" loading="lazy">
+          <div class="gallery-overlay">🔍</div>
+        </div>
+        <div class="gallery-item" data-category="speeltuin">
+          <img src="assets/images/gallery/gallerij_speeltuin_44.jpg" alt="Speeltuin Zomer" loading="lazy">
+          <div class="gallery-overlay">🔍</div>
+        </div>
+
+        <!-- Buiten & Overkapping -->
+        <div class="gallery-item" data-category="buiten">
+          <img src="assets/images/gallery/gallerij_andere_45.jpg" alt="Overkapping Plein Achter" loading="lazy">
+          <div class="gallery-overlay">🔍</div>
+        </div>
+        <div class="gallery-item" data-category="buiten">
+          <img src="assets/images/gallery/gallerij_andere_46.jpg" alt="Achterterrein BBQ Plein" loading="lazy">
+          <div class="gallery-overlay">🔍</div>
+        </div>
+        <div class="gallery-item" data-category="buiten">
+          <img src="assets/images/gallery/gallerij_andere_47.jpg" alt="Toegang & Overdekte Luifel" loading="lazy">
+          <div class="gallery-overlay">🔍</div>
+        </div>
+        <div class="gallery-item" data-category="buiten">
+          <img src="assets/images/gallery/gallerij_andere_48.jpg" alt="Buitenplein Overzicht" loading="lazy">
+          <div class="gallery-overlay">🔍</div>
+        </div>
+        <div class="gallery-item" data-category="buiten">
+          <img src="assets/images/gallery/gallerij_andere_49.jpg" alt="Zijaanzicht en Parking" loading="lazy">
+          <div class="gallery-overlay">🔍</div>
+        </div>
+        <div class="gallery-item" data-category="buiten">
+          <img src="assets/images/gallery/gallerij_andere_50.jpg" alt="Vooraanzicht 't Heem" loading="lazy">
+          <div class="gallery-overlay">🔍</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox-modal" id="lightboxModal">
+    <button type="button" class="lightbox-close" id="lightboxClose">&times;</button>
+    <button type="button" class="lightbox-nav lightbox-prev" id="lightboxPrev">&larr;</button>
+    <div class="lightbox-content">
+      <img src="" id="lightboxImg" alt="Vergrote weergave foto 't Heem">
+    </div>
+    <button type="button" class="lightbox-nav lightbox-next" id="lightboxNext">&rarr;</button>
+  </div>
+
+  <!-- Reserveren Section -->
+  <section class="section section-alt" id="reserveren">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Eenvoudig Boeken</span>
+        <h2 class="section-title">RESERVEREN &amp; AANVRAAG</h2>
+        <p class="section-desc">Kies hoe je het liefst reserveert: direct online via YouCanBookMe of via ons aanvraagformulier.</p>
+      </div>
+
+      <div class="reservation-methods-grid">
+        <!-- Methode 1: YouCanBookMe -->
+        <div class="reservation-card res-card-highlight">
+          <span class="res-popular-tag">Aanbevolen</span>
+          <div class="res-icon">⚡</div>
+          <h3 class="res-title">Direct Online Kalender (YouCanBookMe)</h3>
+          <p class="res-desc">
+            Bekijk direct de realtime beschikbaarheid van 't Heem in onze officiële boekingskalender en leg je gewenste datum onmiddellijk vast.
+          </p>
+          <div style="text-align: center; margin-bottom: 24px;">
+            <img src="assets/images/youcanbookme.png" alt="YouCanBookMe Boekingssysteem" style="max-height: 50px; margin: 0 auto;">
+          </div>
+          <a href="https://theem.youcanbook.me/" target="_blank" rel="noopener" class="btn btn-primary btn-lg" style="width: 100%;">
+            <span>Open Kalender op YouCanBookMe &rarr;</span>
+          </a>
+        </div>
+
+        <!-- Methode 2: Aanvraag Formulier -->
+        <div class="reservation-card">
+          <div class="res-icon">📝</div>
+          <h3 class="res-title">Stuur een Reservatie-aanvraag</h3>
+          <p class="res-desc">
+            Vul onderstaand formulier in met je gewenste datum en wensen. We bezorgen je snel een bevestiging en huurovereenkomst per e-mail.
+          </p>
+
+          <form id="reservationForm" style="display: flex; flex-direction: column; gap: 14px;">
+            <div>
+              <label style="font-weight:700; font-size:0.9rem;" for="resName">Jouw Naam:</label>
+              <input type="text" id="resName" class="calc-input" placeholder="bv. Jan Peeters" required>
+            </div>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+              <div>
+                <label style="font-weight:700; font-size:0.9rem;" for="resEmail">E-mailadres:</label>
+                <input type="email" id="resEmail" class="calc-input" placeholder="naam@voorbeeld.be" required>
+              </div>
+              <div>
+                <label style="font-weight:700; font-size:0.9rem;" for="resPhone">Telefoon:</label>
+                <input type="tel" id="resPhone" class="calc-input" placeholder="0471/..." required>
+              </div>
+            </div>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+              <div>
+                <label style="font-weight:700; font-size:0.9rem;" for="resDate">Gewenste Datum:</label>
+                <input type="date" id="resDate" class="calc-input" required>
+              </div>
+              <div>
+                <label style="font-weight:700; font-size:0.9rem;" for="resHall">Gekozen Ruimte:</label>
+                <select id="resHall" class="calc-select">
+                  <option value="115">Grote Zaal (€ 115)</option>
+                  <option value="70">Kleine Zaal (€ 70)</option>
+                  <option value="185">Beide Zalen (€ 185)</option>
+                  <option value="0">Vergadering / Andere</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label style="font-weight:700; font-size:0.9rem;" for="resMessage">Type Feest / Vragen:</label>
+              <textarea id="resMessage" class="calc-input" rows="3" placeholder="bv. Babyborrel voor ca. 50 personen, graag met keuken..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-accent btn-lg" style="width: 100%;">
+              <span>Verstuur Aanvraag &rarr;</span>
+            </button>
+            <div id="formSuccessMsg" style="display:none; color:var(--heem-green); font-weight:700; font-size:0.92rem; text-align:center; margin-top:8px;">
+              ✓ Je e-mailprogramma wordt geopend om de aanvraag te verzenden!
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Ligging Section -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Locatie &amp; Bereikbaarheid</span>
+        <h2 class="section-title">LIGGING &amp; CONTACT</h2>
+        <p class="section-desc">Heb je vragen of wil je een zaal vooraf bezichtigen? Neem gerust contact op!</p>
+      </div>
+
+      <div class="contact-layout">
+        <div>
+          <div class="contact-info-list">
+            <div class="contact-info-item">
+              <div class="contact-info-icon">📍</div>
+              <div>
+                <div class="contact-info-title">Adres</div>
+                <div class="contact-info-value">
+                  Dijkbeemdenweg 8<br>
+                  3520 Zonhoven, Limburg
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon">📞</div>
+              <div>
+                <div class="contact-info-title">Telefoonnummer</div>
+                <div class="contact-info-value">
+                  <a href="tel:0471258778">0471/25 87 78</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon">✉️</div>
+              <div>
+                <div class="contact-info-title">E-mailadres</div>
+                <div class="contact-info-value">
+                  <a href="mailto:ksazonhoven.vzw@gmail.com">ksazonhoven.vzw@gmail.com</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon">🤝</div>
+              <div>
+                <div class="contact-info-title">Vereniging</div>
+                <div class="contact-info-value">
+                  VZW 't Heem Zonhoven<br>
+                  Zustervereniging van KSA Zonhoven Meisjes
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+            <a href="tel:0471258778" class="btn btn-primary">
+              <span>📞 Bellen: 0471/25 87 78</span>
+            </a>
+            <a href="https://maps.google.com/?q=Dijkbeemdenweg+8,+3520+Zonhoven" target="_blank" rel="noopener" class="btn btn-outline">
+              <span>🗺️ Routebeschrijving</span>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <div class="map-wrapper">
+            <iframe
+              src="https://maps.google.com/maps?q=50.988146,5.36442&hl=nl&z=17&output=embed"
+              title="Locatie VZW 't Heem op de kaart"
+              loading="lazy"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="heem-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <img src="assets/icons/theem-logo.png" alt="VZW 't Heem" width="44" height="55" style="border-radius: var(--radius-sm); background: #ffffff; padding: 2px;">
+            <span style="font-family: var(--font-heading); font-size: 2.2rem; color: #ffffff; letter-spacing: 0.05em;">'t Heem Zonhoven</span>
+          </div>
+          <p>
+            Vzw 't Heem is de zustervereniging van KSA Zonhoven. De ideale locatie voor familiefeesten, communies, babyborrels, vergaderingen en verenigingen.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-heading">Snelle Links</div>
+          <ul class="footer-links">
+            <li><a href="#over-ons">Over Ons</a></li>
+            <li><a href="#zalen">Onze Zalen</a></li>
+            <li><a href="#tarieven">Tarieven &amp; Prijzen</a></li>
+            <li><a href="#reglement">Huisreglement</a></li>
+            <li><a href="#gallerij">Fotogallerij</a></li>
+            <li><a href="#contact">Contact &amp; Ligging</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-heading">Verhuur &amp; Boeken</div>
+          <ul class="footer-links">
+            <li><a href="https://theem.youcanbook.me/" target="_blank" rel="noopener">📅 YouCanBookMe Kalender</a></li>
+            <li><a href="#calculator">💶 Prijscalculator</a></li>
+            <li><a href="tel:0471258778">📞 0471/25 87 78</a></li>
+            <li><a href="mailto:ksazonhoven.vzw@gmail.com">✉️ ksazonhoven.vzw@gmail.com</a></li>
+            <li><a href="https://schepie.github.io/KSA-website/" target="_blank" rel="noopener">💙 KSA Zonhoven</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 VZW 't Heem Zonhoven &bull; Dijkbeemdenweg 8, 3520 Zonhoven &bull; Zustervereniging KSA Zonhoven
+        </div>
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <a href="mobile.html?view=mobile" style="color: var(--heem-gold);">
+            <span>📱 Mobiele Versie</span>
+          </a>
+          <button type="button" class="footer-admin-btn" onclick="if(window.ksaPromptAndEnableEdit) window.ksaPromptAndEnableEdit();">
+            <span>✏️ Website Beheer (Edit Mode)</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/html2canvas.min.js"></script>
+  <script src="js/main.js?v=theem1"></script>
+  <script src="js/visual-editor.js?v=theem1"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>'t Heem Zonhoven | Doorsturen...</title>
+  <script>
+    // GitHub Pages 404 Fallback Router
+    (function() {
+      const pathname = window.location.pathname.toLowerCase();
+      const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      const isSmallScreen = window.innerWidth <= 768;
+
+      if (isMobileUA || isSmallScreen || pathname.includes('mobile') || pathname.includes('app')) {
+        window.location.replace('./mobile.html');
+      } else {
+        window.location.replace('./index.html');
+      }
+    })();
+  </script>
+  <meta http-equiv="refresh" content="0; url=index.html">
+</head>
+<body style="font-family:sans-serif; text-align:center; padding:40px 20px; background:#0d3b66; color:#fff;">
+  <h2>'t Heem Zonhoven</h2>
+  <p>Je wordt automatisch doorgestuurd...</p>
+  <p><a href="index.html" style="color:#f4d06f; font-weight:bold;">Klik hier als je niet direct wordt doorgestuurd</a></p>
+</body>
+</html>

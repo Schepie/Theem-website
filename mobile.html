@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>'t Heem Zonhoven | Zaalverhuur App</title>
+  <meta name="description" content="VZW 't Heem Zonhoven - Mobiele app voor zaalverhuur, feestlocatie, tarieven en reserveren.">
+  <meta property="og:title" content="VZW 't Heem Zonhoven | Zaalverhuur">
+  <meta property="og:image" content="assets/images/hero_heem.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon & PWA -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0d3b66">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/mobile.css?v=theem1">
+
+  <!-- Automatic Device & Screen Detection -->
+  <script src="js/device-detect.js?v=theem1"></script>
+</head>
+<body>
+
+  <!-- App Header -->
+  <header class="mobile-app-header">
+    <div class="mobile-brand">
+      <img src="assets/icons/theem-logo.png" alt="'t Heem Logo" width="40" height="50">
+      <div>
+        <div class="mobile-brand-title">'t Heem</div>
+        <div class="mobile-brand-sub">VZW Zonhoven</div>
+      </div>
+    </div>
+    <div class="mobile-header-actions">
+      <a href="tel:0471258778" class="btn-icon" title="Bel direct">📞</a>
+      <a href="https://theem.youcanbook.me/" target="_blank" rel="noopener" class="btn-icon" style="background:var(--heem-accent); color:#fff;" title="Boek kalender">📅</a>
+      <a href="index.html?view=desktop" class="btn-icon" title="Ga naar desktopversie">💻</a>
+    </div>
+  </header>
+
+  <!-- TAB 1: OVERZICHT (HOME) -->
+  <div class="mobile-tab-section" id="tab-home" style="display: block;">
+    <!-- Hero Banner -->
+    <div class="mobile-hero">
+      <div class="mobile-hero-badge">🎉 Zaalverhuur Zonhoven</div>
+      <h1 class="mobile-hero-title">DE IDEALE PLEK VOOR <span>JE FEEST</span></h1>
+      <p class="mobile-hero-desc">
+        Vzw 't Heem is de zustervereniging van KSA Zonhoven. Gelegen aan Dijkbeemdenweg 8 met 2 zalen, keuken, speelweide en overdekt plein.
+      </p>
+      <div class="mobile-hero-buttons">
+        <a href="https://theem.youcanbook.me/" target="_blank" rel="noopener" class="btn-icon" style="width:auto; padding:10px 18px; border-radius:var(--radius-full); background:var(--heem-gold); color:var(--heem-primary-dark); font-weight:800; font-size:0.85rem;">
+          📅 Reserveer Online &rarr;
+        </a>
+        <a href="tel:0471258778" class="btn-icon" style="width:auto; padding:10px 18px; border-radius:var(--radius-full); background:rgba(255,255,255,0.2); color:#fff; font-weight:700; font-size:0.85rem;">
+          📞 0471/25 87 78
+        </a>
+      </div>
+    </div>
+
+    <!-- Quick Action Strip -->
+    <div class="mobile-quick-actions">
+      <a href="#tab-zalen" class="quick-action-item nav-bottom-item" data-target="tab-zalen">
+        <div class="quick-action-icon">🏛️</div>
+        <div class="quick-action-label">Zalen</div>
+      </a>
+      <a href="#tab-tarieven" class="quick-action-item nav-bottom-item" data-target="tab-tarieven">
+        <div class="quick-action-icon">💶</div>
+        <div class="quick-action-label">Prijzen</div>
+      </a>
+      <a href="#tab-gallerij" class="quick-action-item nav-bottom-item" data-target="tab-gallerij">
+        <div class="quick-action-icon">📸</div>
+        <div class="quick-action-label">Foto's</div>
+      </a>
+      <a href="#tab-contact" class="quick-action-item nav-bottom-item" data-target="tab-contact">
+        <div class="quick-action-icon">📍</div>
+        <div class="quick-action-label">Contact</div>
+      </a>
+    </div>
+
+    <div class="mobile-container">
+      <!-- Belangrijk reglement alert -->
+      <div class="mobile-warning-box">
+        <strong>⚠️ Belangrijke Huurregels:</strong>
+        't Heem mag <u>niet</u> verhuurd worden voor overnachtingen of feesten met luide muziek na 22u00. Einduur activiteit: 02u00. Waarborg: € 150.
+      </div>
+
+      <!-- Over Ons Card -->
+      <div class="mobile-card">
+        <img src="assets/images/heem_over_ons.jpg" alt="VZW 't Heem Gebouw" class="mobile-card-img">
+        <div class="mobile-card-body">
+          <h2 class="mobile-card-title">Welkom bij VZW 't Heem</h2>
+          <p class="mobile-card-desc">
+            Vzw 't Heem is de zustervereniging van KSA Zonhoven. Ideaal voor familiefeesten, babyborrels, communiefeesten, vergaderingen en verenigingen.
+          </p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a href="https://theem.youcanbook.me/" target="_blank" rel="noopener" class="btn-icon" style="width:auto; padding:10px 18px; border-radius:var(--radius-full); background:var(--heem-primary); color:#fff; font-weight:700; font-size:0.85rem;">
+              Kalender Bekijken &rarr;
+            </a>
+            <a href="https://schepie.github.io/KSA-website/" target="_blank" rel="noopener" class="btn-icon" style="width:auto; padding:10px 18px; border-radius:var(--radius-full); background:var(--heem-light-blue); color:var(--heem-primary); font-weight:700; font-size:0.85rem;">
+              💙 KSA Zonhoven
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Zalen Preview -->
+      <div class="mobile-section-title">🏛️ Onze Ruimtes</div>
+
+      <div class="mobile-card">
+        <img src="assets/images/gallery/gallerij_grote_zaal_31.jpg" alt="Grote Zaal" class="mobile-card-img">
+        <div class="mobile-card-body">
+          <div class="mobile-card-header">
+            <h3 class="mobile-card-title">Grote Zaal</h3>
+            <div class="mobile-card-price">€ 115 <span style="font-size:0.75rem; color:var(--text-muted);">/dag</span></div>
+          </div>
+          <p class="mobile-card-desc">Tot 80 personen. Ruime feestzaal met tafels en stoelen.</p>
+          <div class="mobile-card-badges">
+            <span class="mobile-badge-pill">80 personen</span>
+            <span class="mobile-badge-pill">Tafels &amp; Stoelen</span>
+            <span class="mobile-badge-pill">Terrastoegang</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mobile-card">
+        <img src="assets/images/gallery/gallerij_kleine_zaal_35.jpg" alt="Kleine Zaal" class="mobile-card-img">
+        <div class="mobile-card-body">
+          <div class="mobile-card-header">
+            <h3 class="mobile-card-title">Kleine Zaal</h3>
+            <div class="mobile-card-price">€ 70 <span style="font-size:0.75rem; color:var(--text-muted);">/dag</span></div>
+          </div>
+          <p class="mobile-card-desc">Tot 40 personen. Gezellige zaal voor intieme feestjes of vergaderingen.</p>
+          <div class="mobile-card-badges">
+            <span class="mobile-badge-pill">40 personen</span>
+            <span class="mobile-badge-pill">Vergaderingen</span>
+            <span class="mobile-badge-pill">Gezellig</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mobile-card">
+        <img src="assets/images/gallery/gallerij_keuken_37.jpg" alt="Keuken" class="mobile-card-img">
+        <div class="mobile-card-body">
+          <div class="mobile-card-header">
+            <h3 class="mobile-card-title">Uitgeruste Keuken</h3>
+            <div class="mobile-card-price">€ 65 <span style="font-size:0.75rem; color:var(--text-muted);">/dag</span></div>
+          </div>
+          <p class="mobile-card-desc">Compleet met servies, glazen, bestek, oven, koelkast en kookplaat.</p>
+          <div class="mobile-card-badges">
+            <span class="mobile-badge-pill">Servies inbegrepen</span>
+            <span class="mobile-badge-pill">Koelkast</span>
+            <span class="mobile-badge-pill">Oven &amp; Kookplaat</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 2: ZALEN -->
+  <div class="mobile-tab-section" id="tab-zalen" style="display: none;">
+    <div class="mobile-container" style="padding-top: 16px;">
+      <div class="mobile-section-title">🏛️ Onze Zalen &amp; Terrein</div>
+
+      <div class="mobile-card">
+        <img src="assets/images/gallery/gallerij_grote_zaal_32.jpg" alt="Grote Zaal" class="mobile-card-img">
+        <div class="mobile-card-body">
+          <div class="mobile-card-header">
+            <h3 class="mobile-card-title">Grote Zaal</h3>
+            <div class="mobile-card-price">€ 115</div>
+          </div>
+          <p class="mobile-card-desc">
+            Onze grootste feestzaal geschikt voor familiefeesten, babyborrels, verjaardagen en bijeenkomsten tot ongeveer 80 personen.
+          </p>
+          <ul style="padding-left: 20px; font-size: 0.88rem; color: var(--text-muted); margin-bottom: 16px;">
+            <li>Capaciteit tot ong. 80 personen</li>
+            <li>Tafels en stoelen aanwezig</li>
+            <li>Aansluitend terras en sanitaire voorzieningen</li>
+            <li>Combineerbaar met keuken en/of kleine zaal</li>
+          </ul>
+          <a href="https://theem.youcanbook.me/" target="_blank" rel="noopener" class="btn-icon" style="width:100%; padding:10px; border-radius:var(--radius-sm); background:var(--heem-primary); color:#fff; font-weight:700; font-size:0.9rem;">
+            📅 Reserveer Grote Zaal
+          </a>
+        </div>
+      </div>
+
+      <div class="mobile-card">
+        <img src="assets/images/gallery/gallerij_kleine_zaal_36.jpg" alt="Kleine Zaal" class="mobile-card-img">
+        <div class="mobile-card-body">
+          <div class="mobile-card-header">
+            <h3 class="mobile-card-title">Kleine Zaal</h3>
+            <div class="mobile-card-price">€ 70</div>
+          </div>
+          <p class="mobile-card-desc">
+            Knusse zaal geschikt tot ongeveer 40 personen. Uitermate geschikt voor cursussen, vergaderingen of kleinschalige recepties.
+          </p>
+          <ul style="padding-left: 20px; font-size: 0.88rem; color: var(--text-muted); margin-bottom: 16px;">
+            <li>Capaciteit tot ong. 40 personen</li>
+            <li>Verhuur ook mogelijk per uur voor vergaderingen</li>
+            <li>Tafels en stoelen inbegrepen</li>
+          </ul>
+          <a href="https://theem.youcanbook.me/" target="_blank" rel="noopener" class="btn-icon" style="width:100%; padding:10px; border-radius:var(--radius-sm); background:var(--heem-primary); color:#fff; font-weight:700; font-size:0.9rem;">
+            📅 Reserveer Kleine Zaal
+          </a>
+        </div>
+      </div>
+
+      <div class="mobile-card">
+        <img src="assets/images/gallery/gallerij_keuken_39.jpg" alt="Keuken" class="mobile-card-img">
+        <div class="mobile-card-body">
+          <div class="mobile-card-header">
+            <h3 class="mobile-card-title">Keuken</h3>
+            <div class="mobile-card-price">€ 65</div>
+          </div>
+          <p class="mobile-card-desc">
+            Volledig uitgerust met serviesgoed, bestek, glazen, kookplaat, microgolfoven, koffiezetapparaat en koelkast.
+          </p>
+        </div>
+      </div>
+
+      <div class="mobile-card">
+        <img src="assets/images/gallery/gallerij_speeltuin_41.jpg" alt="Speeltuin" class="mobile-card-img">
+        <div class="mobile-card-body">
+          <div class="mobile-card-header">
+            <h3 class="mobile-card-title">Speelweide &amp; Overdekt Plein</h3>
+            <div class="mobile-card-price">Inbegrepen</div>
+          </div>
+          <p class="mobile-card-desc">
+            Grote buitenspeelruimte voor kinderen met speeltuigen. Aan de achterzijde ligt een plein met ruime afdaken, ideaal voor een barbecue!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 3: TARIEVEN & CALCULATOR -->
+  <div class="mobile-tab-section" id="tab-tarieven" style="display: none;">
+    <div class="mobile-container" style="padding-top: 16px;">
+      <div class="mobile-section-title">💶 Prijzen &amp; Calculator</div>
+
+      <div style="background:#fff; border-radius:var(--radius-lg); padding:16px; border:1px solid var(--border-light); margin-bottom:18px;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; text-align:center;">
+          <div style="background:var(--bg-primary); padding:12px; border-radius:var(--radius-md);">
+            <div style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">GROTE ZAAL</div>
+            <div style="font-family:var(--font-heading); font-size:2rem; color:var(--heem-primary);">€ 115</div>
+            <div style="font-size:0.75rem; color:var(--text-muted);">per dag</div>
+          </div>
+          <div style="background:var(--bg-primary); padding:12px; border-radius:var(--radius-md);">
+            <div style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">KLEINE ZAAL</div>
+            <div style="font-family:var(--font-heading); font-size:2rem; color:var(--heem-primary);">€ 70</div>
+            <div style="font-size:0.75rem; color:var(--text-muted);">per dag</div>
+          </div>
+          <div style="background:var(--bg-primary); padding:12px; border-radius:var(--radius-md);">
+            <div style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">KEUKEN</div>
+            <div style="font-family:var(--font-heading); font-size:2rem; color:var(--heem-accent);">€ 65</div>
+            <div style="font-size:0.75rem; color:var(--text-muted);">per dag</div>
+          </div>
+          <div style="background:var(--bg-primary); padding:12px; border-radius:var(--radius-md);">
+            <div style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">POETSEN</div>
+            <div style="font-family:var(--font-heading); font-size:1.8rem; color:var(--heem-green);">€ 0 / € 60</div>
+            <div style="font-size:0.75rem; color:var(--text-muted);">zelf of vzw</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobiele Calculator -->
+      <div class="mobile-calc-card">
+        <h3 style="font-family:var(--font-sub); font-size:1.3rem; font-weight:800; color:var(--heem-primary); margin-bottom:12px;">
+          Prijscalculator
+        </h3>
+
+        <label style="font-size:0.85rem; font-weight:700;">Kies Zaal:</label>
+        <select id="mCalcHall" class="mobile-calc-select">
+          <option value="115">Grote Zaal (€ 115)</option>
+          <option value="70">Kleine Zaal (€ 70)</option>
+          <option value="185">Beide Zalen (€ 185)</option>
+        </select>
+
+        <label class="mobile-calc-check">
+          <input type="checkbox" id="mCalcKitchen" checked style="width:18px; height:18px; accent-color:var(--heem-primary);">
+          <span>Inclusief Keuken (+ € 65)</span>
+        </label>
+
+        <label style="font-size:0.85rem; font-weight:700;">Schoonmaak:</label>
+        <select id="mCalcCleaning" class="mobile-calc-select">
+          <option value="0">Zelf poetsen (€ 0)</option>
+          <option value="60">Laten poetsen door 't Heem (€ 60)</option>
+        </select>
+
+        <div class="mobile-calc-result">
+          <div>
+            <div style="font-size:0.8rem; opacity:0.8;">Totaal incl. € 150 waarborg:</div>
+            <div class="mobile-calc-total" id="mCalcTotal">€ 330</div>
+          </div>
+          <a href="https://theem.youcanbook.me/" target="_blank" rel="noopener" class="btn-icon" style="width:auto; padding:8px 14px; border-radius:var(--radius-full); background:var(--heem-gold); color:var(--heem-primary-dark); font-weight:800; font-size:0.82rem;">
+            Reserveer &rarr;
+          </a>
+        </div>
+      </div>
+
+      <div class="mobile-warning-box">
+        <strong>⚠️ Regels &amp; Waarborg:</strong>
+        Vaste waarborg van € 150. Geen fuiven na 22u00, geen overnachtingen. Einduur 02u00.
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 4: GALLERIJ -->
+  <div class="mobile-tab-section" id="tab-gallerij" style="display: none;">
+    <div class="mobile-container" style="padding-top: 16px;">
+      <div class="mobile-section-title">📸 Fotogallerij</div>
+      <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:14px;">Tik op een foto om te vergroten:</p>
+
+      <div class="mobile-gallery-grid">
+        <div class="mobile-gallery-thumb"><img src="assets/images/gallery/gallerij_grote_zaal_31.jpg" alt="Foto"></div>
+        <div class="mobile-gallery-thumb"><img src="assets/images/gallery/gallerij_grote_zaal_32.jpg" alt="Foto"></div>
+        <div class="mobile-gallery-thumb"><img src="assets/images/gallery/gallerij_kleine_zaal_35.jpg" alt="Foto"></div>
+        <div class="mobile-gallery-thumb"><img src="assets/images/gallery/gallerij_kleine_zaal_36.jpg" alt="Foto"></div>
+        <div class="mobile-gallery-thumb"><img src="assets/images/gallery/gallerij_keuken_37.jpg" alt="Foto"></div>
+        <div class="mobile-gallery-thumb"><img src="assets/images/gallery/gallerij_keuken_38.jpg" alt="Foto"></div>
+        <div class="mobile-gallery-thumb"><img src="assets/images/gallery/gallerij_speeltuin_41.jpg" alt="Foto"></div>
+        <div class="mobile-gallery-thumb"><img src="assets/images/gallery/gallerij_speeltuin_42.jpg" alt="Foto"></div>
+        <div class="mobile-gallery-thumb"><img src="assets/images/gallery/gallerij_andere_45.jpg" alt="Foto"></div>
+        <div class="mobile-gallery-thumb"><img src="assets/images/gallery/gallerij_andere_46.jpg" alt="Foto"></div>
+        <div class="mobile-gallery-thumb"><img src="assets/images/gallery/gallerij_andere_47.jpg" alt="Foto"></div>
+        <div class="mobile-gallery-thumb"><img src="assets/images/gallery/gallerij_andere_49.jpg" alt="Foto"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 5: CONTACT & RESERVEREN -->
+  <div class="mobile-tab-section" id="tab-contact" style="display: none;">
+    <div class="mobile-container" style="padding-top: 16px;">
+      <div class="mobile-section-title">📍 Contact &amp; Reserveren</div>
+
+      <!-- YouCanBookMe Highlight -->
+      <div class="mobile-card" style="border: 2px solid var(--heem-primary);">
+        <div class="mobile-card-body" style="text-align: center;">
+          <div style="font-size:2rem; margin-bottom:6px;">📅</div>
+          <h3 class="mobile-card-title">YouCanBookMe Boekingskalender</h3>
+          <p class="mobile-card-desc">Bekijk direct online de vrije data en boek je reservatie.</p>
+          <a href="https://theem.youcanbook.me/" target="_blank" rel="noopener" class="btn-icon" style="width:100%; padding:12px; border-radius:var(--radius-sm); background:var(--heem-accent); color:#fff; font-weight:800; font-size:0.95rem;">
+            Open YouCanBookMe Kalender &rarr;
+          </a>
+        </div>
+      </div>
+
+      <!-- Direct Contact Cards -->
+      <div class="mobile-card">
+        <div class="mobile-card-body">
+          <h3 class="mobile-card-title" style="margin-bottom:14px;">Contactgegevens</h3>
+
+          <div style="margin-bottom:12px;">
+            <div style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">TELEFOON</div>
+            <a href="tel:0471258778" style="font-size:1.1rem; color:var(--heem-primary); font-weight:700;">📞 0471/25 87 78</a>
+          </div>
+
+          <div style="margin-bottom:12px;">
+            <div style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">E-MAIL</div>
+            <a href="mailto:ksazonhoven.vzw@gmail.com" style="font-size:1rem; color:var(--heem-primary); font-weight:600;">✉️ ksazonhoven.vzw@gmail.com</a>
+          </div>
+
+          <div style="margin-bottom:16px;">
+            <div style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">ADRES</div>
+            <div style="font-size:0.95rem; color:var(--text-main);">📍 Dijkbeemdenweg 8, 3520 Zonhoven</div>
+          </div>
+
+          <div style="display:flex; gap:10px;">
+            <a href="tel:0471258778" class="btn-icon" style="flex:1; padding:10px; border-radius:var(--radius-sm); background:var(--heem-primary); color:#fff; font-weight:700; font-size:0.85rem;">
+              📞 Bellen
+            </a>
+            <a href="mailto:ksazonhoven.vzw@gmail.com" class="btn-icon" style="flex:1; padding:10px; border-radius:var(--radius-sm); background:var(--heem-light-blue); color:var(--heem-primary); font-weight:700; font-size:0.85rem;">
+              ✉️ Mailen
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Google Maps Link -->
+      <div class="mobile-card">
+        <div class="mobile-card-body" style="text-align:center;">
+          <h4 style="font-family:var(--font-sub); font-size:1.1rem; color:var(--heem-primary); margin-bottom:8px;">Route &amp; Locatie</h4>
+          <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:14px;">Gelegen in een veilige, groene omgeving in Zonhoven.</p>
+          <a href="https://maps.google.com/?q=Dijkbeemdenweg+8,+3520+Zonhoven" target="_blank" rel="noopener" class="btn-icon" style="width:100%; padding:10px; border-radius:var(--radius-sm); background:var(--bg-primary); border:1px solid var(--border-light); color:var(--text-main); font-weight:700; font-size:0.85rem;">
+            🗺️ Open in Google Maps
+          </a>
+        </div>
+      </div>
+
+      <!-- Edit Mode trigger on mobile -->
+      <div style="text-align: center; margin: 24px 0 12px 0;">
+        <button type="button" class="btn-icon" style="width:auto; padding:8px 16px; border-radius:var(--radius-full); background:#e2e8f0; color:var(--text-muted); font-size:0.8rem; font-weight:700; margin:0 auto;" onclick="if(window.ksaPromptAndEnableEdit) window.ksaPromptAndEnableEdit();">
+          ✏️ Website Beheer (Edit Mode)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Lightbox Modal -->
+  <div class="mobile-lightbox" id="mobileLightbox">
+    <button type="button" class="mobile-lightbox-close" id="mobileLightboxClose">&times;</button>
+    <img src="" id="mobileLightboxImg" alt="Vergrote foto">
+  </div>
+
+  <!-- Bottom Navigation Bar -->
+  <nav class="mobile-bottom-nav">
+    <a href="#tab-home" class="nav-bottom-item active" data-target="tab-home">
+      <span class="nav-icon">🏠</span>
+      <span>Home</span>
+    </a>
+    <a href="#tab-zalen" class="nav-bottom-item" data-target="tab-zalen">
+      <span class="nav-icon">🏛️</span>
+      <span>Zalen</span>
+    </a>
+    <a href="#tab-tarieven" class="nav-bottom-item" data-target="tab-tarieven">
+      <span class="nav-icon">💶</span>
+      <span>Prijzen</span>
+    </a>
+    <a href="#tab-gallerij" class="nav-bottom-item" data-target="tab-gallerij">
+      <span class="nav-icon">📸</span>
+      <span>Foto's</span>
+    </a>
+    <a href="#tab-contact" class="nav-bottom-item" data-target="tab-contact">
+      <span class="nav-icon">📍</span>
+      <span>Contact</span>
+    </a>
+  </nav>
+
+  <!-- Scripts -->
+  <script src="js/html2canvas.min.js"></script>
+  <script src="js/mobile.js?v=theem1"></script>
+  <script src="js/visual-editor.js?v=theem1"></script>
+</body>
+</html>

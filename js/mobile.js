@@ -1,0 +1,95 @@
+/**
+ * VZW 'T HEEM ZONHOVEN - MOBILE JAVASCRIPT
+ * Bottom Tab Navigation, Prijscalculator, Mobile Lightbox & Quick Actions
+ */
+
+document.addEventListener('DOMContentLoaded', function() {
+  initMobileBottomNav();
+  initMobileCalculator();
+  initMobileLightbox();
+});
+
+// 1. Mobile Bottom Tab Navigation
+function initMobileBottomNav() {
+  const navItems = document.querySelectorAll('.nav-bottom-item');
+  const sections = document.querySelectorAll('.mobile-tab-section');
+
+  navItems.forEach(item => {
+    item.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('data-target');
+      if (!targetId) return;
+
+      e.preventDefault();
+
+      navItems.forEach(n => n.classList.remove('active'));
+      this.classList.add('active');
+
+      sections.forEach(sec => {
+        if (sec.id === targetId) {
+          sec.style.display = 'block';
+        } else {
+          sec.style.display = 'none';
+        }
+      });
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+}
+
+// 2. Mobile Price Calculator
+function initMobileCalculator() {
+  const hallSelect = document.getElementById('mCalcHall');
+  const kitchenCheck = document.getElementById('mCalcKitchen');
+  const cleanSelect = document.getElementById('mCalcCleaning');
+  const totalDisplay = document.getElementById('mCalcTotal');
+
+  if (!hallSelect || !totalDisplay) return;
+
+  function calculate() {
+    const hallPrice = parseInt(hallSelect.value, 10) || 0;
+    const kitchenPrice = (kitchenCheck && kitchenCheck.checked) ? 65 : 0;
+    const cleanPrice = cleanSelect ? (parseInt(cleanSelect.value, 10) || 0) : 0;
+    const deposit = 150;
+
+    const grandTotal = hallPrice + kitchenPrice + cleanPrice + deposit;
+    totalDisplay.textContent = `€ ${grandTotal}`;
+  }
+
+  hallSelect.addEventListener('change', calculate);
+  if (kitchenCheck) kitchenCheck.addEventListener('change', calculate);
+  if (cleanSelect) cleanSelect.addEventListener('change', calculate);
+
+  calculate();
+}
+
+// 3. Mobile Lightbox
+function initMobileLightbox() {
+  const thumbs = document.querySelectorAll('.mobile-gallery-thumb');
+  const lightbox = document.getElementById('mobileLightbox');
+  const lightboxImg = document.getElementById('mobileLightboxImg');
+  const closeBtn = document.getElementById('mobileLightboxClose');
+
+  if (!lightbox || !lightboxImg) return;
+
+  thumbs.forEach(thumb => {
+    thumb.addEventListener('click', function() {
+      const img = this.querySelector('img');
+      if (img) {
+        lightboxImg.src = img.src;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+  });
+
+  function close() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  if (closeBtn) closeBtn.addEventListener('click', close);
+  lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox) close();
+  });
+}

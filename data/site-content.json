@@ -1,0 +1,21 @@
+{
+  "_auth": {
+    "pinHash": "8528f0e201b2a70bb485dda38ae9770d7ed77d6fabd41d9bc3d77c849b812fcb",
+    "updatedAt": "2026-11-06T09:00:00.000Z",
+    "vault": null
+  },
+  "topbarHidden": false,
+  "desktop": {
+    "texts": {},
+    "images": {},
+    "links": {},
+    "containers": {}
+  },
+  "mobile": {
+    "texts": {},
+    "images": {},
+    "links": {},
+    "containers": {}
+  },
+  "updatedAt": "2026-11-06T09:00:00.000Z"
+}
