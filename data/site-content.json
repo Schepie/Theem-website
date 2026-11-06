@@ -12,7 +12,7 @@
   "topbarHidden": true,
   "introAnimationEnabled": false,
   "prices": {
-    "groteZaal": 115,
+    "groteZaal": 20,
     "kleineZaal": 70,
     "keuken": 65,
     "schoonmaak": 60,
@@ -86,7 +86,7 @@
     "links": {},
     "containers": {}
   },
-  "updatedAt": "2026-11-06T14:54:37.283Z",
+  "updatedAt": "2026-11-06T15:54:53.602Z",
   "shortcutsHidden": false,
   "banner": {
     "hidden": false,
