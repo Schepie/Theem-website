@@ -194,31 +194,80 @@ a {
   display: flex;
   align-items: center;
   list-style: none;
-  gap: 24px;
+  gap: 8px;
+  flex-wrap: nowrap;
 }
 
 .nav-link {
   font-family: var(--font-sub);
-  font-weight: 600;
-  font-size: 0.98rem;
-  color: var(--text-main);
-  padding: 8px 12px;
-  border-radius: var(--radius-sm);
-  transition: var(--transition-fast);
-  display: flex;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--heem-primary);
+  background: var(--bg-card-alt);
+  border: 1.5px solid var(--border-light);
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(13, 59, 102, 0.05);
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  cursor: pointer;
+  line-height: 1.2;
 }
 
-.nav-link:hover, .nav-link.active {
-  color: var(--heem-primary);
-  background: var(--heem-light-blue);
+.nav-link:hover {
+  color: #ffffff;
+  background: var(--heem-primary);
+  border-color: var(--heem-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(13, 59, 102, 0.2);
+}
+
+.nav-link:active, .nav-link.active {
+  color: #ffffff;
+  background: var(--heem-primary);
+  border-color: var(--heem-primary);
+  transform: translateY(0);
 }
 
 .nav-actions {
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+/* Desktop Edit Mode Shortcut Pencil Button */
+.desktop-header-edit-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-full);
+  background: #fef3c7;
+  color: #92400e;
+  border: 1.5px solid rgba(245, 158, 11, 0.5);
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.18);
+  flex-shrink: 0;
+}
+
+.desktop-header-edit-btn:hover {
+  background: #fde68a;
+  transform: scale(1.08);
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.28);
+}
+
+.desktop-header-edit-btn.active {
+  background: #ef4444;
+  color: #ffffff;
+  border-color: #dc2626;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.35);
 }
 
 /* Buttons */
