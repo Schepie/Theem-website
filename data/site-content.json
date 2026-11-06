@@ -29,6 +29,7 @@
       "#zalen > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(1) > img:nth-of-type(1)": "assets/images/gallery/gallerij_keuken_37.jpg",
       "#zalen > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(2) > img:nth-of-type(1)": "assets/images/gallery/gallerij_speeltuin_41.jpg",
       "#zalen > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(2) > img:nth-of-type(2)": "assets/images/gallery/overkapping_plein.jpg",
+      "#reglement > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > img:nth-of-type(1)": "assets/icons/ksa-logo-official.svg",
       "#galleryGrid > div:nth-of-type(1) > img:nth-of-type(1)": "assets/images/gallery/gallerij_grote_zaal_31.jpg",
       "#galleryGrid > div:nth-of-type(2) > img:nth-of-type(1)": "assets/images/gallery/gallerij_grote_zaal_32.jpg",
       "#galleryGrid > div:nth-of-type(3) > img:nth-of-type(1)": "assets/images/gallery/gallerij_grote_zaal_33.jpg",
@@ -78,7 +79,7 @@
     "links": {},
     "containers": {}
   },
-  "updatedAt": "2026-11-06T10:36:42.587Z",
+  "updatedAt": "2026-11-06T14:52:51.596Z",
   "shortcutsHidden": false,
   "banner": {
     "hidden": false,
