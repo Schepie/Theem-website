@@ -172,7 +172,10 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
           }
         });
       }
-      return res.status === 200;
+      if (res.status !== 200) return false;
+      const data = await res.json();
+      // Controleer expliciet of het token schrijfrechten (push) heeft op deze repository
+      return !!(data.permissions && data.permissions.push === true);
     } catch (e) {
       return false;
     }
@@ -194,6 +197,8 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
             if (token) {
               sessionStorage.setItem('ksa_github_token', token);
               localStorage.setItem('ksa_github_token', token);
+              sessionStorage.setItem('theem_github_token', token);
+              localStorage.setItem('theem_github_token', token);
             }
           }
         }
@@ -202,12 +207,19 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
 
     const isValid = await verifyGithubToken(token, owner, repo);
 
-    if (isValid) {
-      // ✅ Geldige koppeling aanwezig: verberg de knop in het bewerkmenu!
-      if (ghBtn) ghBtn.style.display = 'none';
-    } else {
-      // ⚠️ Geen geldige koppeling, corrupt of vervallen token:
-      if (ghBtn) ghBtn.style.display = '';
+    // De GitHub Koppeling knop blijft ALTIJD zichtbaar in het bewerkmenu voor de beheerder
+    if (ghBtn) {
+      ghBtn.style.display = 'inline-flex';
+      if (isValid) {
+        ghBtn.innerHTML = '⚙️ GitHub Koppeling ✅';
+        ghBtn.title = 'GitHub koppeling is actief en heeft schrijfrechten. Klik om token te bekijken of wijzigen.';
+      } else {
+        ghBtn.innerHTML = '⚙️ GitHub Koppeling ⚠️';
+        ghBtn.title = 'GitHub token ontbreekt of heeft geen schrijfrechten. Klik om in te stellen.';
+      }
+    }
+
+    if (!isValid && !token) {
       openGithubConfigModal(false, true);
     }
   }
@@ -3561,7 +3573,18 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
         );
         githubSuccess = true;
       } catch (err) {
-        alert(`⚠️ Lokaal opgeslagen, maar GitHub publicatie gaf een melding:\n${err.message}\n\nControleer je GitHub Token via de knop "⚙️ GitHub Koppeling".`);
+        console.error('[Theem Editor Save Error]', err);
+        const ghBtn = document.getElementById('ksaBtnGithubConfig');
+        if (ghBtn) {
+          ghBtn.style.display = 'inline-flex';
+          ghBtn.innerHTML = '⚙️ GitHub Koppeling ⚠️';
+        }
+        let helpText = '';
+        if (err.message && err.message.includes('403')) {
+          helpText = '\n\n💡 Belangrijk bij GitHub fout 403 (Resource not accessible):\n- Gebruik je een Fine-grained Personal Access Token (github_pat_...)?\n  Ga op GitHub naar Settings -> Developer settings -> Personal access tokens.\n  Zorg dat repository "Theem-website" staat aangevinkt bij "Repository access" (Selected repositories),\n  én dat onder "Repository permissions" de permissie "Contents" op "Read and write" staat!\n- Gebruik je een Classic Token (ghp_...)? Zorg dan dat het vinkje "repo" aan staat.';
+        }
+        alert(`⚠️ Lokaal opgeslagen, maar GitHub publicatie gaf een melding:\n${err.message}${helpText}\n\nHet instellingenvenster opent nu direct zodat je je token kunt aanpassen of controleren.`);
+        openGithubConfigModal(true, true);
       }
     } else {
       openGithubConfigModal(true);
@@ -3596,22 +3619,22 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
     if (isCorruptOrExpired) {
       noticeHtml = `
         <div style="background:#fee2e2; border:1px solid #f87171; border-left:4px solid #ef4444; border-radius:8px; padding:12px 14px; margin-bottom:14px; font-size:13px; color:#991b1b; line-height:1.45;">
-          <strong>⚠️ GitHub Koppeling is Vervallen of Niet Ingesteld:</strong><br>
-          Het huidige GitHub-toegangstoken ontbreekt, is verlopen of niet geldig. Voer hieronder een geldig GitHub Personal Access Token in. Zodra je dit opslaat, wordt de knop in het menu automatisch verborgen en kan iedereen weer direct opslaan!
+          <strong>⚠️ GitHub Koppeling Fout / Geen Schrijfrechten:</strong><br>
+          Het huidige GitHub-toegangstoken ontbreekt, is verlopen of heeft <strong>geen schrijfrechten</strong> voor repository <em>'Theem-website'</em> (fout 403). Voer hieronder een geldig token in met push/write rechten.
         </div>
       `;
     } else if (hasVault) {
       noticeHtml = `
         <div style="background:#f0fdf4; border:1px solid #86efac; border-radius:8px; padding:12px 14px; margin-bottom:14px; font-size:13px; color:#166534; line-height:1.45;">
           ✅ <strong>Automatische Kluis is Actief!</strong><br>
-          Jouw GitHub Token is veilig versleuteld (AES-256-GCM) gekoppeld aan het leiding-wachtwoord. Zolang deze geldig is, is de instellingenknop automatisch verborgen in het bewerkmenu.
+          Jouw GitHub Token is veilig versleuteld (AES-256-GCM) gekoppeld aan het beheer-wachtwoord. Je kunt hier te allen tijde de token nakijken of updaten.
         </div>
       `;
     } else {
       noticeHtml = `
         <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:8px; padding:12px 14px; margin-bottom:14px; font-size:13px; color:#1e3a8a; line-height:1.45;">
-          🔐 <strong>Eénmalige instelling voor de hele leidingsploeg:</strong><br>
-          Vul hieronder éénmalig jouw GitHub Token in. Het systeem versleutelt dit met het leidingwachtwoord en bewaart het in een beveiligde kluis op GitHub. Daarna is deze knop automatisch verborgen en kan <strong>elke leidster direct bewerken en opslaan met enkel het wachtwoord!</strong>
+          🔐 <strong>Eénmalige instelling voor het beheer:</strong><br>
+          Vul hieronder éénmalig jouw GitHub Token in. Het systeem versleutelt dit met het wachtwoord en bewaart het in een beveiligde kluis op GitHub zodat je direct kunt bewerken en live publiceren!
         </div>
       `;
     }
@@ -3621,12 +3644,14 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
       ${noticeHtml}
       <div id="ksaGhModalMsg" style="display:none; padding:8px 12px; border-radius:6px; font-size:13px; margin-bottom:10px;"></div>
 
-      <p style="font-size:0.78rem; background:#f8fafc; border:1px solid #e2e8f0; padding:8px 10px; border-radius:8px; margin-bottom:10px;">
-        <strong>Hoe maak je een gratis GitHub Token aan (slechts 1x nodig)?</strong><br>
-        1. Ga op GitHub naar <em>Settings &rarr; Developer settings &rarr; Personal access tokens &rarr; Tokens (classic) &rarr; Generate new token</em>.<br>
-        2. Geef een naam in (bv. <em>'t Heem Website</em>) en vink <strong>repo</strong> aan.<br>
-        3. Plak de gegenereerde token (<code>ghp_...</code>) hieronder:
-      </p>
+      <div style="font-size:0.8rem; background:#f8fafc; border:1px solid #e2e8f0; padding:10px 12px; border-radius:8px; margin-bottom:12px; line-height:1.5;">
+        <strong>📌 Hoe maak of controleer je jouw GitHub Token?</strong><br>
+        • <strong>Optie A (Aanbevolen Classic Token):</strong><br>
+          Ga op GitHub naar <em>Settings &rarr; Developer settings &rarr; Personal access tokens &rarr; Tokens (classic) &rarr; Generate new token</em>.<br>
+          Vink <strong>repo</strong> aan en plak de gegenereerde token (<code>ghp_...</code>) hieronder.<br>
+        • <strong>Optie B (Fine-grained Token <code>github_pat_...</code>):</strong><br>
+          Als je een Fine-grained token gebruikt (bv. aangemaakt voor KSA website): zorg dat in GitHub onder <em>"Repository access"</em> de repository <strong>Theem-website</strong> is aangevinkt, én dat onder <em>"Repository permissions"</em> de permissie <strong>Contents op "Read and write"</strong> staat!
+      </div>
 
       <label for="ksaGhTokenInput">GitHub Personal Access Token (beheerder):</label>
       <input type="password" id="ksaGhTokenInput" placeholder="ghp_... of github_pat_..." value="${curToken}">
@@ -3647,7 +3672,7 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
       </div>
 
       <div style="margin-top:14px; padding:12px 14px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px;">
-        <label style="margin-bottom:4px; display:block; font-weight:700; color:#334155;">🔑 Leiding Bewerkwachtwoord:</label>
+        <label style="margin-bottom:4px; display:block; font-weight:700; color:#334155;">🔑 Beheer Bewerkwachtwoord:</label>
         <p style="font-size:12px; color:#64748b; margin-bottom:8px;">Het wachtwoord om de kluis en bewerkmodus te ontgrendelen.</p>
         <button type="button" class="btn btn-outline" id="ksaBtnOpenPinChangeFromGh" style="padding:6px 14px; font-size:13px; color:#0284c7; border:1px solid #0284c7; background:#fff; cursor:pointer; border-radius:6px; font-weight:700;">🔑 Wachtwoord Wijzigen &rarr;</button>
       </div>
@@ -3689,6 +3714,11 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
       saveBtn.disabled = true;
       saveBtn.innerHTML = '⏳ Bezig met versleutelen...';
 
+      localStorage.setItem('theem_github_token', tokenVal);
+      sessionStorage.setItem('theem_github_token', tokenVal);
+      localStorage.setItem('theem_github_owner', ownerVal);
+      localStorage.setItem('theem_github_repo', repoVal);
+      localStorage.setItem('theem_github_branch', branchVal);
       localStorage.setItem('ksa_github_token', tokenVal);
       sessionStorage.setItem('ksa_github_token', tokenVal);
       localStorage.setItem('ksa_github_owner', ownerVal);
@@ -3697,7 +3727,7 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
 
       let pass = sessionStorage.getItem('ksa_session_pass');
       if (!pass) {
-        pass = prompt('Voer het huidige leidingwachtwoord in om de kluis mee te versleutelen:', 'ksa2026');
+        pass = prompt('Voer het bewerkwachtwoord in om de kluis mee te versleutelen:', 'theem2026');
       }
       if (!pass) {
         saveBtn.disabled = false;
@@ -3730,12 +3760,15 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
           `🔐 Automatische GitHub kluis geactiveerd voor leiding (${new Date().toLocaleDateString('nl-BE')})`
         );
 
-        showMsg('✅ <strong>Kluis succesvol geactiveerd op GitHub!</strong><br>Vanaf nu kan elke leidster op elk toestel direct opslaan door enkel het leiding-wachtwoord in te typen.', false);
+        showMsg('✅ <strong>Kluis succesvol geactiveerd op GitHub!</strong><br>Vanaf nu kan elke beheerder op elk toestel direct opslaan door enkel het wachtwoord in te typen.', false);
         saveBtn.disabled = false;
         saveBtn.innerHTML = '✅ Kluis Geactiveerd';
 
         const ghBtn = document.getElementById('ksaBtnGithubConfig');
-        if (ghBtn) ghBtn.style.display = 'none';
+        if (ghBtn) {
+          ghBtn.style.display = 'inline-flex';
+          ghBtn.innerHTML = '⚙️ GitHub Koppeling ✅';
+        }
 
         setTimeout(() => {
           backdrop.style.display = 'none';
