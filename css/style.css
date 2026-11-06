@@ -492,7 +492,7 @@ a {
 /* Cards & Grid for Zalen */
 .halls-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: 32px;
 }
 
@@ -1168,10 +1168,12 @@ a {
 }
 
 @media (max-width: 768px) {
+  .container { padding-left: 16px; padding-right: 16px; }
   .heem-topbar .container { justify-content: center; text-align: center; }
   .navbar { flex-wrap: wrap; }
   .nav-menu { display: none; }
-  .hero-title { font-size: 2.8rem; }
+  .hero-title { font-size: 2.6rem; }
+  .halls-grid { grid-template-columns: 1fr; gap: 20px; }
   .calc-grid { grid-template-columns: 1fr; }
   .footer-top { grid-template-columns: 1fr; }
 }
@@ -1311,6 +1313,10 @@ a {
   transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.65s;
   padding: 16px;
   cursor: pointer;
+  width: 100vw;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .theem-intro-overlay.hidden {
@@ -1321,17 +1327,20 @@ a {
 
 .theem-intro-card {
   position: relative;
-  max-width: 820px;
+  max-width: min(820px, 94vw);
   width: 100%;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 }
 
 .theem-intro-video {
   width: 100%;
-  max-height: 80vh;
+  max-width: 100%;
+  max-height: 75vh;
   border-radius: 16px;
   box-shadow: 0 16px 48px rgba(13, 59, 102, 0.18);
   background: #f8f4e8;
@@ -1357,6 +1366,7 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  white-space: nowrap;
 }
 
 .theem-intro-skip-btn:hover {
