@@ -96,7 +96,7 @@ a {
 }
 
 .section {
-  padding: 38px 0 60px 0;
+  padding: 16px 0 48px 0;
   position: relative;
   scroll-margin-top: 92px;
 }
@@ -466,7 +466,7 @@ section[id], .calculator-box[id], [id] {
 .section-header {
   text-align: center;
   max-width: 720px;
-  margin: 0 auto 36px auto;
+  margin: 0 auto 22px auto;
 }
 
 .section-tag {
@@ -477,17 +477,17 @@ section[id], .calculator-box[id], [id] {
   color: var(--heem-accent);
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .section-title {
   font-family: var(--font-heading);
-  font-size: 3.2rem;
+  font-size: 3rem;
   line-height: 1;
   color: var(--heem-primary);
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 .section-desc {
