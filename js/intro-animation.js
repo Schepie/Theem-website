@@ -10,28 +10,32 @@
 
   async function checkIntroState() {
     try {
-      const res = await fetch('data/site-content.json?v=' + Date.now());
-      if (res.ok) {
-        const data = await res.json();
-        if (typeof data.introAnimationEnabled === 'boolean') {
-          localStorage.setItem('theem_intro_enabled', data.introAnimationEnabled ? '1' : '0');
-          return data.introAnimationEnabled;
-        }
-      }
-
+      // 1. Directe lokale voorkeur (als de beheerder in Edit Mode heeft geklikt):
       const local = localStorage.getItem('theem_intro_enabled');
       if (local === '0' || local === 'false') return false;
       if (local === '1' || local === 'true') return true;
 
+      // 2. Opgeslagen bewerkingsstatus in localStorage:
       const stored = localStorage.getItem('theem_website_github_edits_v1');
       if (stored) {
-        const parsed = JSON.parse(stored);
-        if (typeof parsed.introAnimationEnabled === 'boolean') {
-          return parsed.introAnimationEnabled;
+        try {
+          const parsed = JSON.parse(stored);
+          if (typeof parsed.introAnimationEnabled === 'boolean') {
+            return parsed.introAnimationEnabled;
+          }
+        } catch(e) {}
+      }
+
+      // 3. Voor gewone bezoekers: haal van de server
+      const res = await fetch('data/site-content.json?v=' + Date.now());
+      if (res.ok) {
+        const data = await res.json();
+        if (typeof data.introAnimationEnabled === 'boolean') {
+          return data.introAnimationEnabled;
         }
       }
     } catch(e) {}
-    return true; // Standaard aan
+    return false; // Standaard uit
   }
 
   async function initIntro() {
