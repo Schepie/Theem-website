@@ -1064,12 +1064,28 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
         border-radius: 50%;
         background: rgba(255, 255, 255, 0.95);
         padding: 2px;
+        width: 26px !important;
+        height: 26px !important;
+        max-width: 26px !important;
+        max-height: 26px !important;
         min-width: 26px;
         min-height: 26px;
+        box-sizing: border-box !important;
         display: inline-flex !important;
         align-items: center;
         justify-content: center;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        overflow: hidden !important;
+      }
+      .cal-sticker img {
+        width: 20px !important;
+        height: 20px !important;
+        max-width: 20px !important;
+        max-height: 20px !important;
+        object-fit: contain !important;
+        border-radius: 3px !important;
+        display: block !important;
+        pointer-events: none !important;
       }
       body.ksa-edit-mode-active .cal-sticker.ksa-sticker-empty::before,
       body.ksa-edit-mode-active .cal-sticker:empty::before {
@@ -1436,14 +1452,10 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
 
     const footerSupport = document.querySelector('.footer-support-tags');
     if (footerSupport) {
-      footerSupport.innerHTML = '';
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'ksa-edit-trigger-btn';
-      btn.innerHTML = '✏️ Bewerk Website (Edit Mode)';
-      btn.onclick = promptAndEnableEditMode;
-      footerSupport.appendChild(btn);
+      footerSupport.style.display = 'none'; // Subtiel verborgen voor publiek; beheer opent via Long Press op copyright
     }
+
+    initLongPressEditTrigger();
 
     const mobHeaderBtn = document.getElementById('mobileEditTriggerBtn');
     if (mobHeaderBtn) {
@@ -1607,6 +1619,97 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
       notice.innerHTML = '<span style="font-size:1.3rem;">📅</span><div><strong>Centrale kalender:</strong> De kalender wordt beheerd op de desktop website en wordt hier automatisch actueel gehouden.</div>';
       board.parentElement.insertBefore(notice, board);
     }
+  }
+
+  function initLongPressEditTrigger() {
+    const targets = document.querySelectorAll('#footerCopyright, .footer-copyright, #mobileFooterCopyright, .mobile-footer-copyright');
+    if (!targets.length) return;
+
+    const HOLD_MS = 1200; // 1.2 seconden ingedrukt houden
+
+    targets.forEach(target => {
+      let timer = null;
+      let isHolding = false;
+
+      target.style.userSelect = 'none';
+      target.style.webkitUserSelect = 'none';
+      target.setAttribute('title', '\'t Heem Zonhoven (Houd 1.2s ingedrukt voor Beheerder bewerkmodus)');
+
+      const startHold = (e) => {
+        // Klikken op [Privacy & Cookies] of links mag niet als bewerk-trigger tellen
+        if (e.target && e.target.closest && (e.target.closest('.footer-privacy-trigger') || e.target.closest('#privacyOpenLink') || e.target.closest('#mPrivacyBtn') || e.target.closest('a'))) {
+          return;
+        }
+
+        isHolding = true;
+        clearTimeout(timer);
+
+        target.style.transition = 'transform 1.2s ease, opacity 1.2s ease';
+        target.style.opacity = '0.65';
+        target.style.transform = 'scale(0.98)';
+
+        timer = setTimeout(() => {
+          endHold();
+          if (navigator.vibrate) {
+            try { navigator.vibrate(60); } catch (_) {}
+          }
+          if (isEditMode) {
+            disableEditMode();
+          } else {
+            promptAndEnableEditMode();
+          }
+        }, HOLD_MS);
+      };
+
+      const endHold = () => {
+        if (!isHolding) return;
+        isHolding = false;
+        clearTimeout(timer);
+        timer = null;
+        target.style.transition = 'transform 0.25s ease, opacity 0.25s ease';
+        target.style.opacity = '';
+        target.style.transform = '';
+      };
+
+      // Touch (Mobiel)
+      target.addEventListener('touchstart', startHold, { passive: true });
+      target.addEventListener('touchend', endHold);
+      target.addEventListener('touchcancel', endHold);
+
+      // Muis (Desktop)
+      target.addEventListener('mousedown', (e) => {
+        if (e.button === 0) startHold(e);
+      });
+      target.addEventListener('mouseup', endHold);
+      target.addEventListener('mouseleave', endHold);
+
+      // Desktop drievoudige klik als snelle extra manier
+      let clickCount = 0;
+      let clickResetTimer = null;
+      target.addEventListener('click', (e) => {
+        if (e.target && e.target.closest && (e.target.closest('.footer-privacy-trigger') || e.target.closest('#privacyOpenLink') || e.target.closest('#mPrivacyBtn') || e.target.closest('a'))) {
+          return;
+        }
+        clickCount++;
+        clearTimeout(clickResetTimer);
+        if (clickCount >= 3) {
+          clickCount = 0;
+          if (isEditMode) disableEditMode();
+          else promptAndEnableEditMode();
+        } else {
+          clickResetTimer = setTimeout(() => { clickCount = 0; }, 400);
+        }
+      });
+    });
+
+    // Toetsenbord sneltoets: Ctrl + Shift + E
+    document.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'E' || e.key === 'e')) {
+        e.preventDefault();
+        if (isEditMode) disableEditMode();
+        else promptAndEnableEditMode();
+      }
+    });
   }
 
   function promptAndEnableEditMode() {
@@ -2927,6 +3030,8 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
 
     const presets = [
       { emoji: '', label: 'Geen icoon' },
+      { emoji: 'img:assets/icons/ksa-logo-square.png', iconHtml: '<img src="assets/icons/ksa-logo-square.png" alt="KSA Logo" style="width:26px; height:26px; object-fit:contain; border-radius:4px; vertical-align:middle;">', label: 'KSA Logo' },
+      { emoji: 'img:assets/icons/ksa-logo-geen.png', iconHtml: '<img src="assets/icons/ksa-logo-geen.png" alt="Geen KSA" style="width:26px; height:26px; object-fit:contain; border-radius:4px; vertical-align:middle;">', label: 'Geen KSA' },
       { emoji: '🎅', label: 'Kerstman' },
       { emoji: '🎄', label: 'Kerstboom' },
       { emoji: '👑', label: 'Sinterklaas' },
@@ -2952,12 +3057,15 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
       <div class="ksa-sticker-grid">
         ${presets.map(p => `
           <button type="button" class="ksa-sticker-choice" data-emoji="${p.emoji}">
-            <div>${p.emoji || '🚫'}</div>
+            <div>${p.iconHtml || p.emoji || '🚫'}</div>
             <span>${p.label}</span>
           </button>
         `).join('')}
       </div>
-      <label>Of typ zelf een emoji / icoon (maak leeg om te verwijderen):</label>
+      <label style="display:block; margin-top:10px; font-weight:600; color:#1e293b;">Of typ zelf een emoji / icoon (maak leeg om te verwijderen):</label>
+      <div style="font-size:0.8rem; color:#475569; background:#f8fafc; padding:7px 10px; border-radius:6px; margin:4px 0 8px 0; border:1px solid #e2e8f0; line-height:1.4;">
+        💡 <strong>Tip:</strong> Open het Windows emoji-toetsenbord met de sneltoets: 👉 <strong>Windows-toets + . (punt)</strong> <em>(of Windows-toets + ;)</em>
+      </div>
       <input type="text" id="ksaCustomStickerInput" value="${curVal}" placeholder="Bv. 🎅 of laat leeg">
       <div class="ksa-editor-modal-actions">
         <button type="button" class="ksa-dock-btn ksa-dock-btn-sec" id="ksaStickerCancel">Annuleren</button>
@@ -2972,7 +3080,30 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
       if (clean) {
         const span = document.createElement('span');
         span.className = 'cal-sticker';
-        span.textContent = clean;
+        if (clean.startsWith('img:') || clean.includes('ksa-logo') || clean.includes('assets/icons/')) {
+          const imgSrc = clean.startsWith('img:') ? clean.substring(4) : (clean.startsWith('<img') ? (clean.match(/src="([^"]+)"/) || [])[1] : clean);
+          span.innerHTML = `<img src="${imgSrc || 'assets/icons/ksa-logo-square.png'}" alt="KSA Sticker" width="20" height="20" style="width:20px !important; height:20px !important; max-width:20px !important; max-height:20px !important; object-fit:contain; border-radius:3px; display:block; pointer-events:none;">`;
+          span.setAttribute('data-img-src', imgSrc || 'assets/icons/ksa-logo-square.png');
+
+          // Slimme tekstkoppeling: als 'Geen KSA' gekozen wordt en de tekst is 'KSA', zet op 'GEEN KSA'
+          if (clean.includes('ksa-logo-geen.png')) {
+            const evtText = card.querySelector('.cal-event-text');
+            if (evtText && evtText.textContent.trim().toUpperCase() === 'KSA') {
+              evtText.textContent = 'GEEN KSA';
+              evtText.classList.add('cal-text-underline');
+            }
+          } else if (clean.includes('ksa-logo-square.png')) {
+            const evtText = card.querySelector('.cal-event-text');
+            if (evtText && evtText.textContent.trim().toUpperCase() === 'GEEN KSA') {
+              evtText.textContent = 'KSA';
+              evtText.classList.remove('cal-text-underline');
+            }
+          }
+        } else if (clean.startsWith('<img')) {
+          span.innerHTML = clean;
+        } else {
+          span.textContent = clean;
+        }
         span.title = '🎨 Klik om dit icoon te wijzigen of te verwijderen';
         span.onclick = (e) => {
           if (!isEditMode) return;
@@ -3032,7 +3163,10 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
           </button>
         `).join('')}
       </div>
-      <label>Of typ een eigen emoji / icoon:</label>
+      <label style="display:block; margin-top:10px; font-weight:600; color:#1e293b;">Of typ een eigen emoji / icoon:</label>
+      <div style="font-size:0.8rem; color:#475569; background:#f8fafc; padding:7px 10px; border-radius:6px; margin:4px 0 8px 0; border:1px solid #e2e8f0; line-height:1.4;">
+        💡 <strong>Tip:</strong> Open het Windows emoji-toetsenbord met de sneltoets: 👉 <strong>Windows-toets + . (punt)</strong> <em>(of Windows-toets + ;)</em>
+      </div>
       <input type="text" id="ksaCustomShortcutEmoji" value="${curVal}" placeholder="Bv. 🚀 of 🎯" style="font-size:1.6rem; text-align:center;">
       <div class="ksa-editor-modal-actions">
         <button type="button" class="ksa-dock-btn ksa-dock-btn-sec" id="ksaShortcutCancel">Annuleren</button>
@@ -3474,6 +3608,33 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
     }, 50);
   }
 
+  function addDaysToKsaDate(dateStr, daysToAdd = 7) {
+    if (!dateStr) return '01 / 01';
+    const m = dateStr.match(/(\d{1,2})\s*[\/\-]\s*(\d{1,2})/);
+    if (!m) return dateStr;
+
+    const day = parseInt(m[1], 10);
+    const month = parseInt(m[2], 10);
+    if (isNaN(day) || isNaN(month) || month < 1 || month > 12 || day < 1 || day > 31) {
+      return dateStr;
+    }
+
+    const now = new Date();
+    const workYearStart = (now.getMonth() + 1 >= 9) ? now.getFullYear() : now.getFullYear() - 1;
+    const year = (month >= 9) ? workYearStart : workYearStart + 1;
+
+    const d = new Date(year, month - 1, day);
+    d.setDate(d.getDate() + daysToAdd);
+
+    const newDay = d.getDate();
+    const newMonth = d.getMonth() + 1;
+
+    const formattedDay = (newDay < 10 && (m[1].length === 2 || m[1].startsWith('0'))) ? String(newDay).padStart(2, '0') : String(newDay);
+    const formattedMonth = String(newMonth).padStart(2, '0');
+
+    return `${formattedDay} / ${formattedMonth}`;
+  }
+
   function injectCardEditTools() {
     document.querySelectorAll('.cal-grid .cal-item').forEach(item => {
       ensureCalStickerSlot(item);
@@ -3485,7 +3646,7 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
         <button type="button" class="ksa-mini-btn" data-act="icon" title="Kies of verwijder icoon/sticker (bv. 🎅, 👑)">🎨 Icoon</button>
         <button type="button" class="ksa-mini-btn" data-act="past" title="Zet op Voorbij of Actief">🏁 Voorbij</button>
         <button type="button" class="ksa-mini-btn" data-act="now" title="Markeer als Binnenkort!">🔥 Nu</button>
-        <button type="button" class="ksa-mini-btn" data-act="add" title="Voeg extra datum hierna toe">➕</button>
+        <button type="button" class="ksa-mini-btn" data-act="add" title="Voeg extra datum hierna toe (telt automatisch 7 dagen op)">➕</button>
         <button type="button" class="ksa-mini-btn ksa-mini-btn-danger" data-act="del" title="Verwijder datum">🗑️</button>
       `;
       tools.querySelector('[data-act="icon"]').onclick = () => openCalendarStickerModal(item);
@@ -3501,6 +3662,27 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
         const clone = item.cloneNode(true);
         clone.querySelector('.ksa-card-edit-tools')?.remove();
         clone.querySelectorAll('.cal-sticker').forEach(s => s.remove());
+        clone.classList.remove('is-current', 'is-past');
+        clone.querySelectorAll('.cal-pill-now, .cal-excl').forEach(el => el.remove());
+
+        // Automatisch 7 dagen optellen bij de datum
+        const origDateEl = item.querySelector('.cal-date');
+        const cloneDateEl = clone.querySelector('.cal-date');
+        if (cloneDateEl && origDateEl) {
+          const origText = (origDateEl.innerText || origDateEl.textContent || '').trim();
+          cloneDateEl.textContent = addDaysToKsaDate(origText, 7);
+        }
+
+        // Activiteitstekst opschonen indien het een speciaal feestje of 'geen ksa' was
+        const eventTextEl = clone.querySelector('.cal-event-text');
+        if (eventTextEl) {
+          eventTextEl.className = 'cal-event-text';
+          const curTxt = eventTextEl.textContent.trim().toLowerCase();
+          if (curTxt.includes('kerst') || curTxt.includes('hololool') || curTxt.includes('geen ksa')) {
+            eventTextEl.textContent = 'KSA';
+          }
+        }
+
         item.after(clone);
         enableEditMode();
       };

@@ -1409,3 +1409,20 @@ section[id], .calculator-box[id], [id] {
   transform: translateY(-2px);
 }
 
+#footerCopyright {
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+}
+
+.cal-sticker img {
+  width: 20px !important;
+  height: 20px !important;
+  max-width: 20px !important;
+  max-height: 20px !important;
+  object-fit: contain !important;
+  border-radius: 3px !important;
+  display: block !important;
+  pointer-events: none !important;
+}
+
