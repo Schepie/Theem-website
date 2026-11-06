@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initCalculator();
   initGallery();
   initContactForm();
+  initPrivacyModal();
 });
 
 // 1. Sticky Header Effect
@@ -247,5 +248,42 @@ function initContactForm() {
       window.location.href = mailtoUrl;
     }, 600);
   });
+}
+
+// 5. Privacy & Cookie Policy Modal
+function initPrivacyModal() {
+  const modal = document.getElementById('privacyModal');
+  const openLink = document.getElementById('privacyOpenLink');
+  const closeBtn = document.getElementById('privacyModalClose');
+  const okBtn = document.getElementById('privacyModalOkBtn');
+
+  if (!modal) return;
+
+  function openModal(e) {
+    if (e) e.preventDefault();
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  if (openLink) openLink.addEventListener('click', openModal);
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (okBtn) okBtn.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+
+  window.openPrivacyModal = openModal;
 }
 

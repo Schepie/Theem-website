@@ -423,10 +423,58 @@
         </div>
       </div>
 
+      <!-- Privacy Policy trigger on mobile -->
+      <div style="text-align: center; margin: 14px 0 6px 0;">
+        <button type="button" id="mPrivacyBtn" style="background:none; border:none; color:var(--text-muted); font-size:0.8rem; text-decoration:underline; cursor:pointer;" onclick="if(window.openMobilePrivacyModal) window.openMobilePrivacyModal();">
+          🔒 Privacy- &amp; Cookieverklaring
+        </button>
+      </div>
+
       <!-- Edit Mode trigger on mobile -->
-      <div style="text-align: center; margin: 24px 0 12px 0;">
+      <div style="text-align: center; margin: 6px 0 12px 0;">
         <button type="button" class="btn-icon" style="width:auto; padding:8px 16px; border-radius:var(--radius-full); background:#e2e8f0; color:var(--text-muted); font-size:0.8rem; font-weight:700; margin:0 auto;" onclick="if(window.ksaPromptAndEnableEdit) window.ksaPromptAndEnableEdit();">
           ✏️ Website Beheer (Edit Mode)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Privacy & Cookie Policy Modal -->
+  <div class="theem-modal-backdrop" id="mobilePrivacyModal" role="dialog" aria-modal="true">
+    <div class="theem-modal-box">
+      <div class="theem-modal-header">
+        <div class="theem-modal-title">
+          <span>🔒</span> Privacy &amp; Cookies
+        </div>
+        <button type="button" class="theem-modal-close" id="mPrivacyModalClose" aria-label="Sluit modal">&times;</button>
+      </div>
+      <div class="theem-modal-body">
+        <h4>1. Wie zijn wij?</h4>
+        <p>
+          Deze website wordt beheerd door <strong>VZW 't Heem</strong> (Feest- en Ontmoetingscentrum VZW, zustervereniging KSA Zonhoven Meisjes), <strong>Dijkbeemdenweg 8, 3520 Zonhoven</strong>. Contact: <a href="mailto:ksazonhoven.vzw@gmail.com" style="color:var(--heem-primary); font-weight:700;">ksazonhoven.vzw@gmail.com</a>.
+        </p>
+
+        <h4>2. Cookies &amp; Lokale Opslag (EU Cookie Law)</h4>
+        <p>
+          <strong>Wij plaatsen GEEN commerciële trackingcookies, GEEN advertentiecookies en GEEN profilerende cookies.</strong>
+        </p>
+        <p>
+          Wij gebruiken enkel strikt noodzakelijke sessie-opslag (sessionStorage) om je weergavevoorkeur te onthouden. Deze vervalt direct bij het sluiten van de browser. Hierdoor is een storende cookie-pop-up wettelijk niet vereist.
+        </p>
+
+        <h4>3. Verwerking van Gegevens (AVG / GDPR)</h4>
+        <p>
+          Bij een zaalreservering verwerken wij uitsluitend je naam, contactgegevens en evenementsdetails ten behoeve van de huurovereenkomst en praktische afhandeling. Deze gegevens worden nooit verkocht of gedeeld met derden voor commerciële doeleinden.
+        </p>
+
+        <h4>4. Jouw Rechten</h4>
+        <p>
+          Je hebt te allen tijde recht op inzage, correctie of schrapping van je gegevens via een bericht aan <a href="mailto:ksazonhoven.vzw@gmail.com" style="color:var(--heem-primary); font-weight:700;">ksazonhoven.vzw@gmail.com</a>.
+        </p>
+      </div>
+      <div class="theem-modal-footer">
+        <button type="button" class="btn-icon" id="mPrivacyModalOkBtn" style="width:auto; padding:8px 18px; border-radius:var(--radius-full); background:var(--heem-primary); color:#fff; font-weight:700; font-size:0.85rem;">
+          Begrepen
         </button>
       </div>
     </div>

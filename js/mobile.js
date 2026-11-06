@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initMobileBottomNav();
   initMobileCalculator();
   initMobileLightbox();
+  initMobilePrivacyModal();
 });
 
 // 1. Mobile Bottom Tab Navigation
@@ -147,6 +148,32 @@ function initMobileLightbox() {
   if (closeBtn) closeBtn.addEventListener('click', close);
   lightbox.addEventListener('click', function(e) {
     if (e.target === lightbox) close();
+  });
+}
+
+// 4. Mobile Privacy & Cookie Policy Modal
+function initMobilePrivacyModal() {
+  const modal = document.getElementById('mobilePrivacyModal');
+  const closeBtn = document.getElementById('mPrivacyModalClose');
+  const okBtn = document.getElementById('mPrivacyModalOkBtn');
+
+  if (!modal) return;
+
+  window.openMobilePrivacyModal = function() {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (okBtn) okBtn.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) closeModal();
   });
 }
 

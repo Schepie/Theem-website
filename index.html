@@ -766,6 +766,7 @@
       <div class="footer-bottom">
         <div>
           &copy; 2026 VZW 't Heem Zonhoven &bull; Dijkbeemdenweg 8, 3520 Zonhoven &bull; Zustervereniging KSA Zonhoven
+          &bull; <a href="#privacyModal" id="privacyOpenLink" style="color: rgba(255,255,255,0.85); text-decoration: underline; cursor: pointer;">Privacy &amp; Cookies</a>
         </div>
         <div style="display: flex; align-items: center; gap: 14px;">
           <a href="mobile.html?view=mobile" style="color: var(--heem-gold);">
@@ -778,6 +779,60 @@
       </div>
     </div>
   </footer>
+
+  <!-- Privacy & Cookie Policy Modal -->
+  <div class="theem-modal-backdrop" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyModalTitle">
+    <div class="theem-modal-box">
+      <div class="theem-modal-header">
+        <div class="theem-modal-title" id="privacyModalTitle">
+          <span>🔒</span> Privacy- &amp; Cookieverklaring
+        </div>
+        <button type="button" class="theem-modal-close" id="privacyModalClose" aria-label="Sluit modal">&times;</button>
+      </div>
+      <div class="theem-modal-body">
+        <h4>1. Wie zijn wij?</h4>
+        <p>
+          Deze website wordt beheerd door <strong>VZW 't Heem</strong> (Feest- en Ontmoetingscentrum VZW, zustervereniging van KSA Zonhoven Meisjes), gevestigd aan de <strong>Dijkbeemdenweg 8, 3520 Zonhoven</strong>. Voor vragen omtrent je privacy kun je contact met ons opnemen via <a href="mailto:ksazonhoven.vzw@gmail.com" style="color:var(--heem-primary); font-weight:700;">ksazonhoven.vzw@gmail.com</a>.
+        </p>
+
+        <h4>2. Cookies &amp; Lokale Opslag (EU Cookie Law / ePrivacy)</h4>
+        <p>
+          Onze website hecht veel waarde aan je privacy. <strong>Wij plaatsen GEEN commerciële trackingcookies, GEEN advertentiecookies en GEEN profilerende cookies van derden.</strong>
+        </p>
+        <p>Wij maken uitsluitend gebruik van strikt noodzakelijke, functionele opslag:</p>
+        <ul>
+          <li><strong>Sessie-opslag (sessionStorage):</strong> Wordt uitsluitend gebruikt om je tijdelijke weergavevoorkeur (mobiel of desktop) te onthouden tijdens je actieve browsersessie. Dit wordt direct gewist zodra je de browser sluit.</li>
+          <li><strong>Lokale opslag (localStorage):</strong> Wordt enkel aangesproken door de beheerder wanneer deze via de bewerkknop (✏️) inlogt met een pincode om website-inhoud bij te werken.</li>
+        </ul>
+        <p>
+          Omdat we geen niet-functionele of trackingcookies gebruiken, is er volgens de Europese ePrivacy-richtlijn en de Belgische Gegevensbeschermingsautoriteit (GBA) geen verplichte cookiebanner nodig.
+        </p>
+
+        <h4>3. Verwerking van Persoonsgegevens (AVG / GDPR)</h4>
+        <p>
+          Wanneer je een zaal reserveert of contact met ons opneemt (via e-mail, telefoon of de online agenda van YouCanBookMe), verwerken we persoonsgegevens zoals je naam, e-mailadres, telefoonnummer en de details van je evenement.
+        </p>
+        <ul>
+          <li><strong>Doel:</strong> Het correct afhandelen van je huuraanvraag, opstellen van de huurovereenkomst, communicatie over sleuteloverdracht en eventuele terugbetaling van de waarborg.</li>
+          <li><strong>Bewaartermijn:</strong> Gegevens worden uitsluitend bewaard zolang noodzakelijk voor de praktische en wettelijke boekhoudkundige afhandeling van de verhuur.</li>
+          <li><strong>Geen verkoop:</strong> Je gegevens worden nooit doorgegeven, verkocht of gedeeld met commerciële derden.</li>
+        </ul>
+
+        <h4>4. Externe Diensten &amp; Kaartweergave</h4>
+        <p>
+          Om de ligging van 't Heem inzichtelijk te maken, maakt onze contactpagina gebruik van een ingesloten interactieve kaart van <strong>Google Maps</strong>. Bij het laden van deze kaart kan Google technische gegevens (zoals je IP-adres) verwerken conform het privacybeleid van Google.
+        </p>
+
+        <h4>5. Jouw Rechten</h4>
+        <p>
+          Conform de Algemene Verordening Gegevensbescherming (AVG/GDPR) heb je te allen tijde het recht op inzage, correctie of verwijdering van je persoonsgegevens. Neem hiervoor eenvoudig contact op via <a href="mailto:ksazonhoven.vzw@gmail.com" style="color:var(--heem-primary); font-weight:700;">ksazonhoven.vzw@gmail.com</a>.
+        </p>
+      </div>
+      <div class="theem-modal-footer">
+        <button type="button" class="btn btn-primary btn-sm" id="privacyModalOkBtn">Begrepen</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Scripts -->
   <script src="js/html2canvas.min.js"></script>

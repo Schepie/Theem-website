@@ -431,3 +431,121 @@ body {
   justify-content: center;
 }
 
+
+
+/* Privacy & Cookie Modal */
+.theem-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(5, 25, 45, 0.75);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.theem-modal-backdrop.active {
+  display: flex;
+}
+
+.theem-modal-box {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  max-width: 680px;
+  width: 100%;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 50px rgba(13, 59, 102, 0.3);
+  border: 1.5px solid var(--border-light);
+  overflow: hidden;
+  animation: modalFadeIn 0.25s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.theem-modal-header {
+  padding: 18px 24px;
+  background: var(--heem-cream);
+  border-bottom: 1.5px solid rgba(233, 196, 106, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.theem-modal-title {
+  font-family: var(--font-sub);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--heem-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.theem-modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--heem-primary);
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+.theem-modal-close:hover {
+  background: rgba(13, 59, 102, 0.1);
+}
+
+.theem-modal-body {
+  padding: 22px 24px;
+  overflow-y: auto;
+  font-size: 0.93rem;
+  line-height: 1.65;
+  color: var(--text-main);
+}
+
+.theem-modal-body h4 {
+  font-family: var(--font-sub);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--heem-primary);
+  margin: 18px 0 6px 0;
+}
+
+.theem-modal-body h4:first-child {
+  margin-top: 0;
+}
+
+.theem-modal-body p {
+  margin-bottom: 10px;
+}
+
+.theem-modal-body ul {
+  padding-left: 20px;
+  margin-bottom: 12px;
+}
+
+.theem-modal-body li {
+  margin-bottom: 4px;
+}
+
+.theem-modal-footer {
+  padding: 14px 24px;
+  background: #f8fafc;
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  justify-content: flex-end;
+}
+
