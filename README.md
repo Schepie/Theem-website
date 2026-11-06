@@ -78,3 +78,4 @@ git push -u origin main
    - Klik op een foto om een nieuwe foto te kiezen.
 5. Klik in de zwevende balk onderaan op **"Opslaan naar GitHub"**.
 6. Binnen enkele seconden staat de update live op de website!
+

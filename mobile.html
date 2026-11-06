@@ -28,10 +28,10 @@
   <!-- App Header -->
   <header class="mobile-app-header">
     <div class="mobile-brand">
-      <img src="assets/icons/theem-logo.png" alt="'t Heem Logo" width="40" height="50">
+      <img src="assets/icons/theem-logo.png" alt="'t Heem Logo" width="44" height="44" style="border-radius: var(--radius-sm); object-fit: contain;">
       <div>
         <div class="mobile-brand-title">'t Heem</div>
-        <div class="mobile-brand-sub">VZW Zonhoven</div>
+        <div class="mobile-brand-sub">Feest- &amp; Ontmoetingscentrum</div>
       </div>
     </div>
     <div class="mobile-header-actions">
@@ -45,7 +45,7 @@
   <div class="mobile-tab-section" id="tab-home" style="display: block;">
     <!-- Hero Banner -->
     <div class="mobile-hero">
-      <div class="mobile-hero-badge">🎉 Zaalverhuur Zonhoven</div>
+      <div class="mobile-hero-badge">🎪 Feest- &amp; Ontmoetingscentrum</div>
       <h1 class="mobile-hero-title">DE IDEALE PLEK VOOR <span>JE FEEST</span></h1>
       <p class="mobile-hero-desc">
         Vzw 't Heem is de zustervereniging van KSA Zonhoven. Gelegen aan Dijkbeemdenweg 8 met 2 zalen, keuken, speelweide en overdekt plein.
@@ -89,7 +89,13 @@
 
       <!-- Over Ons Card -->
       <div class="mobile-card">
-        <img src="assets/images/heem_over_ons.jpg" alt="VZW 't Heem Gebouw" class="mobile-card-img">
+        <div style="position: relative;">
+          <img src="assets/images/heem_over_ons.jpg" alt="VZW 't Heem Gebouw" class="mobile-card-img">
+          <div style="position: absolute; bottom: 12px; right: 12px; background: rgba(255,255,255,0.95); padding: 6px 10px; border-radius: var(--radius-sm); display: flex; align-items: center; gap: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+            <img src="assets/images/theem_logo_full.jpg" alt="Logo" style="width: 28px; height: 28px; border-radius: 4px; object-fit: contain;">
+            <span style="font-family: var(--font-heading); font-size: 1.1rem; color: var(--heem-primary);">'t Heem</span>
+          </div>
+        </div>
         <div class="mobile-card-body">
           <h2 class="mobile-card-title">Welkom bij VZW 't Heem</h2>
           <p class="mobile-card-desc">
@@ -434,3 +440,4 @@
   <script src="js/visual-editor.js?v=theem1"></script>
 </body>
 </html>
+

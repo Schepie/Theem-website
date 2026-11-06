@@ -93,3 +93,4 @@ function initMobileLightbox() {
     if (e.target === lightbox) close();
   });
 }
+
