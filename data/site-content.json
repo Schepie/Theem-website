@@ -1,15 +1,75 @@
 {
   "_auth": {
     "pinHash": "8528f0e201b2a70bb485dda38ae9770d7ed77d6fabd41d9bc3d77c849b812fcb",
-    "updatedAt": "2026-11-06T09:00:00.000Z",
-    "vault": null
+    "updatedAt": "2026-11-06T09:56:55.564Z",
+    "vault": {
+      "salt": "b57ac90daf6cd030e258f614b93d9163",
+      "iv": "1b23dc2e595b236f177bc564",
+      "data": "36531067a31e0f6d94538d902a1c53d5f3a6b7ab5b9b38b5c78da971d0a47a7701d8064b838f2c1c6ac69d62f74b4ec4c83341ac4c120bc2f1e46efb8367740379a92009e8d4864382a575afb1740d38b81ae020e52affbe115a44d22aa69a18aabb70c59e848557ebdba16e28",
+      "updatedAt": "2026-11-06T09:56:55.486Z"
+    }
   },
   "topbarHidden": false,
   "desktop": {
-    "texts": {},
-    "images": {},
-    "links": {},
-    "containers": {}
+    "texts": {
+      "#home > div:nth-of-type(1) > div:nth-of-type(1) > h1:nth-of-type(1)": "\n          DE IDEALE LOCATIE VOOR JE <span>FEEST OF ACTIVITEIT</span>\n        ",
+      "#over-ons > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > h2:nth-of-type(1)": "MEER DAN 40 JAAR THUIS VOOR ONZE GEMEENSCHAP",
+      "#zalen > div:nth-of-type(1) > div:nth-of-type(1) > h2:nth-of-type(1)": "ZALEN &amp; FACILITEITEN",
+      "#reglement > div:nth-of-type(1) > div:nth-of-type(1) > h2:nth-of-type(1)": "HUURVOORWAARDEN &amp; HUISREGLEMENT",
+      "#tarieven > div:nth-of-type(1) > div:nth-of-type(1) > h2:nth-of-type(1)": "TARIEVEN PER DAG",
+      "#gallerij > div:nth-of-type(1) > div:nth-of-type(1) > h2:nth-of-type(1)": "BEKIJK ONZE LOKALEN &amp; TERREINEN",
+      "#reserveren > div:nth-of-type(1) > div:nth-of-type(1) > h2:nth-of-type(1)": "RESERVEREN &amp; AANVRAAG",
+      "#contact > div:nth-of-type(1) > div:nth-of-type(1) > h2:nth-of-type(1)": "LIGGING &amp; CONTACT"
+    },
+    "images": {
+      "#heemHeader > div:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(1) > img:nth-of-type(1)": "assets/icons/theem-logo.png",
+      "#over-ons > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > img:nth-of-type(1)": "assets/images/heem_over_ons.jpg",
+      "#over-ons > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > img:nth-of-type(1)": "assets/images/theem_logo_full.jpg",
+      "#zalen > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > img:nth-of-type(1)": "assets/images/gallery/gallerij_grote_zaal_31.jpg",
+      "#zalen > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > img:nth-of-type(1)": "assets/images/gallery/gallerij_kleine_zaal_35.jpg",
+      "#zalen > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(1) > img:nth-of-type(1)": "assets/images/gallery/gallerij_keuken_37.jpg",
+      "#zalen > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(2) > img:nth-of-type(1)": "assets/images/gallery/gallerij_speeltuin_41.jpg",
+      "#zalen > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(2) > img:nth-of-type(2)": "assets/images/gallery/overkapping_plein.jpg",
+      "#galleryGrid > div:nth-of-type(1) > img:nth-of-type(1)": "assets/images/gallery/gallerij_grote_zaal_31.jpg",
+      "#galleryGrid > div:nth-of-type(2) > img:nth-of-type(1)": "assets/images/gallery/gallerij_grote_zaal_32.jpg",
+      "#galleryGrid > div:nth-of-type(3) > img:nth-of-type(1)": "assets/images/gallery/gallerij_grote_zaal_33.jpg",
+      "#galleryGrid > div:nth-of-type(4) > img:nth-of-type(1)": "assets/images/gallery/gallerij_grote_zaal_34.jpg",
+      "#galleryGrid > div:nth-of-type(5) > img:nth-of-type(1)": "assets/images/gallery/gallerij_kleine_zaal_35.jpg",
+      "#galleryGrid > div:nth-of-type(6) > img:nth-of-type(1)": "assets/images/gallery/gallerij_kleine_zaal_36.jpg",
+      "#galleryGrid > div:nth-of-type(7) > img:nth-of-type(1)": "assets/images/gallery/tarieven_3.jpg",
+      "#galleryGrid > div:nth-of-type(8) > img:nth-of-type(1)": "assets/images/gallery/gallerij_keuken_37.jpg",
+      "#galleryGrid > div:nth-of-type(9) > img:nth-of-type(1)": "assets/images/gallery/gallerij_keuken_38.jpg",
+      "#galleryGrid > div:nth-of-type(10) > img:nth-of-type(1)": "assets/images/gallery/gallerij_keuken_39.jpg",
+      "#galleryGrid > div:nth-of-type(11) > img:nth-of-type(1)": "assets/images/gallery/gallerij_keuken_40.jpg",
+      "#galleryGrid > div:nth-of-type(12) > img:nth-of-type(1)": "assets/images/gallery/gallerij_speeltuin_41.jpg",
+      "#galleryGrid > div:nth-of-type(13) > img:nth-of-type(1)": "assets/images/gallery/gallerij_speeltuin_42.jpg",
+      "#galleryGrid > div:nth-of-type(14) > img:nth-of-type(1)": "assets/images/gallery/gallerij_speeltuin_43.jpg",
+      "#galleryGrid > div:nth-of-type(15) > img:nth-of-type(1)": "assets/images/gallery/gallerij_speeltuin_44.jpg",
+      "#galleryGrid > div:nth-of-type(16) > img:nth-of-type(1)": "assets/images/gallery/overkapping_plein.jpg",
+      "#galleryGrid > div:nth-of-type(17) > img:nth-of-type(1)": "assets/images/gallery/gallerij_andere_46.jpg",
+      "#galleryGrid > div:nth-of-type(18) > img:nth-of-type(1)": "assets/images/gallery/gallerij_andere_47.jpg",
+      "#galleryGrid > div:nth-of-type(19) > img:nth-of-type(1)": "assets/images/gallery/gallerij_andere_48.jpg",
+      "#galleryGrid > div:nth-of-type(20) > img:nth-of-type(1)": "assets/images/gallery/gallerij_andere_49.jpg",
+      "#galleryGrid > div:nth-of-type(21) > img:nth-of-type(1)": "assets/images/gallery/gallerij_andere_50.jpg",
+      "#lightboxImg": "",
+      "#reserveren > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > img:nth-of-type(1)": "assets/images/youcanbookme.png",
+      "footer:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > img:nth-of-type(1)": "assets/icons/theem-logo.png"
+    },
+    "links": {
+      "#contact > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > a:nth-of-type(1)": {
+        "href": "tel:0471258778",
+        "text": "📞 Bellen: 0471/25 87 78",
+        "hidden": false
+      },
+      "#contact > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > a:nth-of-type(2)": {
+        "href": "https://maps.google.com/?q=Dijkbeemdenweg+8,+3520+Zonhoven",
+        "text": "🗺️ Routebeschrijving",
+        "hidden": false
+      }
+    },
+    "containers": {},
+    "shortcutsHidden": false,
+    "topbarHidden": false
   },
   "mobile": {
     "texts": {},
@@ -17,6 +77,10 @@
     "links": {},
     "containers": {}
   },
-  "updatedAt": "2026-11-06T09:00:00.000Z"
+  "updatedAt": "2026-11-06T09:56:55.564Z",
+  "shortcutsHidden": false,
+  "banner": {
+    "hidden": false,
+    "targetIso": null
+  }
 }
-
