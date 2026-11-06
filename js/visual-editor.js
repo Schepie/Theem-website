@@ -713,6 +713,12 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
   function applyStateToDom(state) {
     if (!state || typeof state !== 'object') return;
     ensureJimSimCircles();
+
+    // 0. Huurprijzen & Waarborg ('t Heem)
+    if (state.prices && typeof window.applyTheemPrices === 'function') {
+      window.applyTheemPrices(state.prices);
+    }
+
     const isMobilePage = window.location.pathname.includes('mobile.html');
     const pageKey = isMobilePage ? 'mobile' : 'desktop';
     const pageData = state[pageKey] || {};
@@ -1487,6 +1493,7 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
         <!-- Pushbericht tijdelijk verborgen -->
         <button type="button" class="ksa-dock-btn ksa-dock-btn-push" id="ksaBtnSendPush" title="Stuur direct een pushbericht naar alle smartphones via OneSignal" style="display:none;">📢 Pushbericht</button>
         <button type="button" class="ksa-dock-btn ksa-dock-btn-sec" id="ksaBtnEditTopbar" title="Pas de bovenste adres- en contactbalk aan ('t Heem)">📢 Topbalk</button>
+        <button type="button" class="ksa-dock-btn ksa-dock-btn-sec" id="ksaBtnEditPrices" title="Pas de officiële huurprijzen en waarborg aan">💶 Prijzen</button>
         <button type="button" class="ksa-dock-btn ksa-dock-btn-sec" id="ksaBtnToggleBanner" title="Toon of verberg de Event Aftelbanner">🎯 Banner Aan/Uit</button>
         <button type="button" class="ksa-dock-btn ksa-dock-btn-sec" id="ksaBtnToggleIntro" title="Schakel de logo animatie bij het opstarten aan of uit">🎬 Animatie: AAN</button>
         <button type="button" class="ksa-dock-btn ksa-dock-btn-sec" id="ksaBtnChangePin" title="Wijzig het bewerkwachtwoord voor de hele leidingsploeg">🔑 Wachtwoord</button>
@@ -1507,6 +1514,7 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
     const pushBtn = document.getElementById('ksaBtnSendPush');
     if (pushBtn) pushBtn.onclick = openPushNotificationModal;
     document.getElementById('ksaBtnEditTopbar').onclick = openTopbarModal;
+    document.getElementById('ksaBtnEditPrices').onclick = openPricesModal;
     document.getElementById('ksaBtnSaveEdits').onclick = saveAllEditsToGithub;
     document.getElementById('ksaBtnExitEdit').onclick = disableEditMode;
     document.getElementById('ksaBtnToggleBanner').onclick = toggleBannerVisibility;
@@ -2498,6 +2506,153 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
       }
 
       backdrop.style.display = 'none';
+    };
+  }
+
+  // --------------------------------------------------------------------------
+  // 8A-2. HUURPRIJZEN & WAARBORG BEHEER ('T HEEM)
+  // --------------------------------------------------------------------------
+  function openPricesModal() {
+    const curPrices = Object.assign(
+      { groteZaal: 115, kleineZaal: 70, keuken: 65, schoonmaak: 60, waarborg: 150 },
+      window.theemPrices || {}
+    );
+
+    const modal = document.getElementById('ksaEditorModalContent');
+    const backdrop = document.getElementById('ksaEditorModalBackdrop');
+    if (!modal || !backdrop) return;
+
+    modal.innerHTML = `
+      <h3>💶 Huurprijzen &amp; Waarborg Aanpassen ('t Heem)</h3>
+      <p style="font-size:13px; color:#64748b; margin-top:-6px; margin-bottom:14px;">
+        Pas hier de officiële dagprijzen, supplementen en waarborg aan. De wijzigingen worden direct overal op de website (desktop &amp; mobiel), in de overzichtskaarten en in de prijscalculators doorgevoerd.
+      </p>
+
+      <div style="background:#f8fafc; padding:14px; border-radius:8px; border:1px solid #e2e8f0; margin-bottom:12px;">
+        <h4 style="margin:0 0 10px 0; font-size:14px; color:#0d3b66; display:flex; align-items:center; gap:6px;">
+          <span>🏛️</span> Zaalhuur per dag (excl. keuken)
+        </h4>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div>
+            <label style="font-size:12.5px; font-weight:700; color:#334155; display:block; margin-bottom:4px;">Grote Zaal (€ / dag):</label>
+            <input type="number" id="prmGroteZaal" min="0" step="1" value="${curPrices.groteZaal}" style="width:100%; padding:8px 10px; border-radius:6px; border:1px solid #cbd5e1; font-size:15px; font-weight:700; color:#0d3b66;">
+          </div>
+          <div>
+            <label style="font-size:12.5px; font-weight:700; color:#334155; display:block; margin-bottom:4px;">Kleine Zaal (€ / dag):</label>
+            <input type="number" id="prmKleineZaal" min="0" step="1" value="${curPrices.kleineZaal}" style="width:100%; padding:8px 10px; border-radius:6px; border:1px solid #cbd5e1; font-size:15px; font-weight:700; color:#0d3b66;">
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#f8fafc; padding:14px; border-radius:8px; border:1px solid #e2e8f0; margin-bottom:12px;">
+        <h4 style="margin:0 0 10px 0; font-size:14px; color:#e76f51; display:flex; align-items:center; gap:6px;">
+          <span>🍳</span> Faciliteiten &amp; Poetsdienst
+        </h4>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div>
+            <label style="font-size:12.5px; font-weight:700; color:#334155; display:block; margin-bottom:4px;">Keuken supplement (€ / dag):</label>
+            <input type="number" id="prmKeuken" min="0" step="1" value="${curPrices.keuken}" style="width:100%; padding:8px 10px; border-radius:6px; border:1px solid #cbd5e1; font-size:15px; font-weight:700; color:#e76f51;">
+          </div>
+          <div>
+            <label style="font-size:12.5px; font-weight:700; color:#334155; display:block; margin-bottom:4px;">Poetsdienst VZW 't Heem (€):</label>
+            <input type="number" id="prmSchoonmaak" min="0" step="1" value="${curPrices.schoonmaak}" style="width:100%; padding:8px 10px; border-radius:6px; border:1px solid #cbd5e1; font-size:15px; font-weight:700; color:#16a34a;">
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#f8fafc; padding:14px; border-radius:8px; border:1px solid #e2e8f0; margin-bottom:14px;">
+        <h4 style="margin:0 0 10px 0; font-size:14px; color:#d97706; display:flex; align-items:center; gap:6px;">
+          <span>🔒</span> Waarborg
+        </h4>
+        <div>
+          <label style="font-size:12.5px; font-weight:700; color:#334155; display:block; margin-bottom:4px;">Vaste waarborg (€):</label>
+          <input type="number" id="prmWaarborg" min="0" step="1" value="${curPrices.waarborg}" style="width:100%; padding:8px 10px; border-radius:6px; border:1px solid #cbd5e1; font-size:15px; font-weight:700; color:#b45309;">
+          <div style="font-size:11.5px; color:#64748b; margin-top:4px;">Wordt teruggestort na correcte oplevering conform het reglement.</div>
+        </div>
+      </div>
+
+      <div id="prmPreviewBox" style="background:#eff6ff; border:1px solid #bfdbfe; padding:10px 14px; border-radius:8px; margin-bottom:14px; font-size:13px; color:#1e40af;">
+        <strong>💡 Voorbeeld berekening:</strong> Grote Zaal + Keuken + Schoonmaak + Waarborg = <strong id="prmPreviewTotal">€ 390</strong>
+      </div>
+
+      <div class="ksa-editor-modal-actions">
+        <button type="button" class="ksa-dock-btn ksa-dock-btn-sec" id="prmCancelBtn">Annuleren</button>
+        <button type="button" class="ksa-dock-btn ksa-dock-btn-save" id="prmApplyBtn">💾 Opslaan naar GitHub</button>
+      </div>
+    `;
+
+    backdrop.style.display = 'flex';
+
+    function updatePreview() {
+      const g = parseInt(document.getElementById('prmGroteZaal')?.value, 10) || 0;
+      const k = parseInt(document.getElementById('prmKeuken')?.value, 10) || 0;
+      const s = parseInt(document.getElementById('prmSchoonmaak')?.value, 10) || 0;
+      const w = parseInt(document.getElementById('prmWaarborg')?.value, 10) || 0;
+      const tot = g + k + s + w;
+      const el = document.getElementById('prmPreviewTotal');
+      if (el) el.textContent = `€ ${tot}`;
+    }
+
+    ['prmGroteZaal', 'prmKleineZaal', 'prmKeuken', 'prmSchoonmaak', 'prmWaarborg'].forEach(id => {
+      document.getElementById(id)?.addEventListener('input', updatePreview);
+    });
+    updatePreview();
+
+    document.getElementById('prmCancelBtn').onclick = () => { backdrop.style.display = 'none'; };
+
+    document.getElementById('prmApplyBtn').onclick = async () => {
+      const applyBtn = document.getElementById('prmApplyBtn');
+      applyBtn.disabled = true;
+      applyBtn.innerHTML = '⏳ Bezig met opslaan...';
+
+      const newPrices = {
+        groteZaal: Math.max(0, parseInt(document.getElementById('prmGroteZaal').value, 10) || 0),
+        kleineZaal: Math.max(0, parseInt(document.getElementById('prmKleineZaal').value, 10) || 0),
+        keuken: Math.max(0, parseInt(document.getElementById('prmKeuken').value, 10) || 0),
+        schoonmaak: Math.max(0, parseInt(document.getElementById('prmSchoonmaak').value, 10) || 0),
+        waarborg: Math.max(0, parseInt(document.getElementById('prmWaarborg').value, 10) || 0)
+      };
+
+      // 1. Direct toepassen op actieve pagina
+      if (typeof window.applyTheemPrices === 'function') {
+        window.applyTheemPrices(newPrices);
+      }
+
+      // 2. State ophalen & updaten
+      let fullState = (await fetchLatestGithubState()) || {};
+      fullState.prices = newPrices;
+      fullState.updatedAt = new Date().toISOString();
+
+      // Sla lokaal op
+      localStorage.setItem(KSA_GITHUB_EDITOR_CONFIG.storageKey, JSON.stringify(fullState));
+
+      // 3. GitHub commit
+      const ghToken = getEffectiveGithubToken();
+      const ghOwner = ((localStorage.getItem('theem_github_owner') || 'Schepie') || KSA_GITHUB_EDITOR_CONFIG.repoOwner).trim();
+      const ghRepo = ((localStorage.getItem('theem_github_repo') || 'Theem-website') || KSA_GITHUB_EDITOR_CONFIG.repoName).trim();
+      const ghBranch = ((localStorage.getItem('theem_github_branch') || 'main') || KSA_GITHUB_EDITOR_CONFIG.defaultBranch).trim();
+
+      if (ghToken) {
+        try {
+          await commitFileToGithub(
+            ghToken,
+            ghOwner,
+            ghRepo,
+            ghBranch,
+            KSA_GITHUB_EDITOR_CONFIG.contentFilePath,
+            utf8ToBase64(JSON.stringify(fullState, null, 2)),
+            `💶 Huurprijzen en waarborg bijgewerkt via 't Heem Edit Mode`
+          );
+          backdrop.style.display = 'none';
+          alert('✅ De prijzen zijn succesvol bijgewerkt en direct live op GitHub opgeslagen!');
+        } catch (e) {
+          backdrop.style.display = 'none';
+          alert(`⚠️ Prijzen lokaal bijgewerkt, maar directe GitHub commit gaf een fout:\n${e.message}\n\nKlik op de groene knop "💾 Opslaan naar GitHub" om te publiceren.`);
+        }
+      } else {
+        backdrop.style.display = 'none';
+        alert('✅ De prijzen zijn lokaal bijgewerkt.\n\nKlik straks op "💾 Opslaan naar GitHub" om live te publiceren.');
+      }
     };
   }
 
@@ -3684,6 +3839,10 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
       fullState.introAnimationEnabled = true;
     } else if (typeof fullState.introAnimationEnabled !== 'boolean') {
       fullState.introAnimationEnabled = true;
+    }
+
+    if (window.theemPrices) {
+      fullState.prices = Object.assign({}, window.theemPrices);
     }
 
     fullState.updatedAt = new Date().toISOString();

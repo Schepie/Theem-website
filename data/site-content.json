@@ -11,6 +11,13 @@
   },
   "topbarHidden": true,
   "introAnimationEnabled": false,
+  "prices": {
+    "groteZaal": 115,
+    "kleineZaal": 70,
+    "keuken": 65,
+    "schoonmaak": 60,
+    "waarborg": 150
+  },
   "desktop": {
     "texts": {
       "#home > div:nth-of-type(1) > div:nth-of-type(1) > h1:nth-of-type(1)": "\n          DE IDEALE LOCATIE VOOR JE <span>FEEST OF ACTIVITEIT</span>\n        ",

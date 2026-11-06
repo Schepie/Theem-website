@@ -208,7 +208,7 @@
           <div class="hall-content">
             <div class="hall-header">
               <h3 class="hall-title">Grote Zaal</h3>
-              <div class="hall-price">€ 115 <span>/ dag</span></div>
+              <div class="hall-price" data-price-hall="grote">€ 115 <span>/ dag</span></div>
             </div>
             <p class="hall-desc">
               Ruime, lichte zaal ideaal voor communies, verjaardagen, babyborrels, familiefeesten en ledenfeesten van verenigingen.
@@ -236,7 +236,7 @@
           <div class="hall-content">
             <div class="hall-header">
               <h3 class="hall-title">Kleine Zaal</h3>
-              <div class="hall-price">€ 70 <span>/ dag</span></div>
+              <div class="hall-price" data-price-hall="kleine">€ 70 <span>/ dag</span></div>
             </div>
             <p class="hall-desc">
               Gezellige zaal voor kleinere gezelschappen, intieme etentjes, verjaardagen, cursussen of vergaderingen.
@@ -264,7 +264,7 @@
           <div class="hall-content">
             <div class="hall-header">
               <h3 class="hall-title">Keuken</h3>
-              <div class="hall-price">€ 65 <span>/ dag</span></div>
+              <div class="hall-price" data-price-hall="keuken">€ 65 <span>/ dag</span></div>
             </div>
             <p class="hall-desc">
               Professioneel ingerichte keuken met alle nodige toestellen voor het bereiden en serveren van maaltijden.
@@ -339,7 +339,7 @@
           <div style="font-size: 2rem; margin-bottom: 8px;">🧹</div>
           <h4 style="font-family:var(--font-sub); font-size:1.15rem; font-weight:800; color:var(--heem-primary); margin-bottom:8px;">Poetsen &amp; Schoonmaak</h4>
           <p style="font-size:0.92rem; color:var(--text-muted); line-height:1.6;">
-            U kunt ervoor kiezen om zelf te poetsen (kostprijs <strong>€ 0</strong>) of de poetsdienst door VZW 't Heem te laten verzorgen voor een supplement van <strong>€ 60</strong>. Lokalen dienen steeds netjes en borstelschoon achtergelaten te worden.
+            U kunt ervoor kiezen om zelf te poetsen (kostprijs <strong>€ 0</strong>) of de poetsdienst door VZW 't Heem te laten verzorgen voor een supplement van <strong><span class="price-val-clean">€ 60</span></strong>. Lokalen dienen steeds netjes en borstelschoon achtergelaten te worden.
           </p>
         </div>
 
@@ -347,7 +347,7 @@
           <div style="font-size: 2rem; margin-bottom: 8px;">💶</div>
           <h4 style="font-family:var(--font-sub); font-size:1.15rem; font-weight:800; color:var(--heem-primary); margin-bottom:8px;">Waarborg &amp; Contract</h4>
           <p style="font-size:0.92rem; color:var(--text-muted); line-height:1.6;">
-            Voor elke verhuring geldt een vaste waarborg van <strong>€ 150,00</strong>. Een reservatie is pas definitief na ondertekening van het huurcontract én ontvangst van de waarborg. Na controle wordt de waarborg teruggestort.
+            Voor elke verhuring geldt een vaste waarborg van <strong><span class="price-val-deposit">€ 150</span></strong>. Een reservatie is pas definitief na ondertekening van het huurcontract én ontvangst van de waarborg. Na controle wordt de waarborg teruggestort.
           </p>
         </div>
       </div>
@@ -364,7 +364,7 @@
       </div>
 
       <div class="pricing-overview-grid">
-        <div class="price-card">
+        <div class="price-card" data-price-card="kleine">
           <div class="price-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><circle cx="19" cy="8" r="3"></circle></svg>
           </div>
@@ -373,7 +373,7 @@
           <div class="price-card-sub">Per dag • Tot 40 personen<br>Exclusief keuken</div>
         </div>
 
-        <div class="price-card" style="border: 2px solid var(--heem-primary);">
+        <div class="price-card" data-price-card="grote" style="border: 2px solid var(--heem-primary);">
           <div class="price-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
           </div>
@@ -382,7 +382,7 @@
           <div class="price-card-sub">Per dag • Tot 80 personen<br>Exclusief keuken</div>
         </div>
 
-        <div class="price-card">
+        <div class="price-card" data-price-card="keuken">
           <div class="price-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"></path><line x1="6" y1="17" x2="18" y2="17"></line></svg>
           </div>
@@ -391,7 +391,7 @@
           <div class="price-card-sub">Per dag • Volledig uitgerust<br>Met servies &amp; toestellen</div>
         </div>
 
-        <div class="price-card">
+        <div class="price-card" data-price-card="schoonmaak">
           <div class="price-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 4-3 3"></path><path d="m11 8-7 7a2 2 0 0 0 0 3l2 2a2 2 0 0 0 3 0l7-7"></path><path d="m14 11 3-3"></path><path d="m18 7 3-3"></path><path d="m9 16 2 2"></path></svg>
           </div>
@@ -438,14 +438,14 @@
           <div class="calc-form-group" style="justify-content: flex-end;">
             <label class="calc-checkbox-label" style="background:var(--bg-primary); padding:12px 16px; border-radius:var(--radius-sm); border:1px solid var(--border-light);">
               <input type="checkbox" id="calcKitchen" checked>
-              <span>Inclusief Keuken (+ € 65 / dag)</span>
+              <span id="lblCalcKitchen">Inclusief Keuken (+ € 65 / dag)</span>
             </label>
           </div>
         </div>
 
         <div class="calc-result-box">
           <div>
-            <div class="calc-total-label">Berekende Totaalprijs (incl. € 150 waarborg):</div>
+            <div class="calc-total-label">Berekende Totaalprijs (incl. <span class="price-val-deposit">€ 150</span> waarborg):</div>
             <div class="calc-total-amount" id="calcTotalDisplay">€ 330</div>
             <div class="calc-deposit-note" id="calcSubtotalDisplay">Huur: € 180 + Waarborg: € 150</div>
           </div>
@@ -850,6 +850,7 @@
   </div>
 
   <!-- Scripts -->
+  <script src="js/prices.js?v=theem1"></script>
   <script src="js/intro-animation.js?v=theem5"></script>
   <script src="js/html2canvas.min.js"></script>
   <script src="js/main.js?v=theem5"></script>

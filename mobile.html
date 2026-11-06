@@ -96,7 +96,7 @@
       <!-- Belangrijk reglement alert -->
       <div class="mobile-warning-box">
         <strong>⚠️ Belangrijke Huurregels:</strong>
-        't Heem mag <u>niet</u> verhuurd worden voor overnachtingen of feesten met luide muziek na 22u00. Einduur activiteit: 02u00. Waarborg: € 150.
+        't Heem mag <u>niet</u> verhuurd worden voor overnachtingen of feesten met luide muziek na 22u00. Einduur activiteit: 02u00. Waarborg: <span class="price-val-deposit">€ 150</span>.
       </div>
 
       <!-- Over Ons Card -->
@@ -130,7 +130,7 @@
         <div class="mobile-card-body">
           <div class="mobile-card-header">
             <h3 class="mobile-card-title">Grote Zaal</h3>
-            <div class="mobile-card-price">€ 115 <span style="font-size:0.75rem; color:var(--text-muted);">/dag</span></div>
+            <div class="mobile-card-price" data-mprice-hall="grote">€ 115 <span style="font-size:0.75rem; color:var(--text-muted);">/dag</span></div>
           </div>
           <p class="mobile-card-desc">Tot 80 personen. Ruime feestzaal met tafels en stoelen.</p>
           <div class="mobile-card-badges">
@@ -146,7 +146,7 @@
         <div class="mobile-card-body">
           <div class="mobile-card-header">
             <h3 class="mobile-card-title">Kleine Zaal</h3>
-            <div class="mobile-card-price">€ 70 <span style="font-size:0.75rem; color:var(--text-muted);">/dag</span></div>
+            <div class="mobile-card-price" data-mprice-hall="kleine">€ 70 <span style="font-size:0.75rem; color:var(--text-muted);">/dag</span></div>
           </div>
           <p class="mobile-card-desc">Tot 40 personen. Gezellige zaal voor intieme feestjes of vergaderingen.</p>
           <div class="mobile-card-badges">
@@ -162,7 +162,7 @@
         <div class="mobile-card-body">
           <div class="mobile-card-header">
             <h3 class="mobile-card-title">Uitgeruste Keuken</h3>
-            <div class="mobile-card-price">€ 65 <span style="font-size:0.75rem; color:var(--text-muted);">/dag</span></div>
+            <div class="mobile-card-price" data-mprice-hall="keuken">€ 65 <span style="font-size:0.75rem; color:var(--text-muted);">/dag</span></div>
           </div>
           <p class="mobile-card-desc">Compleet met servies, glazen, bestek, oven, koelkast en kookplaat.</p>
           <div class="mobile-card-badges">
@@ -185,7 +185,7 @@
         <div class="mobile-card-body">
           <div class="mobile-card-header">
             <h3 class="mobile-card-title">Grote Zaal</h3>
-            <div class="mobile-card-price">€ 115</div>
+            <div class="mobile-card-price" data-mprice-zalen="grote">€ 115</div>
           </div>
           <p class="mobile-card-desc">
             Onze grootste feestzaal geschikt voor familiefeesten, babyborrels, verjaardagen en bijeenkomsten tot ongeveer 80 personen.
@@ -212,7 +212,7 @@
         <div class="mobile-card-body">
           <div class="mobile-card-header">
             <h3 class="mobile-card-title">Kleine Zaal</h3>
-            <div class="mobile-card-price">€ 70</div>
+            <div class="mobile-card-price" data-mprice-zalen="kleine">€ 70</div>
           </div>
           <p class="mobile-card-desc">
             Knusse zaal geschikt tot ongeveer 40 personen. Uitermate geschikt voor cursussen, vergaderingen of kleinschalige recepties.
@@ -238,7 +238,7 @@
         <div class="mobile-card-body">
           <div class="mobile-card-header">
             <h3 class="mobile-card-title">Keuken</h3>
-            <div class="mobile-card-price">€ 65</div>
+            <div class="mobile-card-price" data-mprice-zalen="keuken">€ 65</div>
           </div>
           <p class="mobile-card-desc">
             Volledig uitgerust met serviesgoed, bestek, glazen, kookplaat, microgolfoven, koffiezetapparaat en koelkast.
@@ -281,22 +281,22 @@
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; text-align:center;">
           <div style="background:var(--bg-primary); padding:12px; border-radius:var(--radius-md);">
             <div style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">GROTE ZAAL</div>
-            <div style="font-family:var(--font-heading); font-size:2rem; color:var(--heem-primary);">€ 115</div>
+            <div style="font-family:var(--font-heading); font-size:2rem; color:var(--heem-primary);" data-mtarief="grote">€ 115</div>
             <div style="font-size:0.75rem; color:var(--text-muted);">per dag</div>
           </div>
           <div style="background:var(--bg-primary); padding:12px; border-radius:var(--radius-md);">
             <div style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">KLEINE ZAAL</div>
-            <div style="font-family:var(--font-heading); font-size:2rem; color:var(--heem-primary);">€ 70</div>
+            <div style="font-family:var(--font-heading); font-size:2rem; color:var(--heem-primary);" data-mtarief="kleine">€ 70</div>
             <div style="font-size:0.75rem; color:var(--text-muted);">per dag</div>
           </div>
           <div style="background:var(--bg-primary); padding:12px; border-radius:var(--radius-md);">
             <div style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">KEUKEN</div>
-            <div style="font-family:var(--font-heading); font-size:2rem; color:var(--heem-accent);">€ 65</div>
+            <div style="font-family:var(--font-heading); font-size:2rem; color:var(--heem-accent);" data-mtarief="keuken">€ 65</div>
             <div style="font-size:0.75rem; color:var(--text-muted);">per dag</div>
           </div>
           <div style="background:var(--bg-primary); padding:12px; border-radius:var(--radius-md);">
             <div style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">POETSEN</div>
-            <div style="font-family:var(--font-heading); font-size:1.8rem; color:var(--heem-green);">€ 0 / € 60</div>
+            <div style="font-family:var(--font-heading); font-size:1.8rem; color:var(--heem-green);" data-mtarief="schoonmaak">€ 0 / € 60</div>
             <div style="font-size:0.75rem; color:var(--text-muted);">zelf of vzw</div>
           </div>
         </div>
@@ -310,9 +310,9 @@
 
         <label style="font-size:0.85rem; font-weight:700;">Kies Zaal:</label>
         <select id="mCalcHall" class="mobile-calc-select">
-          <option value="115">Grote Zaal (€ 115)</option>
-          <option value="70">Kleine Zaal (€ 70)</option>
-          <option value="185">Beide Zalen (€ 185)</option>
+          <option value="115" data-hall="grote">Grote Zaal (€ 115)</option>
+          <option value="70" data-hall="kleine">Kleine Zaal (€ 70)</option>
+          <option value="185" data-hall="beide">Beide Zalen (€ 185)</option>
         </select>
 
         <label class="mobile-calc-check">
@@ -323,12 +323,12 @@
         <label style="font-size:0.85rem; font-weight:700;">Schoonmaak:</label>
         <select id="mCalcCleaning" class="mobile-calc-select">
           <option value="0">Zelf poetsen (€ 0)</option>
-          <option value="60">Laten poetsen door 't Heem (€ 60)</option>
+          <option value="60" data-clean="heem">Laten poetsen door 't Heem (€ 60)</option>
         </select>
 
         <div class="mobile-calc-result">
           <div>
-            <div style="font-size:0.8rem; opacity:0.8;">Totaal incl. € 150 waarborg:</div>
+            <div style="font-size:0.8rem; opacity:0.8;">Totaal incl. <span class="price-val-deposit">€ 150</span> waarborg:</div>
             <div class="mobile-calc-total" id="mCalcTotal">€ 330</div>
           </div>
           <a href="https://theem.youcanbook.me/" target="_blank" rel="noopener" class="btn-icon" style="width:auto; padding:8px 14px; border-radius:var(--radius-full); background:var(--heem-gold); color:var(--heem-primary-dark); font-weight:800; font-size:0.82rem;">
@@ -339,7 +339,7 @@
 
       <div class="mobile-warning-box">
         <strong>⚠️ Regels &amp; Waarborg:</strong>
-        Vaste waarborg van € 150. Geen fuiven na 22u00, geen overnachtingen. Einduur 02u00.
+        Vaste waarborg van <span class="price-val-deposit">€ 150</span>. Geen fuiven na 22u00, geen overnachtingen. Einduur 02u00.
       </div>
     </div>
   </div>
@@ -518,6 +518,7 @@
   </nav>
 
   <!-- Scripts -->
+  <script src="js/prices.js?v=theem1"></script>
   <script src="js/intro-animation.js?v=theem5"></script>
   <script src="js/html2canvas.min.js"></script>
   <script src="js/mobile.js?v=theem5"></script>

@@ -48,14 +48,17 @@ function initMobileCalculator() {
   if (!hallSelect || !totalDisplay) return;
 
   function calculate() {
+    const prices = window.theemPrices || { kitchen: 65, waarborg: 150 };
     const hallPrice = parseInt(hallSelect.value, 10) || 0;
-    const kitchenPrice = (kitchenCheck && kitchenCheck.checked) ? 65 : 0;
+    const kitchenPrice = (kitchenCheck && kitchenCheck.checked) ? (prices.keuken || 65) : 0;
     const cleanPrice = cleanSelect ? (parseInt(cleanSelect.value, 10) || 0) : 0;
-    const deposit = 150;
+    const deposit = prices.waarborg || 150;
 
     const grandTotal = hallPrice + kitchenPrice + cleanPrice + deposit;
     totalDisplay.textContent = `€ ${grandTotal}`;
   }
+
+  window.recalcMobileCalculator = calculate;
 
   hallSelect.addEventListener('change', calculate);
   if (kitchenCheck) kitchenCheck.addEventListener('change', calculate);

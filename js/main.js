@@ -39,11 +39,12 @@ function initCalculator() {
   if (!hallSelect || !totalDisplay) return;
 
   function calculate() {
+    const prices = window.theemPrices || { kitchen: 65, waarborg: 150 };
     const hallPrice = parseInt(hallSelect.value, 10) || 0;
-    const kitchenPrice = (kitchenCheck && kitchenCheck.checked) ? 65 : 0;
+    const kitchenPrice = (kitchenCheck && kitchenCheck.checked) ? (prices.keuken || 65) : 0;
     const cleanPrice = cleanSelect ? (parseInt(cleanSelect.value, 10) || 0) : 0;
     const days = Math.max(1, parseInt(daysInput ? daysInput.value : 1, 10) || 1);
-    const deposit = 150;
+    const deposit = prices.waarborg || 150;
 
     const rentalPerDay = hallPrice + kitchenPrice;
     const totalRental = (rentalPerDay * days) + cleanPrice;
@@ -54,6 +55,8 @@ function initCalculator() {
     }
     totalDisplay.textContent = `€ ${grandTotal}`;
   }
+
+  window.recalcMainCalculator = calculate;
 
   hallSelect.addEventListener('change', calculate);
   if (kitchenCheck) kitchenCheck.addEventListener('change', calculate);
