@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initContactForm();
   initPrivacyModal();
   initSmoothScrolling();
+  initAboutPhotoFrame();
 });
 
 // 1. Sticky Header Effect
@@ -365,4 +366,161 @@ function initSmoothScrolling() {
     updateActiveNav();
   }
 }
+
+// 6. Rotating Photo Frame in 'Over Ons' section
+function initAboutPhotoFrame() {
+  const frame = document.getElementById('aboutPhotoFrame');
+  const slidesContainer = document.getElementById('aboutFrameSlides');
+  const captionEl = document.getElementById('aboutFrameCaption');
+  const dotsContainer = document.getElementById('aboutFrameDots');
+  const prevBtn = document.getElementById('aboutFramePrev');
+  const nextBtn = document.getElementById('aboutFrameNext');
+
+  if (!frame || !slidesContainer) return;
+
+  const slidesData = [
+    {
+      src: 'assets/images/gallery/gallerij_andere_50.jpg',
+      title: "Vooraanzicht 't Heem",
+      sub: "Veilige & groene omgeving aan de Dijkbeemdenweg"
+    },
+    {
+      src: 'assets/images/gallery/gallerij_grote_zaal_31.jpg',
+      title: "Grote Zaal",
+      sub: "Feestopstelling tot 80 personen • Ruim & modern uitgerust"
+    },
+    {
+      src: 'assets/images/gallery/gallerij_kleine_zaal_35.jpg',
+      title: "Kleine Zaal",
+      sub: "Tot 40 personen • Gezellig voor familiefeesten & vergaderingen"
+    },
+    {
+      src: 'assets/images/gallery/gallerij_keuken_37.jpg',
+      title: "Volledig Uitgeruste Keuken",
+      sub: "Fornuizen, industriële vaatwas, koelingen & servies"
+    },
+    {
+      src: 'assets/images/gallery/overkapping_plein.jpg',
+      title: "Overdekt Buitenplein",
+      sub: "Weerbestendige luifels & afdak voor recepties en buitenplezier"
+    },
+    {
+      src: 'assets/images/gallery/gallerij_speeltuin_41.jpg',
+      title: "Grote Speeltuin & Terrein",
+      sub: "Veilig omheind en verkeersluw voor kinderen"
+    },
+    {
+      src: 'assets/images/hero_heem.jpg',
+      title: "Thuis voor Feest & Vereniging",
+      sub: "Al jaren de vertrouwde ontmoetingsplaats van Zonhoven"
+    }
+  ];
+
+  // Render slides and dots
+  slidesContainer.innerHTML = '';
+  if (dotsContainer) dotsContainer.innerHTML = '';
+
+  const slideElements = [];
+  const dotElements = [];
+
+  slidesData.forEach((slide, idx) => {
+    const slideDiv = document.createElement('div');
+    slideDiv.className = 'about-frame-slide' + (idx === 0 ? ' active' : '');
+    const img = document.createElement('img');
+    img.src = slide.src;
+    img.alt = slide.title;
+    img.loading = idx === 0 ? 'eager' : 'lazy';
+    slideDiv.appendChild(img);
+    slidesContainer.appendChild(slideDiv);
+    slideElements.push(slideDiv);
+
+    if (dotsContainer) {
+      const dot = document.createElement('span');
+      dot.className = 'about-frame-dot' + (idx === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Ga naar foto ${idx + 1}: ${slide.title}`);
+      dot.addEventListener('click', () => {
+        goToSlide(idx);
+        restartTimer();
+      });
+      dotsContainer.appendChild(dot);
+      dotElements.push(dot);
+    }
+  });
+
+  let currentIndex = 0;
+  let timer = null;
+
+  function goToSlide(newIndex) {
+    if (newIndex === currentIndex) return;
+    slideElements[currentIndex].classList.remove('active');
+    if (dotElements[currentIndex]) dotElements[currentIndex].classList.remove('active');
+
+    currentIndex = (newIndex + slidesData.length) % slidesData.length;
+
+    slideElements[currentIndex].classList.add('active');
+    if (dotElements[currentIndex]) dotElements[currentIndex].classList.add('active');
+
+    if (captionEl) {
+      const data = slidesData[currentIndex];
+      captionEl.innerHTML = `
+        <span class="about-frame-caption-title">${data.title}</span>
+        <span class="about-frame-caption-sub">${data.sub}</span>
+      `;
+    }
+  }
+
+  function nextSlide() {
+    goToSlide(currentIndex + 1);
+  }
+
+  function prevSlide() {
+    goToSlide(currentIndex - 1);
+  }
+
+  function startTimer() {
+    stopTimer();
+    timer = setInterval(nextSlide, 3500);
+  }
+
+  function stopTimer() {
+    if (timer) {
+      clearInterval(timer);
+      timer = null;
+    }
+  }
+
+  function restartTimer() {
+    startTimer();
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      prevSlide();
+      restartTimer();
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      nextSlide();
+      restartTimer();
+    });
+  }
+
+  frame.addEventListener('mouseenter', stopTimer);
+  frame.addEventListener('mouseleave', startTimer);
+
+  // Set initial caption
+  if (captionEl && slidesData[0]) {
+    captionEl.innerHTML = `
+      <span class="about-frame-caption-title">${slidesData[0].title}</span>
+      <span class="about-frame-caption-sub">${slidesData[0].sub}</span>
+    `;
+  }
+
+  startTimer();
+}
+
 

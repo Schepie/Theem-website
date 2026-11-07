@@ -141,7 +141,7 @@
   <!-- Over Ons Section -->
   <section class="section" id="over-ons">
     <div class="container">
-      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
+      <div class="about-grid">
         <div>
           <span class="section-tag">Welkom bij VZW 't Heem</span>
           <h2 class="section-title">MEER DAN 40 JAAR THUIS VOOR ONZE GEMEENSCHAP</h2>
@@ -161,10 +161,28 @@
           </div>
         </div>
         <div>
-          <div style="position: relative; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); border: 2px solid var(--border-light); background: #ffffff;">
-            <video autoplay loop muted playsinline preload="auto" poster="assets/images/ksatheem_poster.jpg" style="width: 100%; height: auto; display: block; border-radius: inherit; object-fit: cover;">
-              <source src="assets/videos/ksatheem.mp4" type="video/mp4">
-            </video>
+          <div class="about-photo-frame" id="aboutPhotoFrame" aria-label="Roterende fotolijst over 't Heem">
+            <div class="about-frame-badge">
+              <img src="assets/icons/theem-logo.png?v=5" alt="'t Heem Logo" style="height: 24px; width: auto; object-fit: contain;">
+              <span>Sfeerbeelden 't Heem</span>
+            </div>
+
+            <div class="about-frame-slides" id="aboutFrameSlides">
+              <div class="about-frame-slide active">
+                <img src="assets/images/gallery/gallerij_andere_50.jpg" alt="Welkom bij 't Heem Zonhoven" loading="eager">
+              </div>
+            </div>
+
+            <button type="button" class="about-frame-nav prev" id="aboutFramePrev" aria-label="Vorige foto">‹</button>
+            <button type="button" class="about-frame-nav next" id="aboutFrameNext" aria-label="Volgende foto">›</button>
+
+            <div class="about-frame-footer">
+              <div class="about-frame-caption" id="aboutFrameCaption">
+                <span class="about-frame-caption-title">Welkom bij 't Heem Zonhoven</span>
+                <span class="about-frame-caption-sub">Aan de Dijkbeemdenweg in een veilige, groene omgeving</span>
+              </div>
+              <div class="about-frame-dots" id="aboutFrameDots"></div>
+            </div>
           </div>
         </div>
       </div>

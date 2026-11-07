@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initMobileCalculator();
   initMobileLightbox();
   initMobilePrivacyModal();
+  initMobileAboutPhotoFrame();
 });
 
 // 1. Mobile Bottom Tab Navigation
@@ -179,4 +180,167 @@ function initMobilePrivacyModal() {
     if (e.target === modal) closeModal();
   });
 }
+
+// 5. Mobile Rotating Photo Frame in 'Over Ons' Card
+function initMobileAboutPhotoFrame() {
+  const frame = document.getElementById('aboutPhotoFrameMobile');
+  const slidesContainer = document.getElementById('aboutFrameSlidesMobile');
+  const captionEl = document.getElementById('aboutFrameCaptionMobile');
+  const dotsContainer = document.getElementById('aboutFrameDotsMobile');
+
+  if (!frame || !slidesContainer) return;
+
+  const slidesData = [
+    {
+      src: 'assets/images/gallery/gallerij_andere_50.jpg',
+      title: "Vooraanzicht 't Heem",
+      sub: "Veilige & groene omgeving aan de Dijkbeemdenweg"
+    },
+    {
+      src: 'assets/images/gallery/gallerij_grote_zaal_31.jpg',
+      title: "Grote Zaal",
+      sub: "Feestopstelling tot 80 personen • Ruim & modern"
+    },
+    {
+      src: 'assets/images/gallery/gallerij_kleine_zaal_35.jpg',
+      title: "Kleine Zaal",
+      sub: "Tot 40 personen • Gezellig voor familie & vrienden"
+    },
+    {
+      src: 'assets/images/gallery/gallerij_keuken_37.jpg',
+      title: "Volledig Uitgeruste Keuken",
+      sub: "Fornuizen, industriële vaatwas & koeling"
+    },
+    {
+      src: 'assets/images/gallery/overkapping_plein.jpg',
+      title: "Overdekt Buitenplein",
+      sub: "Weerbestendige luifels & afdak voor recepties"
+    },
+    {
+      src: 'assets/images/gallery/gallerij_speeltuin_41.jpg',
+      title: "Grote Speeltuin & Terrein",
+      sub: "Veilig omheind en verkeersluw voor kinderen"
+    },
+    {
+      src: 'assets/images/hero_heem.jpg',
+      title: "Thuis voor Feest & Vereniging",
+      sub: "Al jaren de vertrouwde ontmoetingsplaats in Zonhoven"
+    }
+  ];
+
+  slidesContainer.innerHTML = '';
+  if (dotsContainer) dotsContainer.innerHTML = '';
+
+  const slideElements = [];
+  const dotElements = [];
+
+  slidesData.forEach((slide, idx) => {
+    const slideDiv = document.createElement('div');
+    slideDiv.className = 'about-frame-slide' + (idx === 0 ? ' active' : '');
+    const img = document.createElement('img');
+    img.src = slide.src;
+    img.alt = slide.title;
+    img.loading = idx === 0 ? 'eager' : 'lazy';
+    slideDiv.appendChild(img);
+    slidesContainer.appendChild(slideDiv);
+    slideElements.push(slideDiv);
+
+    if (dotsContainer) {
+      const dot = document.createElement('span');
+      dot.className = 'about-frame-dot' + (idx === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Foto ${idx + 1}`);
+      dot.addEventListener('click', (e) => {
+        e.stopPropagation();
+        goToSlide(idx);
+        restartTimer();
+      });
+      dotsContainer.appendChild(dot);
+      dotElements.push(dot);
+    }
+  });
+
+  let currentIndex = 0;
+  let timer = null;
+
+  function goToSlide(newIndex) {
+    if (newIndex === currentIndex) return;
+    slideElements[currentIndex].classList.remove('active');
+    if (dotElements[currentIndex]) dotElements[currentIndex].classList.remove('active');
+
+    currentIndex = (newIndex + slidesData.length) % slidesData.length;
+
+    slideElements[currentIndex].classList.add('active');
+    if (dotElements[currentIndex]) dotElements[currentIndex].classList.add('active');
+
+    if (captionEl) {
+      const data = slidesData[currentIndex];
+      captionEl.innerHTML = `
+        <span class="about-frame-caption-title">${data.title}</span>
+        <span class="about-frame-caption-sub">${data.sub}</span>
+      `;
+    }
+  }
+
+  function nextSlide() {
+    goToSlide(currentIndex + 1);
+  }
+
+  function prevSlide() {
+    goToSlide(currentIndex - 1);
+  }
+
+  function startTimer() {
+    stopTimer();
+    timer = setInterval(nextSlide, 3500);
+  }
+
+  function stopTimer() {
+    if (timer) {
+      clearInterval(timer);
+      timer = null;
+    }
+  }
+
+  function restartTimer() {
+    startTimer();
+  }
+
+  // Touch swipe support
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  frame.addEventListener('touchstart', (e) => {
+    stopTimer();
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+
+  frame.addEventListener('touchend', (e) => {
+    const touchEndX = e.changedTouches[0].clientX;
+    const touchEndY = e.changedTouches[0].clientY;
+    const diffX = touchEndX - touchStartX;
+    const diffY = touchEndY - touchStartY;
+
+    // Only swipe if horizontal movement is dominant and > 35px
+    if (Math.abs(diffX) > 35 && Math.abs(diffX) > Math.abs(diffY)) {
+      if (diffX < 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+    }
+    restartTimer();
+  }, { passive: true });
+
+  // Initial caption
+  if (captionEl && slidesData[0]) {
+    captionEl.innerHTML = `
+      <span class="about-frame-caption-title">${slidesData[0].title}</span>
+      <span class="about-frame-caption-sub">${slidesData[0].sub}</span>
+    `;
+  }
+
+  startTimer();
+}
+
 
