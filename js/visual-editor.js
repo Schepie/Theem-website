@@ -2965,13 +2965,13 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
       } catch(e) {}
     }
     if (enabled) {
-      btn.innerHTML = '🎬 Animatie: AAN';
+      btn.innerHTML = '🖼️ Fotolijst: AAN';
       btn.style.background = '';
-      btn.title = 'De logo-opstartanimatie staat momenteel AAN. Klik om uit te schakelen.';
+      btn.title = 'De roterende fotolijst over \'t Heem staat momenteel AAN. Klik om uit te schakelen.';
     } else {
-      btn.innerHTML = '🎬 Animatie: UIT';
+      btn.innerHTML = '🖼️ Fotolijst: UIT';
       btn.style.background = '#f1f5f9';
-      btn.title = 'De logo-opstartanimatie staat momenteel UIT. Klik om in te schakelen.';
+      btn.title = 'De roterende fotolijst over \'t Heem staat momenteel UIT. Klik om in te schakelen.';
     }
   }
 

@@ -10,7 +10,7 @@
     }
   },
   "topbarHidden": true,
-  "introAnimationEnabled": false,
+  "introAnimationEnabled": true,
   "prices": {
     "groteZaal": 115,
     "kleineZaal": 70,

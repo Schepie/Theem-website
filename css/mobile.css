@@ -597,7 +597,9 @@ body {
   position: fixed;
   inset: 0;
   z-index: 999999;
-  background: #f8f4e8;
+  background: rgba(13, 23, 51, 0.90);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -619,41 +621,165 @@ body {
 
 .theem-intro-card {
   position: relative;
-  max-width: min(820px, 94vw);
+  max-width: min(840px, 94vw);
   width: 100%;
-  min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   box-sizing: border-box;
 }
 
-.theem-intro-video {
+/* De Roterende Fotolijst */
+.theem-intro-frame {
   width: 100%;
-  max-width: 100%;
-  max-height: 75vh;
-  border-radius: 16px;
-  box-shadow: 0 16px 48px rgba(13, 59, 102, 0.18);
-  background: #f8f4e8;
-  object-fit: contain;
+  aspect-ratio: 4 / 3;
+  max-height: 68vh;
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.15);
+  background: #0d1733;
+}
+
+.theem-frame-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 10;
+  background: rgba(13, 23, 51, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 5px 12px 5px 8px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  pointer-events: none;
+}
+
+.theem-frame-badge-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  letter-spacing: 0.05em;
+  line-height: 1;
   display: block;
+}
+
+.theem-frame-badge-sub {
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.75);
+  display: block;
+  font-weight: 600;
+  line-height: 1;
+  margin-top: 1px;
+}
+
+.theem-frame-slides {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.theem-frame-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.theem-frame-slide.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.theem-frame-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1);
+  transition: transform 5s ease-out;
+}
+
+.theem-frame-slide.active img {
+  transform: scale(1.05);
+}
+
+.theem-frame-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: 30px 16px 14px 16px;
+  background: linear-gradient(180deg, transparent 0%, rgba(10, 18, 42, 0.95) 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.theem-frame-caption {
+  color: #ffffff;
+}
+
+.theem-frame-caption-title {
+  font-family: var(--font-sub);
+  font-size: 1.1rem;
+  font-weight: 800;
+  line-height: 1.2;
+  display: block;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.theem-frame-caption-sub {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.85);
+  display: block;
+  margin-top: 3px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.theem-frame-dots {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.theem-frame-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.35);
+  transition: all 0.3s ease;
+}
+
+.theem-frame-dot.active {
+  width: 18px;
+  background: var(--heem-logo-red, #b61133);
 }
 
 .theem-intro-skip-btn {
   position: absolute;
-  bottom: -46px;
-  right: 8px;
-  background: #0d3b66;
+  bottom: -48px;
+  right: 4px;
+  background: var(--heem-logo-blue, #1b326f);
   color: #ffffff;
-  border: 1.5px solid rgba(233, 196, 106, 0.6);
+  border: 1.5px solid var(--heem-logo-red, #b61133);
   padding: 8px 18px;
   border-radius: 9999px;
   font-family: inherit;
   font-size: 0.88rem;
-  font-weight: 700;
+  font-weight: 800;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(13, 59, 102, 0.25);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
   transition: all 0.2s ease;
   display: inline-flex;
   align-items: center;
@@ -662,7 +788,7 @@ body {
 }
 
 .theem-intro-skip-btn:hover {
-  background: #e76f51;
+  background: var(--heem-logo-red, #b61133);
   transform: translateY(-2px);
 }
 
