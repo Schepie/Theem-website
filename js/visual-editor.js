@@ -1507,7 +1507,6 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
         <button type="button" class="ksa-dock-btn ksa-dock-btn-sec" id="ksaBtnEditTopbar" title="Pas de bovenste adres- en contactbalk aan ('t Heem)">📢 Topbalk</button>
         <button type="button" class="ksa-dock-btn ksa-dock-btn-sec" id="ksaBtnEditPrices" title="Pas de officiële huurprijzen en waarborg aan">💶 Prijzen</button>
         <button type="button" class="ksa-dock-btn ksa-dock-btn-sec" id="ksaBtnToggleBanner" title="Toon of verberg de Event Aftelbanner">🎯 Banner Aan/Uit</button>
-        <button type="button" class="ksa-dock-btn ksa-dock-btn-sec" id="ksaBtnToggleIntro" title="Schakel de logo animatie bij het opstarten aan of uit">🎬 Animatie: AAN</button>
         <button type="button" class="ksa-dock-btn ksa-dock-btn-sec" id="ksaBtnChangePin" title="Wijzig het bewerkwachtwoord voor de hele leidingsploeg">🔑 Wachtwoord</button>
         <button type="button" class="ksa-dock-btn ksa-dock-btn-sec" id="ksaBtnGithubConfig" title="Stel GitHub toegangstoken in voor live publicatie">⚙️ GitHub Koppeling</button>
         <button type="button" class="ksa-dock-btn ksa-dock-btn-sec" id="ksaBtnResetEdits" title="Herstel standaard waarden">↩️ Reset</button>
@@ -1530,12 +1529,9 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
     document.getElementById('ksaBtnSaveEdits').onclick = saveAllEditsToGithub;
     document.getElementById('ksaBtnExitEdit').onclick = disableEditMode;
     document.getElementById('ksaBtnToggleBanner').onclick = toggleBannerVisibility;
-    document.getElementById('ksaBtnToggleIntro').onclick = toggleIntroAnimation;
     document.getElementById('ksaBtnChangePin').onclick = openChangePasswordModal;
     document.getElementById('ksaBtnGithubConfig').onclick = openGithubConfigModal;
     document.getElementById('ksaBtnResetEdits').onclick = resetAllEdits;
-
-    updateIntroButtonState();
 
     const isMobilePage = window.location.pathname.includes('mobile.html');
     if (isMobilePage) {
@@ -1964,7 +1960,6 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
 
     injectBannerControlBar();
     updateBannerButtonState();
-    updateIntroButtonState();
     injectGroupPillsControlBar();
     injectCardEditTools();
     injectShortcutTools();
@@ -2946,76 +2941,6 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
     if (mobileCard) mobileCard.style.display = isHidden ? '' : 'none';
 
     updateBannerButtonState();
-  }
-
-  function updateIntroButtonState() {
-    const btn = document.getElementById('ksaBtnToggleIntro');
-    if (!btn) return;
-    let enabled = true;
-    const local = localStorage.getItem('theem_intro_enabled');
-    if (local === '0' || local === 'false') enabled = false;
-    else if (local === '1' || local === 'true') enabled = true;
-    else {
-      try {
-        const stored = localStorage.getItem(KSA_GITHUB_EDITOR_CONFIG.storageKey);
-        if (stored) {
-          const parsed = JSON.parse(stored);
-          if (typeof parsed.introAnimationEnabled === 'boolean') enabled = parsed.introAnimationEnabled;
-        }
-      } catch(e) {}
-    }
-    if (enabled) {
-      btn.innerHTML = '🖼️ Fotolijst: AAN';
-      btn.style.background = '';
-      btn.title = 'De roterende fotolijst over \'t Heem staat momenteel AAN. Klik om uit te schakelen.';
-    } else {
-      btn.innerHTML = '🖼️ Fotolijst: UIT';
-      btn.style.background = '#f1f5f9';
-      btn.title = 'De roterende fotolijst over \'t Heem staat momenteel UIT. Klik om in te schakelen.';
-    }
-  }
-
-  async function toggleIntroAnimation() {
-    const btn = document.getElementById('ksaBtnToggleIntro');
-    let isCurrentlyEnabled = true;
-    const local = localStorage.getItem('theem_intro_enabled');
-    if (local === '0' || local === 'false') isCurrentlyEnabled = false;
-
-    const newVal = !isCurrentlyEnabled;
-    localStorage.setItem('theem_intro_enabled', newVal ? '1' : '0');
-
-    let fullState = (await fetchLatestGithubState()) || {};
-    fullState.introAnimationEnabled = newVal;
-    localStorage.setItem(KSA_GITHUB_EDITOR_CONFIG.storageKey, JSON.stringify(fullState));
-
-    updateIntroButtonState();
-
-    const ghToken = getEffectiveGithubToken();
-    const ghOwner = ((localStorage.getItem('theem_github_owner') || 'Schepie') || KSA_GITHUB_EDITOR_CONFIG.repoOwner).trim();
-    const ghRepo = ((localStorage.getItem('theem_github_repo') || 'Theem-website') || KSA_GITHUB_EDITOR_CONFIG.repoName).trim();
-    const ghBranch = ((localStorage.getItem('theem_github_branch') || 'main') || KSA_GITHUB_EDITOR_CONFIG.defaultBranch).trim();
-
-    if (ghToken) {
-      try {
-        if (btn) btn.innerHTML = '⏳ Opslaan...';
-        await commitFileToGithub(
-          ghToken,
-          ghOwner,
-          ghRepo,
-          ghBranch,
-          KSA_GITHUB_EDITOR_CONFIG.contentFilePath,
-          utf8ToBase64(JSON.stringify(fullState, null, 2)),
-          `🎬 Logo opstartanimatie ${newVal ? 'ingeschakeld' : 'uitgeschakeld'} via Edit Mode`
-        );
-        updateIntroButtonState();
-        alert(`✅ De logo-opstartanimatie is nu ${newVal ? 'INGESCHAKELD' : 'UITGESCHAKELD'} en direct live op GitHub!`);
-      } catch (e) {
-        updateIntroButtonState();
-        alert(`⚠️ Lokaal ingesteld op ${newVal ? 'AAN' : 'UIT'}, maar GitHub publicatie kon niet direct worden voltooid:\n${e.message}\n\nKlik op "💾 Opslaan naar GitHub" om te publiceren.`);
-      }
-    } else {
-      alert(`✅ De logo-opstartanimatie is lokaal ${newVal ? 'INGESCHAKELD' : 'UITGESCHAKELD'}.\n\nKlik straks op "💾 Opslaan naar GitHub" om het live te publiceren.`);
-    }
   }
 
   // --------------------------------------------------------------------------
@@ -4012,15 +3937,6 @@ const KSA_GITHUB_EDITOR_CONFIG = THEEM_GITHUB_EDITOR_CONFIG;
         pinHash: activeHash,
         updatedAt: new Date().toISOString()
       };
-    }
-
-    const introPref = localStorage.getItem('theem_intro_enabled');
-    if (introPref === '0' || introPref === 'false') {
-      fullState.introAnimationEnabled = false;
-    } else if (introPref === '1' || introPref === 'true') {
-      fullState.introAnimationEnabled = true;
-    } else if (typeof fullState.introAnimationEnabled !== 'boolean') {
-      fullState.introAnimationEnabled = true;
     }
 
     if (window.theemPrices) {
