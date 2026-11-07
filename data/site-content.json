@@ -91,5 +91,6 @@
   "banner": {
     "hidden": false,
     "targetIso": null
-  }
+  },
+  "introAnimationEnabled": false
 }
