@@ -27,7 +27,8 @@
       "#tarieven > div:nth-of-type(1) > div:nth-of-type(1) > h2:nth-of-type(1)": "TARIEVEN PER DAG",
       "#gallerij > div:nth-of-type(1) > div:nth-of-type(1) > h2:nth-of-type(1)": "BEKIJK ONZE LOKALEN &amp; TERREINEN",
       "#reserveren > div:nth-of-type(1) > div:nth-of-type(1) > h2:nth-of-type(1)": "RESERVEREN &amp; AANVRAAG",
-      "#contact > div:nth-of-type(1) > div:nth-of-type(1) > h2:nth-of-type(1)": "LIGGING &amp; CONTACT"
+      "#contact > div:nth-of-type(1) > div:nth-of-type(1) > h2:nth-of-type(1)": "LIGGING &amp; CONTACT",
+      "#footerCopyright": "\n          © 2026 VZW 't Heem Zonhoven • Dijkbeemdenweg 8, 3520 Zonhoven • Zustervereniging KSA Zonhoven\n          • <a href=\"#privacyModal\" id=\"privacyOpenLink\" style=\"color: rgba(255,255,255,0.85); text-decoration: underline; cursor: pointer;\">Privacy &amp; Cookies</a>\n        "
     },
     "images": {
       "#heemHeader > div:nth-of-type(1) > nav:nth-of-type(1) > a:nth-of-type(1) > img:nth-of-type(1)": "assets/icons/theem-logo.png",
@@ -59,7 +60,7 @@
       "#galleryGrid > div:nth-of-type(20) > img:nth-of-type(1)": "assets/images/gallery/gallerij_andere_49.jpg",
       "#galleryGrid > div:nth-of-type(21) > img:nth-of-type(1)": "assets/images/gallery/gallerij_andere_50.jpg",
       "#lightboxImg": "",
-      "#reserveren > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > img:nth-of-type(1)": "assets/images/youcanbookme.png",
+      "#reserveren > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > a:nth-of-type(1) > img:nth-of-type(1)": "assets/images/youcanbookme_calendar.png",
       "footer:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > img:nth-of-type(1)": "assets/icons/theem-logo.png"
     },
     "links": {
@@ -86,7 +87,7 @@
     "links": {},
     "containers": {}
   },
-  "updatedAt": "2026-11-06T14:54:37.283Z",
+  "updatedAt": "2026-11-07T09:42:05.338Z",
   "shortcutsHidden": false,
   "banner": {
     "hidden": false,
