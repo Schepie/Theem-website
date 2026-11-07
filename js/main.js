@@ -335,5 +335,34 @@ function initSmoothScrolling() {
       }
     }, 200);
   }
+
+  // Active Menu Pill Scrollspy
+  const navLinks = document.querySelectorAll('.nav-menu .nav-link');
+  const sections = Array.from(navLinks).map(link => {
+    const hash = link.getAttribute('href');
+    return (hash && hash.startsWith('#') && hash.length > 1) ? document.querySelector(hash) : null;
+  }).filter(Boolean);
+
+  if (sections.length > 0) {
+    const updateActiveNav = () => {
+      const scrollPos = window.pageYOffset + 160;
+      let currentSection = null;
+      for (let i = sections.length - 1; i >= 0; i--) {
+        if (sections[i].offsetTop <= scrollPos) {
+          currentSection = sections[i];
+          break;
+        }
+      }
+      navLinks.forEach(link => {
+        if (currentSection && link.getAttribute('href') === '#' + currentSection.id) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    };
+    window.addEventListener('scroll', updateActiveNav, { passive: true });
+    updateActiveNav();
+  }
 }
 

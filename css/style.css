@@ -6,17 +6,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
-  /* Brand Colors */
-  --heem-primary: #0d3b66;        /* Diep marineblauw van 't Heem & KSA */
-  --heem-primary-hover: #072746;
-  --heem-primary-dark: #05192d;
-  --heem-accent: #e76f51;         /* Warm terracotta / feestelijk oranje-rood */
-  --heem-accent-hover: #d25a3d;
+  /* Brand Colors - gebaseerd op het officiële 't Heem & KSA logo (Koninklijk Blauw & Karmijnrood) */
+  --heem-primary: #1b326f;        /* Koninklijk blauw van het 't Heem logo & KSA */
+  --heem-primary-hover: #132450;
+  --heem-primary-dark: #0d1733;
+  --heem-accent: #b61133;         /* Karmijnrood van de 'vzw' zuil in het logo */
+  --heem-accent-hover: #960e2a;
+  --heem-logo-blue: #1b326f;      /* Exact logo blauw */
+  --heem-logo-red: #b61133;       /* Exact logo rood */
   --heem-gold: #e9c46a;           /* Goudgeel voor highlights */
   --heem-green: #2a9d8f;          /* Bosgroen voor speeltuin & natuur */
   --heem-green-hover: #21867a;
-  --heem-cream: #f8f4e8;          /* Officiële achtergrondkleur van het 't Heem logo */
-  --heem-light-blue: #e8f1f5;
+  --heem-cream: #f4f6fc;          /* Frisse zachte blauwwit-tint ipv het oude geel-beige */
+  --heem-light-blue: #e8f0fe;
   --heem-ice: #f4f7fb;
 
   /* Neutrals & Surfaces */
@@ -27,7 +29,7 @@
   --text-dark: #020617;
   --text-muted: #64748b;
   --border-light: #e2e8f0;
-  --border-blue: rgba(13, 59, 102, 0.15);
+  --border-blue: rgba(27, 50, 111, 0.16);
   --nav-bg: #ffffff;
 
   /* Shadows */
@@ -116,11 +118,11 @@ section[id], .calculator-box[id], [id] {
 
 /* Topbar Notification / Status */
 .heem-topbar {
-  background: linear-gradient(90deg, #0d3b66, #1b4965);
+  background: linear-gradient(90deg, #1b326f, #0d1733);
   color: #ffffff;
   padding: 10px 0;
   font-size: 0.9rem;
-  border-bottom: 2px solid var(--heem-gold);
+  border-bottom: 3px solid var(--heem-logo-red);
 }
 
 .heem-topbar .container {
@@ -167,6 +169,7 @@ section[id], .calculator-box[id], [id] {
   z-index: 999;
   background: var(--nav-bg);
   box-shadow: var(--shadow-sm);
+  border-bottom: 1px solid rgba(27, 50, 111, 0.08);
   transition: var(--transition-fast);
 }
 
@@ -187,10 +190,11 @@ section[id], .calculator-box[id], [id] {
 }
 
 .brand-logo img {
-  height: 64px;
+  height: 68px;
   width: auto;
   border-radius: var(--radius-sm);
   transition: transform var(--transition-fast);
+  display: block;
 }
 
 .brand-logo:hover img {
@@ -209,16 +213,16 @@ section[id], .calculator-box[id], [id] {
   font-family: var(--font-sub);
   font-weight: 700;
   font-size: 0.92rem;
-  color: var(--heem-primary);
+  color: var(--heem-logo-blue);
   background: var(--heem-cream);
-  border: 1.5px solid rgba(233, 196, 106, 0.45);
+  border: 1.5px solid rgba(27, 50, 111, 0.18);
   padding: 8px 18px;
   border-radius: var(--radius-full);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   white-space: nowrap;
-  box-shadow: 0 2px 6px rgba(13, 59, 102, 0.05);
+  box-shadow: 0 2px 6px rgba(27, 50, 111, 0.05);
   transition: all var(--transition-fast);
   text-decoration: none;
   cursor: pointer;
@@ -227,16 +231,36 @@ section[id], .calculator-box[id], [id] {
 
 .nav-link:hover {
   color: #ffffff;
-  background: var(--heem-primary);
-  border-color: var(--heem-primary);
+  background: var(--heem-logo-blue);
+  border-color: var(--heem-logo-blue);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(13, 59, 102, 0.2);
+  box-shadow: 0 4px 14px rgba(27, 50, 111, 0.25);
 }
 
 .nav-link:active, .nav-link.active {
   color: #ffffff;
-  background: var(--heem-primary);
-  border-color: var(--heem-primary);
+  background: var(--heem-logo-blue);
+  border-color: var(--heem-logo-blue);
+  transform: translateY(0);
+}
+
+/* Red Accent Pill for Reserveren CTA */
+.nav-link[href="#reserveren"], .nav-link-reserveren {
+  background: var(--heem-logo-red);
+  color: #ffffff;
+  border-color: var(--heem-logo-red);
+  box-shadow: 0 2px 8px rgba(182, 17, 51, 0.25);
+}
+
+.nav-link[href="#reserveren"]:hover, .nav-link-reserveren:hover {
+  background: var(--heem-accent-hover);
+  border-color: var(--heem-accent-hover);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(182, 17, 51, 0.38);
+  transform: translateY(-2px);
+}
+
+.nav-link[href="#reserveren"]:active, .nav-link-reserveren:active {
   transform: translateY(0);
 }
 

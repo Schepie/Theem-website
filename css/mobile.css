@@ -6,12 +6,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
-  --heem-primary: #0d3b66;
-  --heem-primary-dark: #05192d;
-  --heem-accent: #e76f51;
+  --heem-primary: #1b326f;
+  --heem-primary-dark: #0d1733;
+  --heem-accent: #b61133;
+  --heem-logo-blue: #1b326f;
+  --heem-logo-red: #b61133;
+  --heem-cream: #f4f6fc;
   --heem-gold: #e9c46a;
   --heem-green: #2a9d8f;
-  --heem-light-blue: #e8f1f5;
+  --heem-light-blue: #e8f0fe;
   --bg-primary: #f8fafc;
   --bg-card: #ffffff;
   --text-main: #0f172a;
