@@ -8,11 +8,13 @@
 :root {
   --heem-primary: #1b326f;
   --heem-primary-dark: #0d1733;
-  --heem-accent: #b61133;
+  --heem-accent: #b91735;
+  --heem-accent-hover: #960e2a;
+  --heem-accent-light: #ff4d6d;
   --heem-logo-blue: #1b326f;
-  --heem-logo-red: #b61133;
+  --heem-logo-red: #b91735;
   --heem-cream: #f4f6fc;
-  --heem-gold: #e9c46a;
+  --heem-gold: #b91735;
   --heem-green: #2a9d8f;
   --heem-light-blue: #e8f0fe;
   --bg-primary: #f8fafc;
@@ -118,12 +120,12 @@ body {
 /* Mobile Hero Banner */
 .mobile-hero {
   position: relative;
-  background: linear-gradient(180deg, rgba(13, 59, 102, 0.85), rgba(5, 25, 45, 0.95)), url('../assets/images/hero_heem.jpg') center/cover no-repeat;
+  background: linear-gradient(180deg, rgba(27, 50, 111, 0.88), rgba(13, 23, 51, 0.95)), url('../assets/images/hero_heem.jpg') center/cover no-repeat;
   color: #ffffff;
   padding: 32px 16px 36px 16px;
   border-bottom-left-radius: var(--radius-lg);
   border-bottom-right-radius: var(--radius-lg);
-  box-shadow: 0 4px 20px rgba(13, 59, 102, 0.15);
+  box-shadow: 0 4px 20px rgba(27, 50, 111, 0.15);
   margin-bottom: 20px;
 }
 
@@ -131,9 +133,9 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(233, 196, 106, 0.2);
-  border: 1px solid var(--heem-gold);
-  color: var(--heem-gold);
+  background: rgba(185, 23, 53, 0.22);
+  border: 1px solid rgba(255, 77, 109, 0.55);
+  color: var(--heem-accent-light);
   padding: 4px 12px;
   border-radius: var(--radius-full);
   font-size: 0.75rem;
@@ -150,7 +152,7 @@ body {
 }
 
 .mobile-hero-title span {
-  color: var(--heem-gold);
+  color: var(--heem-accent-light);
 }
 
 .mobile-hero-desc {
@@ -452,7 +454,7 @@ body {
 .mobile-calc-total {
   font-family: var(--font-heading);
   font-size: 2.2rem;
-  color: var(--heem-gold);
+  color: #ffffff;
   line-height: 1;
 }
 
@@ -623,7 +625,7 @@ body {
 .theem-modal-header {
   padding: 18px 24px;
   background: var(--heem-cream);
-  border-bottom: 1.5px solid rgba(233, 196, 106, 0.4);
+  border-bottom: 2px solid var(--heem-accent);
   display: flex;
   align-items: center;
   justify-content: space-between;

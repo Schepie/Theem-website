@@ -6,15 +6,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
-  /* Brand Colors - gebaseerd op het officiële 't Heem & KSA logo (Koninklijk Blauw & Karmijnrood) */
-  --heem-primary: #1b326f;        /* Koninklijk blauw van het 't Heem logo & KSA */
+  /* Brand Colors - gebaseerd op het officiële 't Heem logo (Koninklijk Blauw & Karmijnrood) */
+  --heem-primary: #1b326f;        /* Koninklijk blauw van het 't Heem logo */
   --heem-primary-hover: #132450;
   --heem-primary-dark: #0d1733;
-  --heem-accent: #b61133;         /* Karmijnrood van de 'vzw' zuil in het logo */
+  --heem-accent: #b91735;         /* Karmijnrood van de 'vzw' zuil in het logo */
   --heem-accent-hover: #960e2a;
+  --heem-accent-light: #ff4d6d;   /* Heldere rood-accentkleur voor contrast op donkere achtergronden */
   --heem-logo-blue: #1b326f;      /* Exact logo blauw */
-  --heem-logo-red: #b61133;       /* Exact logo rood */
-  --heem-gold: #e9c46a;           /* Goudgeel voor highlights */
+  --heem-logo-red: #b91735;       /* Exact logo rood */
+  --heem-gold: #b91735;           /* Legacy alias omgezet naar logo-rood */
   --heem-green: #2a9d8f;          /* Bosgroen voor speeltuin & natuur */
   --heem-green-hover: #21867a;
   --heem-cream: #f4f6fc;          /* Frisse zachte blauwwit-tint ipv het oude geel-beige */
@@ -32,11 +33,11 @@
   --border-blue: rgba(27, 50, 111, 0.16);
   --nav-bg: #ffffff;
 
-  /* Shadows */
-  --shadow-sm: 0 4px 12px rgba(13, 59, 102, 0.06);
-  --shadow-md: 0 8px 24px rgba(13, 59, 102, 0.10);
-  --shadow-lg: 0 16px 40px rgba(13, 59, 102, 0.16);
-  --shadow-xl: 0 24px 60px rgba(13, 59, 102, 0.22);
+  /* Shadows - gebaseerd op logo koninklijk blauw */
+  --shadow-sm: 0 4px 12px rgba(27, 50, 111, 0.06);
+  --shadow-md: 0 8px 24px rgba(27, 50, 111, 0.10);
+  --shadow-lg: 0 16px 40px rgba(27, 50, 111, 0.16);
+  --shadow-xl: 0 24px 60px rgba(27, 50, 111, 0.22);
 
   /* Fonts */
   --font-heading: 'Bebas Neue', sans-serif;
@@ -159,7 +160,7 @@ section[id], .calculator-box[id], [id] {
 }
 
 .topbar-contact a:hover {
-  color: var(--heem-gold);
+  color: var(--heem-accent-light);
 }
 
 /* Header & Navigation */
@@ -322,25 +323,29 @@ section[id], .calculator-box[id], [id] {
 .btn-primary {
   background: var(--heem-primary);
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(13, 59, 102, 0.25);
+  box-shadow: 0 4px 14px rgba(27, 50, 111, 0.25);
 }
 
 .btn-primary:hover {
   background: var(--heem-primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(13, 59, 102, 0.35);
+  box-shadow: 0 6px 20px rgba(27, 50, 111, 0.35);
 }
 
-.btn-accent {
+.btn-accent,
+.btn-gold {
   background: var(--heem-accent);
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(231, 111, 81, 0.25);
+  font-weight: 800;
+  box-shadow: 0 4px 14px rgba(185, 23, 53, 0.35);
 }
 
-.btn-accent:hover {
+.btn-accent:hover,
+.btn-gold:hover {
   background: var(--heem-accent-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(231, 111, 81, 0.35);
+  box-shadow: 0 6px 20px rgba(185, 23, 53, 0.45);
+  color: #ffffff;
 }
 
 .btn-outline {
@@ -365,17 +370,6 @@ section[id], .calculator-box[id], [id] {
   color: var(--heem-primary);
 }
 
-.btn-gold {
-  background: var(--heem-gold);
-  color: var(--heem-primary-dark);
-  font-weight: 800;
-}
-
-.btn-gold:hover {
-  background: #dfb657;
-  transform: translateY(-2px);
-}
-
 .btn-sm {
   padding: 8px 16px;
   font-size: 0.85rem;
@@ -389,7 +383,7 @@ section[id], .calculator-box[id], [id] {
 /* Hero Section */
 .hero-section {
   position: relative;
-  background: linear-gradient(135deg, rgba(13, 59, 102, 0.88), rgba(5, 25, 45, 0.92)), url('../assets/images/hero_heem.jpg') center/cover no-repeat;
+  background: linear-gradient(135deg, rgba(27, 50, 111, 0.90), rgba(13, 23, 51, 0.94)), url('../assets/images/hero_heem.jpg') center/cover no-repeat;
   color: #ffffff;
   padding: 100px 0 120px 0;
   overflow: hidden;
@@ -405,9 +399,9 @@ section[id], .calculator-box[id], [id] {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(233, 196, 106, 0.2);
-  border: 1px solid var(--heem-gold);
-  color: var(--heem-gold);
+  background: rgba(185, 23, 53, 0.22);
+  border: 1px solid rgba(255, 77, 109, 0.55);
+  color: var(--heem-accent-light);
   padding: 6px 16px;
   border-radius: var(--radius-full);
   font-family: var(--font-sub);
@@ -428,7 +422,7 @@ section[id], .calculator-box[id], [id] {
 }
 
 .hero-title span {
-  color: var(--heem-gold);
+  color: var(--heem-accent-light);
 }
 
 .hero-description {
@@ -463,12 +457,13 @@ section[id], .calculator-box[id], [id] {
   width: 44px;
   height: 44px;
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(185, 23, 53, 0.18);
+  border: 1px solid rgba(255, 77, 109, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.4rem;
-  color: var(--heem-gold);
+  color: var(--heem-accent-light);
   flex-shrink: 0;
 }
 
@@ -476,7 +471,7 @@ section[id], .calculator-box[id], [id] {
   width: 22px;
   height: 22px;
   display: block;
-  stroke: #ffffff;
+  stroke: var(--heem-accent-light);
 }
 
 .hero-feature-text {
@@ -993,7 +988,7 @@ section[id], .calculator-box[id], [id] {
 }
 
 .calc-result-box {
-  background: linear-gradient(135deg, #0d3b66, #1b4965);
+  background: linear-gradient(135deg, var(--heem-primary), var(--heem-primary-dark));
   color: #ffffff;
   padding: 24px;
   border-radius: var(--radius-md);
@@ -1002,17 +997,19 @@ section[id], .calculator-box[id], [id] {
   align-items: center;
   flex-wrap: wrap;
   gap: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: var(--shadow-md);
 }
 
 .calc-total-label {
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .calc-total-amount {
   font-family: var(--font-heading);
   font-size: 3rem;
-  color: var(--heem-gold);
+  color: #ffffff;
   line-height: 1;
 }
 
@@ -1024,8 +1021,8 @@ section[id], .calculator-box[id], [id] {
 
 /* Important Rules Alert Box */
 .rules-alert {
-  background: #fff8e6;
-  border-left: 5px solid #e76f51;
+  background: #fff5f6;
+  border-left: 5px solid var(--heem-accent);
   padding: 24px;
   border-radius: var(--radius-sm);
   margin-top: 40px;
@@ -1033,7 +1030,7 @@ section[id], .calculator-box[id], [id] {
 
 .rules-alert h4 {
   font-family: var(--font-sub);
-  color: #c0392b;
+  color: var(--heem-accent);
   font-size: 1.25rem;
   font-weight: 800;
   margin-bottom: 10px;
@@ -1336,7 +1333,7 @@ section[id], .calculator-box[id], [id] {
   background: var(--heem-primary-dark);
   color: #ffffff;
   padding: 60px 0 30px 0;
-  border-top: 4px solid var(--heem-gold);
+  border-top: 4px solid var(--heem-accent);
 }
 
 .footer-top {
@@ -1357,10 +1354,23 @@ section[id], .calculator-box[id], [id] {
   font-family: var(--font-sub);
   font-weight: 800;
   font-size: 1.15rem;
-  color: var(--heem-gold);
+  color: #ffffff;
   margin-bottom: 20px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  position: relative;
+  display: inline-block;
+}
+
+.footer-heading::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 28px;
+  height: 3px;
+  background: var(--heem-accent);
+  border-radius: var(--radius-full);
 }
 
 .footer-links {
@@ -1377,7 +1387,7 @@ section[id], .calculator-box[id], [id] {
 }
 
 .footer-links a:hover {
-  color: var(--heem-gold);
+  color: var(--heem-accent-light);
   padding-left: 4px;
 }
 
@@ -1396,7 +1406,8 @@ section[id], .calculator-box[id], [id] {
 
 .footer-admin-btn {
   background: rgba(255, 255, 255, 0.1);
-  color: var(--heem-gold);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 6px 14px;
   border-radius: var(--radius-full);
   font-weight: 700;
@@ -1474,7 +1485,7 @@ section[id], .calculator-box[id], [id] {
 .theem-modal-header {
   padding: 18px 24px;
   background: var(--heem-cream);
-  border-bottom: 1.5px solid rgba(233, 196, 106, 0.4);
+  border-bottom: 2px solid var(--heem-accent);
   display: flex;
   align-items: center;
   justify-content: space-between;
